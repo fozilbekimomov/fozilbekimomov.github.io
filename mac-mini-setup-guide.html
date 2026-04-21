@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mac mini M4 Pro — To'liq Setup va Remote Control</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Syne:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --surface: #111118;
+    --surface2: #1a1a24;
+    --border: #2a2a3a;
+    --accent: #00d4ff;
+    --accent2: #7c3aed;
+    --accent3: #10b981;
+    --warn: #f59e0b;
+    --danger: #ef4444;
+    --text: #e2e8f0;
+    --muted: #64748b;
+    --code-bg: #0d1117;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Syne', sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  /* Background grid */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,212,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,212,255,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 24px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Header */
+  header {
+    text-align: center;
+    padding: 60px 0 50px;
+    position: relative;
+  }
+
+  .badge {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--accent2), var(--accent));
+    color: white;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 14px;
+    border-radius: 20px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  h1 {
+    font-size: clamp(28px, 5vw, 48px);
+    font-weight: 800;
+    line-height: 1.1;
+    background: linear-gradient(135deg, #fff 0%, var(--accent) 60%, var(--accent2) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 16px;
+  }
+
+  .subtitle {
+    color: var(--muted);
+    font-size: 16px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* Progress nav */
+  .progress-nav {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 40px 0;
+    padding: 20px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+  }
+
+  .nav-step {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--surface2);
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--muted);
+  }
+
+  .nav-step:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .nav-step .num {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+  }
+
+  /* Section */
+  .section {
+    margin-bottom: 40px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: border-color 0.3s;
+  }
+
+  .section:hover {
+    border-color: rgba(0,212,255,0.3);
+  }
+
+  .section-header {
+    padding: 24px 28px;
+    background: var(--surface2);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .step-num {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--accent2), var(--accent));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+
+  .section-title {
+    font-size: 20px;
+    font-weight: 800;
+  }
+
+  .section-desc {
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+
+  .section-body {
+    padding: 28px;
+  }
+
+  /* Code block */
+  .code-block {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    margin: 16px 0;
+    overflow: hidden;
+  }
+
+  .code-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 16px;
+    background: rgba(255,255,255,0.03);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .code-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .copy-btn {
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .copy-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .copy-btn.copied {
+    border-color: var(--accent3);
+    color: var(--accent3);
+  }
+
+  pre {
+    padding: 16px;
+    overflow-x: auto;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    line-height: 1.7;
+    color: #e2e8f0;
+  }
+
+  .cm { color: #6b7280; }   /* comment */
+  .ck { color: #60a5fa; }   /* keyword */
+  .cs { color: #34d399; }   /* string */
+  .cn { color: #f472b6; }   /* number/flag */
+
+  /* Alert boxes */
+  .alert {
+    display: flex;
+    gap: 12px;
+    padding: 14px 16px;
+    border-radius: 10px;
+    margin: 16px 0;
+    font-size: 14px;
+    border: 1px solid;
+  }
+
+  .alert-info {
+    background: rgba(0,212,255,0.05);
+    border-color: rgba(0,212,255,0.2);
+    color: #93c5fd;
+  }
+
+  .alert-warn {
+    background: rgba(245,158,11,0.05);
+    border-color: rgba(245,158,11,0.2);
+    color: #fcd34d;
+  }
+
+  .alert-success {
+    background: rgba(16,185,129,0.05);
+    border-color: rgba(16,185,129,0.2);
+    color: #6ee7b7;
+  }
+
+  .alert-danger {
+    background: rgba(239,68,68,0.05);
+    border-color: rgba(239,68,68,0.2);
+    color: #fca5a5;
+  }
+
+  .alert-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+
+  /* Steps list */
+  .steps {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .steps li {
+    display: flex;
+    gap: 12px;
+    padding: 14px 16px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    font-size: 14px;
+    align-items: flex-start;
+  }
+
+  .steps li .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+    margin-top: 5px;
+  }
+
+  /* Table */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    margin: 16px 0;
+  }
+
+  th {
+    text-align: left;
+    padding: 10px 14px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  td {
+    padding: 10px 14px;
+    border: 1px solid var(--border);
+    color: var(--text);
+    vertical-align: top;
+  }
+
+  tr:hover td { background: rgba(255,255,255,0.02); }
+
+  /* Tag */
+  .tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+  }
+
+  .tag-blue { background: rgba(0,212,255,0.15); color: var(--accent); }
+  .tag-green { background: rgba(16,185,129,0.15); color: var(--accent3); }
+  .tag-purple { background: rgba(124,58,237,0.15); color: #a78bfa; }
+  .tag-yellow { background: rgba(245,158,11,0.15); color: var(--warn); }
+
+  /* Inline code */
+  code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    background: rgba(0,212,255,0.1);
+    color: var(--accent);
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+
+  p { margin: 10px 0; font-size: 15px; color: #cbd5e1; }
+  h3 { font-size: 16px; font-weight: 700; color: var(--text); margin: 20px 0 10px; }
+  h4 { font-size: 14px; font-weight: 600; color: var(--accent); margin: 16px 0 8px; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 1px; }
+
+  /* Summary box */
+  .summary {
+    background: linear-gradient(135deg, rgba(124,58,237,0.1), rgba(0,212,255,0.1));
+    border: 1px solid rgba(0,212,255,0.3);
+    border-radius: 16px;
+    padding: 28px;
+    margin: 40px 0;
+    text-align: center;
+  }
+
+  .summary h2 {
+    font-size: 24px;
+    font-weight: 800;
+    margin-bottom: 16px;
+    background: linear-gradient(135deg, var(--accent3), var(--accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .checklist {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+    margin-top: 20px;
+    text-align: left;
+  }
+
+  .check-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    background: rgba(0,0,0,0.3);
+    border-radius: 8px;
+    font-size: 14px;
+  }
+
+  .check-item .icon { font-size: 16px; }
+
+  /* Divider */
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border), transparent);
+    margin: 20px 0;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--muted); }
+
+  @media (max-width: 600px) {
+    .section-body { padding: 20px 16px; }
+    .section-header { padding: 18px 16px; }
+    pre { font-size: 12px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <div class="badge">Mac mini M4 Pro</div>
+    <h1>To'liq Setup &amp; Remote Control</h1>
+    <p class="subtitle">// SSH · Screen Sharing · Admin · Tailscale · CI/CD</p>
+  </header>
+
+  <!-- Progress Nav -->
+  <nav class="progress-nav">
+    <a href="#s1" class="nav-step"><span class="num">1</span> Birinchi yoqish</a>
+    <a href="#s2" class="nav-step"><span class="num">2</span> Sharing</a>
+    <a href="#s3" class="nav-step"><span class="num">3</span> Static IP</a>
+    <a href="#s4" class="nav-step"><span class="num">4</span> SSH</a>
+    <a href="#s5" class="nav-step"><span class="num">5</span> Screen Share</a>
+    <a href="#s6" class="nav-step"><span class="num">6</span> Homebrew</a>
+    <a href="#s7" class="nav-step"><span class="num">7</span> Tailscale</a>
+    <a href="#s8" class="nav-step"><span class="num">8</span> Admin</a>
+    <a href="#s9" class="nav-step"><span class="num">9</span> SSH Key</a>
+    <a href="#s10" class="nav-step"><span class="num">10</span> Auto-start</a>
+  </nav>
+
+  <!-- STEP 1 -->
+  <div class="section" id="s1">
+    <div class="section-header">
+      <div class="step-num">01</div>
+      <div>
+        <div class="section-title">Birinchi marta yoqish</div>
+        <div class="section-desc">Mac mini ni boshlang'ich sozlash</div>
+      </div>
+    </div>
+    <div class="section-body">
+      <div class="alert alert-warn">
+        <span class="alert-icon">⚠️</span>
+        <span>Birinchi marta yoqishda <strong>monitor + klaviatura</strong> ulang. Keyinchalik ular shart bo'lmaydi.</span>
+      </div>
+      <ul class="steps">
+        <li><span class="dot"></span><span>Mac mini ni yoqing va boshlang'ich sozlashni bajaring</span></li>
+        <li><span class="dot"></span><span><strong>Apple ID</strong> bilan kiring — iCloud, App Store uchun kerak</span></li>
+        <li><span class="dot"></span><span><strong>System Settings → General → Software Update</strong> — barcha yangilanishlarni o'rnating</span></li>
+        <li><span class="dot"></span><span>Foydalanuvchi nomi (<code>macstation</code>) va parolni eslab qoling</span></li>
+        <li><span class="dot"></span><span><strong>System Settings → Energy → Wake for network access</strong> — ON qiling</span></li>
+        <li><span class="dot"></span><span><strong>System Settings → Lock Screen → Require password</strong> — "After sleep" → "Never" qiling (server uchun)</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- STEP 2 -->
+  <div class="section" id="s2">
+    <div class="section-header">
+      <div class="step-num">02</div>
+      <div>
+        <div class="section-title">Sharing sozlamalari</div>
+        <div class="section-desc">Remote Login, Screen Sharing, Remote Management yoqish</div>
+      </div>
+    </div>
+    <div class="section-body">
+      <p><strong>System Settings → General → Sharing</strong> bo'limiga kiring:</p>
+      <ul class="steps">
+        <li><span class="dot"></span><span><strong>Remote Login</strong> → ON — SSH kirish uchun</span></li>
+        <li><span class="dot"></span><span><strong>Screen Sharing</strong> → ON — ekranni ko'rish uchun</span></li>
+        <li><span class="dot"></span><span><strong>Remote Management</strong> → ON — to'liq boshqaruv uchun (Screen Sharing o'chib, Remote Management yonadi)</span></li>
+        <li><span class="dot"></span><span><strong>Remote Apple Events</strong> → ON — AppleScript orqali boshqarish</span></li>
+        <li><span class="dot"></span><span>Har birida <strong>"Allow access for: All users"</strong> tanlang</span></li>
+      </ul>
+      <div class="alert alert-info">
+        <span class="alert-icon">ℹ️</span>
+        <span>Remote Management yonsa, Screen Sharing avtomatik o'chadi — bu normal. Remote Management ikkalasini ham qamrab oladi.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 3 -->
+  <div class="section" id="s3">
+    <div class="section-header">
+      <div class="step-num">03</div>
+      <div>
+        <div class="section-title">Static IP sozlash</div>
+        <div class="section-desc">IP o'zgarmasligi uchun router yoki Mac ichida belgilash</div>
+      </div>
+    </div>
+    <div class="section-body">
+      <h4>Variant A — Router ichida (tavsiya)</h4>
+      <ul class="steps">
+        <li><span class="dot"></span><span>Router admin paneliga kiring: <code>192.168.2.1</code></span></li>
+        <li><span class="dot"></span><span><strong>DHCP Reservation</strong> bo'limini toping</span></li>
+        <li><span class="dot"></span><span>Mac mini ning MAC adressini toping → <code>192.168.2.126</code> ni bog'lang</span></li>
+      </ul>
+
+      <h4>Variant B — Mac mini ichida</h4>
+      <p><strong>System Settings → Network → Ethernet/Wi-Fi → Details → TCP/IP</strong></p>
+      <div class="code-block">
+        <div class="code-header">
+          <span class="code-label">Sozlamalar</span>
+          <button class="copy-btn" onclick="copyCode(this)">copy</button>
+        </div>
+        <pre>Configure IPv4: <span class="cs">Manual</span>
+IP Address:     <span class="cn">192.168.2.126</span>
+Subnet Mask:    <span class="cn">255.255.255.0</span>
+Router:         <span class="cn">192.168.2.1</span>
+DNS:            <span class="cn">8.8.8.8, 8.8.4.4</span></pre>
+      </div>
+
+      <h4>Tekshirish</h4>
+      <div class="code-block">
+        <div class="code-header">
+          <span class="code-label">Terminal — Mac mini</span>
+          <button class="copy-btn" onclick="copyCode(this)">copy</button>
+        </div>
+        <pre><span class="cm"># WiFi orqali</span>
+ipconfig getifaddr en1
+
+<span class="cm"># Ethernet orqali</span>
+ipconfig getifaddr en0</pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 4 -->
+  <div class="section" id="s4">
+    <div class="section-header">
+      <div class="step-num">04</div>
+      <div>
+        <div class="section-title">SSH orqali ulanish</div>
+        <div class="section-desc">MacBook terminalidan Mac mini ni boshqarish</div>
+      </div>
+    </div>
+    <div class="section-body">
+      <h4>MacBook terminalidan ulanish</h4>
+      <div class="code-block">
+        <div class="code-header">
+          <span class="code-label">MacBook — Terminal</span>
+          <button class="copy-btn" onclick="copyCode(this)">copy</button>
+        </div>
+        <pre><span class="cm"># IP orqali</span>
+ssh macstation@192.168.2.126
+
+<span class="cm"># Hostname orqali (local network)</span>
+ssh macstation@Fozilbeks-Mac-mini.local</pre>
+      </div>
+
+      <div class="alert alert-info">
+        <span class="alert-icon">💡</span>
+        <span>Birinchi ulanganda <strong>"yes"</strong> deb tasdiqlang. Keyingi safar so'ramayd.</span>
+      </div>
+
+      <h4>Foydali SSH buyruqlar</h4>
+      <div class="code-block">
+        <div class="code-header">
+          <span class="code-label">Mac mini da ishlaydigan buyruqlar</span>
+          <button class="copy-btn" onclick="copyCode(this)">copy</button>
+        </div>
+        <pre><span class="cm"># Tizim holati</span>
+uptime
+
+<span class="cm"># RAM holati</span>
+top -l 1 | grep PhysMem
+
+<span class="cm"># Disk holati</span>
+df -h
+
+<span class="cm"># Ishlayotgan jarayonlar</span>
+ps aux | head -20
+
+<span class="cm"># Mac mini ni qayta ishga tushirish</span>
+sudo shutdown -r now
+
+<span class="cm"># Mac mini ni o'chirish</span>
+sudo shutdown -h now</pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 5 -->
+  <div class="section" id="s5">
+    <div class="section-header">
+      <div class="step-num">05</div>
+      <div>
+        <div class="section-title">Screen Sharing — Ekranni ko'rish</div>
+        <div class="section-desc">MacBook dan Mac mini ekranini to'liq boshqarish</div>
+      </div>
+    </div>
+    <div class="section-body">
+      <h4>Variant A — macOS Screen Sharing (eng oson)</h4>
+      <ul class="steps">
+        <li><span class="dot"></span><span>MacBook da <strong>Finder → Go → Connect to Server</strong> (⌘K)</span></li>
+        <li><span class="dot"></span><span>Manzil kiriting: <code>vnc://192.168.2.126</code></span></li>
+        <li><span class="dot"></span><span>Username: <code>macstation</code> — Parol: Mac mini paroli</span></li>
+      </ul>
+
+      <h4>Variant B — Terminal orqali</h4>
+      <div class="code-block">
+        <div class="code-header">
+          <span class="code-label">MacBook — Terminal</span>
+          <button class="copy-btn" onclick="copyCode(this)">copy</button>
+        </div>
+        <pre>open vnc://macstation@192.168.2.126</pre>
+      </div>
+
+      <h4>Variant C — Screen Sharing ilovasi</h4>
+      <ul class="steps">
+        <li><span class="dot"></span><span>MacBook da Spotlight (⌘Space) → <strong>"Screen Sharing"</strong> yozing → oching</span></li>
+        <li><span class="dot"></span><span><code>192.168.2.126</code> kiriting → Connect</span></li>
+      </ul>
+
+      <div class="alert alert-success">
+        <span class="alert-icon">✅</span>
+        <span>Monitor umuman ulanmagan bo'lsa ham ishlaydi! Mac mini headless (monitorsiz) rejimda ishlayveradi.</span>
+      </div>
+
+      <h4>Headless — Virtual monitor (monitor yo'q bo'lsa)</h4>
+      <p>Agar Mac mini ga monitor ulanmagan bo'lsa, ekran o'lchami kichik bo'lishi mumkin. Buni hal qilish uchun:</p>
+      <div class="code-block">
+        <div class="code-header">
+          <span class="code-label">SSH orqali Mac mini da</span>
+          <button class="copy-btn" onclick="copyCode(this)">copy</button>
+        </div>
+        <pre><span class="cm"># BetterDisplay yoki DisplayBuddy orqali virtual display yaratish</span>
+<span class="cm"># Yoki System Settings → Displays → Resolution ni o'zgartiring</span>
+sudo /usr/bin/defaults write /Library/Preferences/com.apple.windowserver \
+  DisplayResolutionEnabled -bool true</pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 6 -->
+  <div class="section" id="s6">
+    <div class="section-header">
+      <div class="step-num">06</div>
+      <div>
+        <div class="section-title">Homebrew o'rnatish</div>
+        <div class="section-desc">Paket menejeri — barcha toollar shu orqali o'rnatiladi</div>
+      </div>
+    </div>
+    <div class="section-body">
+      <div class="alert alert-warn">
+        <span class="alert-icon">⚠️</span>
+        <span>O'rnatish 10–15 daqiqa ketadi. SSH sessiyasini yopmang!</span>
+      </div>
+
+      <h4>1. O'rnatish</h4>
+      <div class="code-block">
+        <div class="code-header">
+          <span class="code-label">Mac mini — Terminal yoki SSH</span>
+          <button class="copy-btn" onclick="copyCode(this)">copy</button>
+        </div>
+        <pre>/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"</pre>
+      </div>
+
+      <h4>2. PATH qo'shish (M4 Pro — ARM chip uchun)</h4>
+      <div class="code-block">
+        <div class="code-header">
+          <span class="code-label">O'rnatib bo'lgach</span>
+          <button class="copy-btn" onclick="copyCode(this)">copy</button>
+        </div>
+        <pre>echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
+eval "$(/opt/homebrew/bin/brew shellenv)"</pre>
+      </div>
+
+      <h4>3. Tekshirish</h4>
+      <div class="code-block">
+        <div class="code-header">
+          <span class="code-label">Versiyani ko'rish</span>
+          <button class="copy-btn" onclick="copyCode(this)">copy</button>
+        </div>
+        <pre>brew --version
+<span class="cm"># Homebrew 4.x.x chiqishi kerak</span></pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 7 -->
+  <div class="section" id="s7">
+    <div class="section-header">
+      <div class="step-num">07</div>
+      <div>
+        <div class="section-title">Tailscale — Tashqaridan kirish</div>
+        <div class="section-desc">Uydan tashqarida (ofis, ko'cha) ham Mac mini ga ulanish</div>
+      </div>
+    </div>
+    <div class="section-body">
+      <div class="alert alert-info">
+        <span class="alert-icon">🌐</span>
+        <span>Tailscale — bepul VPN. Mac mini va MacBook ni bitta virtual tarmoqqa bog'laydi. Port forwarding shart emas.</span>
+      </div>
+
+      <h4>1. Mac mini da o'rnatish (SSH orqali)</h4>
+      <div class="code-block">
+        <div class="code-header">
+          <span class="code-label">Mac mini</span>
+          <button class="copy-btn" onclick="copyCode(this)">copy</button>
+        </div>
+        <pre>brew install tailscale
+
+<span class="cm"># Tailscale ni ishga tushirish</span>
+sudo tailscaled &
+
+<span class="cm"># Login qilish (link ochiladi)</span>
+sudo tailscale up</pre>
+      </div>
+
+      <h4>2. MacBook da o'rnatish</h4>
+      <div class="code-block">
+        <div class="code-header">
+          <span class="code-label">MacBook</span>
+          <button class="copy-btn" onclick="copyCode(this)">copy</button>
+        </div>
+        <pre><span class="cm"># App Store dan ham o'rnatish mumkin</span>
+brew install tailscale
+sudo tailscale up</pre>
+      </div>
+
+      <h4>3. Tailscale IP ni ko'rish</h4>
+      <div class="code-block">
+        <div class="code-header">
+          <span class="code-label">Mac mini da</span>
+          <button class="copy-btn" onclick="copyCode(this)">copy</button>
+        </div>
+        <pre>tailscale ip
+<span class="cm"># 100.x.x.x formatida IP chiqadi</span></pre>
+      </div>
+
+      <h4>4. Istalgan joydan ulanish</h4>
+      <div class="code-block">
+        <div class="code-header">
+          <span class="code-label">MacBook — istalgan tarmoqdan</span>
+          <button class="copy-btn" onclick="copyCode(this)">copy</button>
+        </div>
+        <pre><span class="cm"># SSH orqali</span>
+ssh macstation@100.x.x.x
+
+<span class="cm"># Yoki hostname orqali</span>
+ssh macstation@fozilbeks-mac-mini
+
+<span class="cm"># Screen sharing</span>
+open vnc://100.x.x.x</pre>
+      </div>
+
+      <div class="alert alert-success">
+        <span class="alert-icon">✅</span>
+        <span>Tailscale bepul, 3 ta qurilmaga qadar. Ikkalangizda ham bir xil Tailscale akkauntga kiring.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 8 -->
+  <div class="section" id="s8">
+    <div class="section-header">
+      <div class="step-num">08</div>
+      <div>
+        <div class="section-title">Masofadan Admin boshqaruv</div>
+        <div class="section-desc">sudo, tizim sozlamalari, ilovalar o'rnatish — to'liq huquq</div>
+      </div>
+    </div>
+    <div class="section-body">
+      <h4>SSH orqali sudo ishlatish</h4>
+      <div class="code-block">
+        <div class="code-header">
+          <span class="code-label">Admin buyruqlar</span>
+          <button class="copy-btn" onclick="copyCode(this)">copy</button>
+        </div>
+        <pre><span class="cm"># Tizim yangilanishlarini tekshirish</span>
+sudo softwareupdate -l
+
+<span class="cm"># Yangilanishlarni o'rnatish</span>
+sudo softwareupdate -ia
+
+<span class="cm"># Ilova o'rnatish (brew orqali)</span>
+brew install --cask visual-studio-code
+brew install --cask docker
+brew install git node python
+
+<span class="cm"># Xizmatlarni boshqarish</span>
+sudo launchctl list
+sudo launchctl start com.example.service
+
+<span class="cm"># Firewall holati</span>
+sudo /usr/libexec/ApplicationFirewall/socketfilterfw --getglobalstate
+
+<span class="cm"># Tizim ma'lumotlari</span>
+system_profiler SPHardwareDataType</pre>
+      </div>
+
+      <h4>Masofadan ilova ochish va yopish</h4>
+      <div class="code-block">
+        <div class="code-header">
+          <span class="code-label">App boshqaruv — SSH orqali</span>
+          <button class="copy-btn" onclick="copyCode(this)">copy</button>
+        </div>
+        <pre><span class="cm"># Ilova ochish</span>
+open -a "Safari"
+open -a "Xcode"
+
+<span class="cm"># Ilova yopish</span>
+osascript -e 'quit app "Safari"'
+
+<span class="cm"># Barcha ochiq ilovalar</span>
+osascript -e 'tell application "System Events" to get name of every process where background only is false'
+
+<span class="cm"># Screenshot olish (masofadan)</span>
+screencapture -x ~/Desktop/screenshot.png</pre>
+      </div>
+
+      <h4>Tizim sozlamalarini masofadan o'zgartirish</h4>
+      <div class="code-block">
+        <div class="code-header">
+          <span class="code-label">System preferences — Terminal orqali</span>
+          <button class="copy-btn" onclick="copyCode(this)">copy</button>
+        </div>
+        <pre><span class="cm"># Hostname o'zgartirish</span>
+sudo scutil --set ComputerName "Fozilbek-Mac-mini"
+sudo scutil --set LocalHostName "Fozilbek-Mac-mini"
+
+<span class="cm"># Avtomatik uyqu o'chirish (server uchun muhim!)</span>
+sudo pmset -a sleep 0
+sudo pmset -a disksleep 0
+sudo pmset -a displaysleep 0
+
+<span class="cm"># Network qayta ishga tushirish</span>
+sudo ifconfig en0 down && sudo ifconfig en0 up</pre>
+      </div>
+
+      <div class="alert alert-warn">
+        <span class="alert-icon">⚠️</span>
+        <span><strong>Server uchun muhim:</strong> <code>sudo pmset -a sleep 0</code> buyrug'ini albatta ishlatib qo'ying — Mac mini uyquga ketmasin.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 9 -->
+  <div class="section" id="s9">
+    <div class="section-header">
+      <div class="step-num">09</div>
+      <div>
+        <div class="section-title">SSH Key — Parolsiz kirish</div>
+        <div class="section-desc">Har safar parol yozmaslik uchun SSH key sozlash</div>
+      </div>
+    </div>
+    <div class="section-body">
+      <h4>1. MacBook da SSH key yaratish</h4>
+      <div class="code-block">
+        <div class="code-header">
+          <span class="code-label">MacBook — Terminal</span>
+          <button class="copy-btn" onclick="copyCode(this)">copy</button>
+        </div>
+        <pre><span class="cm"># Key yaratish (ed25519 — eng xavfsiz)</span>
+ssh-keygen -t ed25519 -C "macbook-to-macmini"
+
+<span class="cm"># Enter bosib davom eting (passphrase ixtiyoriy)</span></pre>
+      </div>
+
+      <h4>2. Kalitni Mac mini ga yuborish</h4>
+      <div class="code-block">
+        <div class="code-header">
+          <span class="code-label">MacBook — Terminal</span>
+          <button class="copy-btn" onclick="copyCode(this)">copy</button>
+        </div>
+        <pre>ssh-copy-id macstation@192.168.2.126
+
+<span class="cm"># Yoki qo'lda:</span>
+cat ~/.ssh/id_ed25519.pub | ssh macstation@192.168.2.126 \
+  "mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys"</pre>
+      </div>
+
+      <h4>3. Endi parolsiz kirish</h4>
+      <div class="code-block">
+        <div class="code-header">
+          <span class="code-label">MacBook — parol so'ralmaydi</span>
+          <button class="copy-btn" onclick="copyCode(this)">copy</button>
+        </div>
+        <pre>ssh macstation@192.168.2.126
+<span class="cm"># To'g'ridan kiradi!</span></pre>
+      </div>
+
+      <h4>4. SSH Config (alias) sozlash</h4>
+      <div class="code-block">
+        <div class="code-header">
+          <span class="code-label">~/.ssh/config — MacBook da</span>
+          <button class="copy-btn" onclick="copyCode(this)">copy</button>
+        </div>
+        <pre>Host macmini
+  HostName 192.168.2.126
+  User macstation
+  IdentityFile ~/.ssh/id_ed25519
+
+<span class="cm"># Tailscale orqali ham</span>
+Host macmini-remote
+  HostName 100.x.x.x
+  User macstation
+  IdentityFile ~/.ssh/id_ed25519</pre>
+      </div>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span class="code-label">Endi qisqa buyruq bilan kirish</span>
+          <button class="copy-btn" onclick="copyCode(this)">copy</button>
+        </div>
+        <pre><span class="cm"># Uy tarmog'ida</span>
+ssh macmini
+
+<span class="cm"># Tashqaridan (Tailscale)</span>
+ssh macmini-remote</pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 10 -->
+  <div class="section" id="s10">
+    <div class="section-header">
+      <div class="step-num">10</div>
+      <div>
+        <div class="section-title">Auto-start va Server sozlamalari</div>
+        <div class="section-desc">Mac mini o'chib yonsa ham hamma narsa avtomatik ishga tushsin</div>
+      </div>
+    </div>
+    <div class="section-body">
+      <h4>Elektr o'chib yonsa avtomatik yoqilishi</h4>
+      <ul class="steps">
+        <li><span class="dot"></span><span><strong>System Settings → General → Startup Disk</strong></span></li>
+        <li><span class="dot"></span><span><strong>System Settings → Energy</strong> → "Start up automatically after a power failure" → ON</span></li>
+      </ul>
+
+      <h4>Terminal orqali</h4>
+      <div class="code-block">
+        <div class="code-header">
+          <span class="code-label">Avtomatik yoqilish sozlash</span>
+          <button class="copy-btn" onclick="copyCode(this)">copy</button>
+        </div>
+        <pre><span class="cm"># Elektr qaytganda avtomatik yoqilish</span>
+sudo pmset -a autorestart 1
+
+<span class="cm"># Uyquga ketmaslik</span>
+sudo pmset -a sleep 0
+sudo pmset -a disksleep 0
+sudo pmset -a displaysleep 10
+
+<span class="cm"># Network wake (WOL)</span>
+sudo pmset -a womp 1
+
+<span class="cm"># Hozirgi holat</span>
+pmset -g</pre>
+      </div>
+
+      <h4>Docker auto-start (CI/CD uchun)</h4>
+      <div class="code-block">
+        <div class="code-header">
+          <span class="code-label">Docker Desktop sozlamasi</span>
+          <button class="copy-btn" onclick="copyCode(this)">copy</button>
+        </div>
+        <pre><span class="cm"># Docker o'rnatish</span>
+brew install --cask docker
+
+<span class="cm"># Docker Desktop → Settings → General:</span>
+<span class="cm"># ✅ Start Docker Desktop when you sign in to your computer</span></pre>
+      </div>
+
+      <h4>GitHub Actions Self-hosted Runner</h4>
+      <div class="code-block">
+        <div class="code-header">
+          <span class="code-label">CI/CD Runner o'rnatish</span>
+          <button class="copy-btn" onclick="copyCode(this)">copy</button>
+        </div>
+        <pre><span class="cm"># GitHub repo → Settings → Actions → Runners → New self-hosted runner</span>
+<span class="cm"># macOS ARM64 tanlang, ko'rsatilgan buyruqlarni bajaring</span>
+
+<span class="cm"># Runner ni service sifatida o'rnatish (auto-start)</span>
+cd ~/actions-runner
+./svc.sh install
+./svc.sh start
+
+<span class="cm"># Holat tekshirish</span>
+./svc.sh status</pre>
+      </div>
+
+      <div class="divider"></div>
+
+      <h4>Foydali monitoring buyruqlari</h4>
+      <div class="code-block">
+        <div class="code-header">
+          <span class="code-label">Tizim monitoring</span>
+          <button class="copy-btn" onclick="copyCode(this)">copy</button>
+        </div>
+        <pre><span class="cm"># CPU, RAM real vaqtda</span>
+top
+
+<span class="cm"># Faqat CPU va RAM summary</span>
+vm_stat && top -l 1 | grep -E "^CPU|^PhysMem"
+
+<span class="cm"># Network trafik</span>
+nettop
+
+<span class="cm"># Disk I/O</span>
+iostat -w 2
+
+<span class="cm"># Log fayllarni ko'rish</span>
+tail -f /var/log/system.log
+
+<span class="cm"># Ochiq portlar</span>
+sudo lsof -i -P | grep LISTEN</pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- Summary -->
+  <div class="summary">
+    <h2>🎉 Setup to'liq tayyor!</h2>
+    <p style="color: #94a3b8; margin-bottom: 8px;">Sizda endi to'liq boshqariladigan Mac mini server bor</p>
+    <div class="checklist">
+      <div class="check-item"><span class="icon">🔐</span><span>SSH kirish</span></div>
+      <div class="check-item"><span class="icon">🖥️</span><span>Screen Sharing</span></div>
+      <div class="check-item"><span class="icon">🌐</span><span>Tailscale VPN</span></div>
+      <div class="check-item"><span class="icon">⚡</span><span>Parolsiz SSH key</span></div>
+      <div class="check-item"><span class="icon">🔧</span><span>Admin boshqaruv</span></div>
+      <div class="check-item"><span class="icon">🔄</span><span>Auto-start</span></div>
+      <div class="check-item"><span class="icon">📦</span><span>Homebrew</span></div>
+      <div class="check-item"><span class="icon">🚀</span><span>CI/CD Runner</span></div>
+    </div>
+
+    <div style="margin-top: 24px; padding: 16px; background: rgba(0,0,0,0.3); border-radius: 10px;">
+      <p style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #60a5fa; margin: 0;">
+        Uy tarmog'i: <strong>ssh macmini</strong> &nbsp;|&nbsp;
+        Tashqaridan: <strong>ssh macmini-remote</strong> &nbsp;|&nbsp;
+        Ekran: <strong>vnc://192.168.2.126</strong>
+      </p>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function copyCode(btn) {
+  const pre = btn.closest('.code-block').querySelector('pre');
+  const text = pre.innerText;
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = 'copied!';
+    btn.classList.add('copied');
+    setTimeout(() => {
+      btn.textContent = 'copy';
+      btn.classList.remove('copied');
+    }, 2000);
+  });
+}
+</script>
+</body>
+</html>
