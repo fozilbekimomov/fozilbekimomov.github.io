@@ -123,6 +123,12 @@
     <div class="nav-group-label">Server</div>
     <a href="#s9" class="nav-link"><span class="icon">👑</span> Admin boshqaruv</a>
     <a href="#s10" class="nav-link"><span class="icon">🔄</span> Auto-start</a>
+    <div class="nav-group-label">Qo'shimcha</div>
+    <a href="#s11" class="nav-link"><span class="icon">🔑</span> SSH Key</a>
+    <a href="#s12" class="nav-link"><span class="icon">🖥️</span> VNC parol</a>
+    <a href="#s13" class="nav-link"><span class="icon">🐳</span> Docker</a>
+    <a href="#s14" class="nav-link"><span class="icon">⚙️</span> CI/CD Runner</a>
+    <a href="#s15" class="nav-link"><span class="icon">🚀</span> Server sozlama</a>
   </aside>
 
   <main class="main">
@@ -442,6 +448,242 @@ tail -f /var/log/system.log    <span class="cm"># System log</span></pre>
       </div>
     </div>
 
+    <!-- 11 -->
+    <div class="section" id="s11">
+      <div class="section-header">
+        <span class="step-badge">STEP 11</span>
+        <h2>SSH Key — Parolsiz kirish</h2>
+      </div>
+      <h3>1. MacBook da key yaratish</h3>
+      <div class="code-block">
+        <div class="code-top"><span class="code-lang">bash — MacBook</span><button class="copy-btn" onclick="cp(this)">copy</button></div>
+        <pre>ssh-keygen -t ed25519 -C "macbook-to-macmini"
+<span class="cm"># Enter × 3 (passphrase ixtiyoriy)</span></pre>
+      </div>
+      <h3>2. Kalitni Mac mini ga yuborish</h3>
+      <div class="code-block">
+        <div class="code-top"><span class="code-lang">bash — MacBook</span><button class="copy-btn" onclick="cp(this)">copy</button></div>
+        <pre>ssh-copy-id macstation@192.168.2.126</pre>
+      </div>
+      <h3>3. SSH Config — alias sozlash</h3>
+      <div class="code-block">
+        <div class="code-top"><span class="code-lang">~/.ssh/config — MacBook</span><button class="copy-btn" onclick="cp(this)">copy</button></div>
+        <pre>Host macmini
+  HostName 192.168.2.126
+  User macstation
+  IdentityFile ~/.ssh/id_ed25519
+
+Host macmini-remote
+  HostName 100.102.138.74
+  User macstation
+  IdentityFile ~/.ssh/id_ed25519</pre>
+      </div>
+      <div class="code-block">
+        <div class="code-top"><span class="code-lang">bash — endi qisqa buyruq</span><button class="copy-btn" onclick="cp(this)">copy</button></div>
+        <pre>ssh macmini           <span class="cm"># Uy tarmog'ida — parolsiz!</span>
+ssh macmini-remote    <span class="cm"># Tashqaridan (Tailscale) — parolsiz!</span></pre>
+      </div>
+    </div>
+
+    <!-- 12 -->
+    <div class="section" id="s12">
+      <div class="section-header">
+        <span class="step-badge">STEP 12</span>
+        <h2>Screen Sharing — VNC parol sozlash</h2>
+      </div>
+      <div class="callout callout-note">
+        <span class="callout-icon">ℹ️</span>
+        <span>Screen Sharing uchun tizim paroli ishlatiladi. Parol unutilsa quyidagi buyruq bilan yangilang.</span>
+      </div>
+      <h3>VNC parolini yangilash</h3>
+      <div class="code-block">
+        <div class="code-top"><span class="code-lang">bash — SSH orqali</span><button class="copy-btn" onclick="cp(this)">copy</button></div>
+        <pre><span class="cm"># Parolni yangilash</span>
+sudo dscl . -passwd /Users/macstation YANGI_PAROL
+
+<span class="cm"># VNC legacy rejimini yoqish</span>
+sudo defaults write /Library/Preferences/com.apple.RemoteDesktop.plist \
+  VNCLegacyConnectionsAllowed -bool yes</pre>
+      </div>
+      <h3>Screen Sharing ga ulanish</h3>
+      <div class="code-block">
+        <div class="code-top"><span class="code-lang">bash — MacBook</span><button class="copy-btn" onclick="cp(this)">copy</button></div>
+        <pre><span class="cm"># Uy tarmog'ida</span>
+open vnc://192.168.2.126
+
+<span class="cm"># Tashqaridan (Tailscale)</span>
+open vnc://100.102.138.74</pre>
+      </div>
+      <div class="callout callout-tip">
+        <span class="callout-icon">💡</span>
+        <span>Sign In oynasida <strong>Remember password</strong> belgilang — keyingi safar so'ramasin.</span>
+      </div>
+    </div>
+
+    <!-- 13 -->
+    <div class="section" id="s13">
+      <div class="section-header">
+        <span class="step-badge">STEP 13</span>
+        <h2>Docker o'rnatish</h2>
+      </div>
+      <div class="code-block">
+        <div class="code-top"><span class="code-lang">bash — Mac mini (SSH)</span><button class="copy-btn" onclick="cp(this)">copy</button></div>
+        <pre><span class="cm"># Docker Desktop o'rnatish</span>
+brew install --cask docker
+
+<span class="cm"># Yoki Docker Engine (GUI siz, server uchun yaxshi)</span>
+brew install colima docker
+
+<span class="cm"># Colima ishga tushirish (Docker daemon)</span>
+colima start --cpu 4 --memory 8 --disk 60</pre>
+      </div>
+      <div class="callout callout-note">
+        <span class="callout-icon">ℹ️</span>
+        <span>Server uchun <strong>Colima</strong> tavsiya — Docker Desktop dan yengilroq, GUI siz, kam RAM sarflaydi.</span>
+      </div>
+      <h3>Auto-start sozlash</h3>
+      <div class="code-block">
+        <div class="code-top"><span class="code-lang">bash</span><button class="copy-btn" onclick="cp(this)">copy</button></div>
+        <pre><span class="cm"># Colima — tizim yonganda avtomatik ishga tushsin</span>
+brew services start colima
+
+<span class="cm"># Tekshirish</span>
+docker ps
+docker --version</pre>
+      </div>
+    </div>
+
+    <!-- 14 -->
+    <div class="section" id="s14">
+      <div class="section-header">
+        <span class="step-badge">STEP 14</span>
+        <h2>GitHub Actions CI/CD Runner</h2>
+      </div>
+      <div class="callout callout-note">
+        <span class="callout-icon">ℹ️</span>
+        <span>Self-hosted runner — Mac mini da GitHub Actions pipeline larini ishga tushiradi. App Store publish ham shu orqali.</span>
+      </div>
+      <h3>Runner o'rnatish</h3>
+      <ul class="steps">
+        <li>GitHub repo → <strong>Settings → Actions → Runners → New self-hosted runner</strong></li>
+        <li><strong>macOS</strong> va <strong>ARM64</strong> tanlang</li>
+        <li>Ko'rsatilgan buyruqlarni Mac mini da bajaring</li>
+      </ul>
+      <div class="code-block">
+        <div class="code-top"><span class="code-lang">bash — Mac mini (SSH)</span><button class="copy-btn" onclick="cp(this)">copy</button></div>
+        <pre><span class="cm"># Runner papka yaratish</span>
+mkdir -p ~/actions-runner && cd ~/actions-runner
+
+<span class="cm"># GitHub ko'rsatgan download buyrug'ini bajaring, masalan:</span>
+curl -o actions-runner-osx-arm64-2.x.x.tar.gz -L \
+  https://github.com/actions/runner/releases/download/v2.x.x/actions-runner-osx-arm64-2.x.x.tar.gz
+
+tar xzf ./actions-runner-osx-arm64-2.x.x.tar.gz
+
+<span class="cm"># Konfiguratsiya (GitHub ko'rsatgan token bilan)</span>
+./config.sh --url https://github.com/USERNAME/REPO --token XXXX</pre>
+      </div>
+      <h3>Service sifatida o'rnatish (auto-start)</h3>
+      <div class="code-block">
+        <div class="code-top"><span class="code-lang">bash</span><button class="copy-btn" onclick="cp(this)">copy</button></div>
+        <pre>cd ~/actions-runner
+./svc.sh install     <span class="cm"># Service o'rnatish</span>
+./svc.sh start       <span class="cm"># Ishga tushirish</span>
+./svc.sh status      <span class="cm"># Holat tekshirish</span>
+./svc.sh stop        <span class="cm"># To'xtatish</span></pre>
+      </div>
+      <h3>App Store publish uchun workflow namuna</h3>
+      <div class="code-block">
+        <div class="code-top"><span class="code-lang">.github/workflows/deploy.yml</span><button class="copy-btn" onclick="cp(this)">copy</button></div>
+        <pre>name: Build and Deploy
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: self-hosted   <span class="cm"># Mac mini da ishlaydi</span>
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Build iOS App
+        run: |
+          xcodebuild -workspace App.xcworkspace \
+            -scheme App \
+            -configuration Release \
+            -archivePath build/App.xcarchive \
+            archive
+      
+      - name: Export IPA
+        run: |
+          xcodebuild -exportArchive \
+            -archivePath build/App.xcarchive \
+            -exportPath build/ \
+            -exportOptionsPlist ExportOptions.plist
+      
+      - name: Upload to App Store
+        run: |
+          xcrun altool --upload-app \
+            -f build/App.ipa \
+            -u ${{ secrets.APPLE_ID }} \
+            -p ${{ secrets.APP_PASSWORD }}</pre>
+      </div>
+    </div>
+
+    <!-- 15 -->
+    <div class="section" id="s15">
+      <div class="section-header">
+        <span class="step-badge">STEP 15</span>
+        <h2>Auto-start — Server sozlamalari</h2>
+      </div>
+      <div class="callout callout-warn">
+        <span class="callout-icon">⚠️</span>
+        <span>Bu buyruqlar <strong>bir marta</strong> bajarilsa yetarli — Mac mini doim server sifatida ishlaydi.</span>
+      </div>
+      <div class="code-block">
+        <div class="code-top"><span class="code-lang">bash — SSH orqali, bir marta bajaring</span><button class="copy-btn" onclick="cp(this)">copy</button></div>
+        <pre><span class="cm"># Uyquga ketmaslik</span>
+sudo pmset -a sleep 0
+sudo pmset -a disksleep 0
+sudo pmset -a displaysleep 10
+
+<span class="cm"># Elektr qaytganda avtomatik yoqilish</span>
+sudo pmset -a autorestart 1
+
+<span class="cm"># Network wake</span>
+sudo pmset -a womp 1
+
+<span class="cm"># Tailscale avtomatik ishga tushsin</span>
+sudo brew services start tailscale
+
+<span class="cm"># Hozirgi holat</span>
+pmset -g</pre>
+      </div>
+      <h3>Tizim yonganda avtomatik ishlaydigan servislar</h3>
+      <div class="code-block">
+        <div class="code-top"><span class="code-lang">bash</span><button class="copy-btn" onclick="cp(this)">copy</button></div>
+        <pre><span class="cm"># Barcha brew servislar holati</span>
+brew services list
+
+<span class="cm"># Kerakli servislarni yoqish</span>
+brew services start tailscale
+brew services start colima      <span class="cm"># Docker</span>
+
+<span class="cm"># GitHub Actions Runner</span>
+cd ~/actions-runner && ./svc.sh start</pre>
+      </div>
+      <h3>Monitoring</h3>
+      <div class="code-block">
+        <div class="code-top"><span class="code-lang">bash</span><button class="copy-btn" onclick="cp(this)">copy</button></div>
+        <pre>top                            <span class="cm"># CPU va RAM</span>
+nettop                         <span class="cm"># Network</span>
+iostat -w 2                    <span class="cm"># Disk I/O</span>
+tail -f /var/log/system.log    <span class="cm"># System log</span>
+docker stats                   <span class="cm"># Docker konteynerlar</span></pre>
+      </div>
+    </div>
+
     <hr>
 
     <div class="summary">
@@ -454,12 +696,17 @@ tail -f /var/log/system.log    <span class="cm"># System log</span></pre>
         <div class="check-item"><span class="dot"></span>Admin boshqaruv</div>
         <div class="check-item"><span class="dot"></span>Auto-start</div>
         <div class="check-item"><span class="dot"></span>Homebrew</div>
+        <div class="check-item"><span class="dot"></span>Docker / Colima</div>
         <div class="check-item"><span class="dot"></span>CI/CD Runner</div>
+        <div class="check-item"><span class="dot"></span>App Store publish</div>
+        <div class="check-item"><span class="dot"></span>VNC parol</div>
+        <div class="check-item"><span class="dot"></span>Server sozlama</div>
       </div>
       <div class="cmd-box">
-        <div>Uy tarmog'i &nbsp;→&nbsp; <span class="cv">ssh macmini</span></div>
-        <div>Tashqaridan &nbsp;→&nbsp; <span class="cv">ssh macmini-remote</span></div>
-        <div>Ekran ko'rish &nbsp;→&nbsp; <span class="cv">open vnc://192.168.2.126</span></div>
+        <div>Uy tarmog'i &nbsp;→&nbsp; <span class="cv">ssh macstation@192.168.2.126</span></div>
+        <div>Tashqaridan &nbsp;→&nbsp; <span class="cv">ssh macstation@100.102.138.74</span></div>
+        <div>Ekran (uy) &nbsp;→&nbsp; <span class="cv">open vnc://192.168.2.126</span></div>
+        <div>Ekran (tashqari) &nbsp;→&nbsp; <span class="cv">open vnc://100.102.138.74</span></div>
       </div>
     </div>
 
