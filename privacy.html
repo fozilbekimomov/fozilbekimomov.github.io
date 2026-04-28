@@ -1,0 +1,797 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="AdMob Revenue Tracker — Privacy Policy. We never store your AdMob data on our servers.">
+<meta name="theme-color" content="#6750A4">
+<meta name="robots" content="index,follow">
+<title>Privacy Policy · AdMob Revenue Tracker</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary: #6750A4;
+    --primary-dark: #4F3D8A;
+    --secondary: #00BFA5;
+    --tertiary: #FFB300;
+    --success: #22C55E;
+    --on-surface: #1A0E2E;
+    --on-surface-muted: #5B4F75;
+    --on-surface-faded: #8A7BA8;
+    --surface: #FFFFFF;
+    --surface-low: #F7F3FB;
+    --surface-lower: #FCFAFE;
+    --outline: #E5DEF0;
+    --outline-light: #EFE7F7;
+    --gradient: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', 'Noto Sans Devanagari', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    color: var(--on-surface);
+    background: var(--surface-lower);
+    line-height: 1.65;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  /* Top bar */
+  .topbar {
+    position: sticky; top: 0; z-index: 50;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    background: rgba(255,255,255,0.85);
+    border-bottom: 1px solid var(--outline-light);
+  }
+  .topbar-inner {
+    max-width: 880px; margin: 0 auto;
+    padding: 16px 24px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 16px; flex-wrap: wrap;
+  }
+  .brand {
+    display: flex; align-items: center; gap: 12px;
+    text-decoration: none;
+  }
+  .brand-icon {
+    width: 36px; height: 36px;
+    border-radius: 9px;
+    background: var(--gradient);
+    display: flex; align-items: center; justify-content: center;
+    color: white; font-weight: 800; font-size: 18px;
+    box-shadow: 0 4px 12px rgba(103,80,164,0.25);
+  }
+  .brand-name {
+    font-weight: 800; font-size: 16px; letter-spacing: -0.3px;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  /* Language tabs */
+  .lang-tabs {
+    display: flex; gap: 4px;
+    background: var(--surface-low);
+    border: 1px solid var(--outline-light);
+    border-radius: 999px;
+    padding: 4px;
+  }
+  .lang-tab {
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: transparent;
+    border: none;
+    font-family: inherit;
+    font-size: 13px; font-weight: 700;
+    color: var(--on-surface-muted);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .lang-tab:hover { color: var(--on-surface); }
+  .lang-tab.active {
+    background: var(--surface);
+    color: var(--primary);
+    box-shadow: 0 2px 6px rgba(103,80,164,0.10);
+  }
+  /* Hero */
+  .hero {
+    text-align: center;
+    padding: 72px 24px 40px;
+    max-width: 880px;
+    margin: 0 auto;
+  }
+  .badge {
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: rgba(0,191,165,0.10);
+    border: 1px solid rgba(0,191,165,0.30);
+    color: #00897B;
+    font-size: 12px; font-weight: 700; letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+  .hero-title {
+    font-size: clamp(36px, 6vw, 56px);
+    font-weight: 800;
+    letter-spacing: -1.4px;
+    line-height: 1.05;
+    color: var(--on-surface);
+  }
+  .hero-title .accent {
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hero-meta {
+    margin-top: 18px;
+    color: var(--on-surface-muted);
+    font-size: 15px;
+    display: flex; align-items: center; justify-content: center;
+    gap: 8px; flex-wrap: wrap;
+  }
+  .hero-meta .dot { width: 4px; height: 4px; border-radius: 50%; background: var(--on-surface-faded); }
+  .hero-meta strong { color: var(--on-surface); font-weight: 700; }
+  /* Summary callout */
+  .summary {
+    max-width: 880px; margin: 0 auto;
+    padding: 0 24px 32px;
+  }
+  .summary-card {
+    background: linear-gradient(135deg, rgba(0,191,165,0.06) 0%, rgba(103,80,164,0.05) 100%);
+    border: 1px solid rgba(0,191,165,0.25);
+    border-radius: 24px;
+    padding: 28px 32px;
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    gap: 20px;
+    align-items: center;
+  }
+  .summary-icon {
+    width: 64px; height: 64px;
+    border-radius: 18px;
+    background: var(--gradient);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 32px;
+    box-shadow: 0 8px 20px rgba(103,80,164,0.30);
+    color: white;
+  }
+  .summary-text { font-size: 16px; line-height: 1.55; }
+  .summary-text strong { color: var(--primary-dark); font-weight: 700; }
+  /* Content */
+  .content {
+    max-width: 880px; margin: 0 auto;
+    padding: 16px 24px 80px;
+  }
+  .lang-section { display: none; }
+  .lang-section.active { display: block; }
+  .content h2 {
+    font-size: 28px; font-weight: 800;
+    letter-spacing: -0.6px; line-height: 1.2;
+    margin: 56px 0 16px;
+    color: var(--on-surface);
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--outline-light);
+    display: flex; align-items: baseline; gap: 12px;
+  }
+  .content h2::before {
+    content: counter(section);
+    counter-increment: section;
+    font-size: 18px; font-weight: 700;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    min-width: 28px;
+  }
+  .lang-section { counter-reset: section; }
+  .content h3 {
+    font-size: 18px; font-weight: 700;
+    letter-spacing: -0.2px;
+    margin: 28px 0 12px;
+    color: var(--on-surface);
+  }
+  .content p {
+    margin: 12px 0;
+    color: var(--on-surface);
+  }
+  .content p strong { font-weight: 700; }
+  .content ul, .content ol {
+    margin: 12px 0 12px 24px;
+  }
+  .content li {
+    margin: 6px 0;
+    color: var(--on-surface);
+  }
+  .content li::marker { color: var(--primary); }
+  .content a {
+    color: var(--primary);
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(103,80,164,0.30);
+    transition: border-color 0.15s ease;
+  }
+  .content a:hover { border-bottom-color: var(--primary); }
+  /* Tables */
+  .table-wrap {
+    margin: 16px 0;
+    overflow-x: auto;
+    border-radius: 14px;
+    border: 1px solid var(--outline-light);
+    background: var(--surface);
+    box-shadow: 0 2px 8px rgba(103,80,164,0.04);
+  }
+  table {
+    width: 100%; border-collapse: collapse;
+    font-size: 14px;
+  }
+  th {
+    background: var(--surface-low);
+    color: var(--primary-dark);
+    font-weight: 700; text-align: left;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--outline-light);
+    font-size: 12px; text-transform: uppercase; letter-spacing: 1px;
+  }
+  td {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--outline-light);
+    vertical-align: top;
+  }
+  tr:last-child td { border-bottom: none; }
+  /* Highlight box */
+  .highlight {
+    background: linear-gradient(135deg, rgba(255,179,0,0.08) 0%, rgba(255,179,0,0.02) 100%);
+    border: 1px solid rgba(255,179,0,0.30);
+    border-left: 4px solid var(--tertiary);
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin: 20px 0;
+    color: var(--on-surface);
+  }
+  .highlight strong { color: #B45309; }
+  /* No-collect callout */
+  .no-collect {
+    background: linear-gradient(135deg, rgba(34,197,94,0.06) 0%, rgba(34,197,94,0.02) 100%);
+    border: 1px solid rgba(34,197,94,0.25);
+    border-left: 4px solid var(--success);
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin: 20px 0;
+  }
+  .no-collect strong { color: #15803D; }
+  /* Footer */
+  .footer {
+    border-top: 1px solid var(--outline-light);
+    padding: 40px 24px 60px;
+    text-align: center;
+    color: var(--on-surface-muted);
+    font-size: 14px;
+    background: var(--surface-low);
+  }
+  .footer-links {
+    display: flex; align-items: center; justify-content: center;
+    gap: 18px; flex-wrap: wrap;
+    margin-top: 12px;
+  }
+  .footer-links a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .footer-links a:hover { text-decoration: underline; }
+  /* Mobile */
+  @media (max-width: 640px) {
+    .topbar-inner { padding: 12px 16px; }
+    .lang-tab { padding: 6px 10px; font-size: 12px; }
+    .hero { padding: 48px 16px 28px; }
+    .summary { padding: 0 16px 24px; }
+    .summary-card { grid-template-columns: 1fr; padding: 22px 20px; }
+    .summary-icon { margin: 0 auto; }
+    .summary-text { text-align: center; }
+    .content { padding: 16px 16px 60px; }
+    .content h2 { font-size: 22px; margin-top: 40px; }
+    .content h3 { font-size: 16px; }
+    th, td { padding: 10px 12px; font-size: 13px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="https://admobanalysis.com">
+      <span class="brand-icon">A</span>
+      <span class="brand-name">AdMob Revenue Tracker</span>
+    </a>
+    <div class="lang-tabs" role="tablist" aria-label="Language">
+      <button class="lang-tab active" data-lang="en" type="button">EN</button>
+      <button class="lang-tab" data-lang="ru" type="button">RU</button>
+      <button class="lang-tab" data-lang="hi" type="button">हिन्दी</button>
+      <button class="lang-tab" data-lang="uz" type="button">O'zbek</button>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <span class="badge" data-tr="hero-badge">Privacy Policy</span>
+  <h1 class="hero-title" data-tr="hero-title-html">Your AdMob data <span class="accent">stays on your device</span>.</h1>
+  <p class="hero-meta">
+    <span data-tr="hero-app">App</span>: <strong>AdMob Revenue Tracker</strong>
+    <span class="dot"></span>
+    <span data-tr="hero-effective">Effective</span>: <strong>2026-05-01</strong>
+    <span class="dot"></span>
+    <span data-tr="hero-updated">Updated</span>: <strong>2026-04-28</strong>
+  </p>
+</section>
+
+<section class="summary">
+  <div class="summary-card">
+    <div class="summary-icon">🔒</div>
+    <div class="summary-text" data-tr="summary"><strong>We never store your AdMob revenue data on our servers.</strong> All data is fetched directly from Google AdMob using your read-only OAuth token and cached locally on your device. We collect minimal anonymized analytics (Firebase) to improve the app — that's it.</div>
+  </div>
+</section>
+
+<main class="content">
+  <!-- ============================ EN ============================ -->
+  <section class="lang-section active" id="lang-en" lang="en">
+    <h2>Introduction</h2>
+    <p>AdMob Revenue Tracker ("we", "our", or "the App") is a Flutter-based mobile application that helps mobile developers monitor, analyze, and forecast their Google AdMob revenue. This Privacy Policy explains what data we collect, how we use it, and your rights as a user.</p>
+    <p>By using AdMob Revenue Tracker, you agree to the terms of this Privacy Policy. If you do not agree, please discontinue use of the App immediately.</p>
+
+    <h2>Data We Collect</h2>
+    <h3>2.1 Data You Provide</h3>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Data Type</th><th>Purpose</th><th>Storage</th></tr></thead>
+      <tbody>
+        <tr><td>Google account email</td><td>Authentication via OAuth 2.0</td><td>Secure on-device storage (Keychain / Keystore)</td></tr>
+        <tr><td>OAuth access token</td><td>Accessing AdMob API on your behalf</td><td>On-device, AES-256-GCM encrypted</td></tr>
+        <tr><td>OAuth refresh token</td><td>Maintaining authenticated sessions</td><td>On-device, AES-256-GCM encrypted</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>2.2 AdMob Revenue Data</h3>
+    <ul>
+      <li>Your AdMob metrics (impressions, eCPM, estimated earnings) are fetched from the Google AdMob API using your read-only OAuth token (<code>admob.readonly</code> scope).</li>
+      <li>This data is cached locally on your device (Hive encrypted database) for up to 90 days.</li>
+    </ul>
+    <div class="highlight"><strong>We do NOT transmit, store, or process your AdMob revenue data on our servers.</strong> No server-side storage of revenue data exists.</div>
+
+    <h3>2.3 Device & Usage Data (via Firebase)</h3>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Data Type</th><th>Purpose</th><th>Anonymized</th></tr></thead>
+      <tbody>
+        <tr><td>Device model, OS, language</td><td>Crash diagnostics, compatibility</td><td>Yes</td></tr>
+        <tr><td>App version</td><td>Debug, analytics</td><td>Yes</td></tr>
+        <tr><td>Crash reports</td><td>Bug fixing (Firebase Crashlytics)</td><td>Partial — no PII</td></tr>
+        <tr><td>Analytics events</td><td>Product improvement (Firebase Analytics)</td><td>Yes — no cross-app tracking</td></tr>
+      </tbody>
+    </table></div>
+
+    <h2>Data We Do NOT Collect</h2>
+    <div class="no-collect"><strong>We never collect:</strong> location data, contacts, photos or media, microphone/audio, biometric data, browsing history, cross-app tracking IDs, financial account details (no in-app purchases), or any personal info beyond your Google account email.</div>
+
+    <h2>Third-Party Services</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Service</th><th>Purpose</th><th>Privacy Policy</th></tr></thead>
+      <tbody>
+        <tr><td>Google OAuth 2.0</td><td>Authentication</td><td><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a></td></tr>
+        <tr><td>Google AdMob API</td><td>Fetching your revenue data</td><td><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a></td></tr>
+        <tr><td>Firebase Analytics</td><td>Anonymized usage analytics</td><td><a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">firebase.google.com/support/privacy</a></td></tr>
+        <tr><td>Firebase Crashlytics</td><td>Crash reporting</td><td><a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">firebase.google.com/support/privacy</a></td></tr>
+        <tr><td>Firebase Remote Config</td><td>Feature flags, A/B testing</td><td><a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">firebase.google.com/support/privacy</a></td></tr>
+        <tr><td>Firebase Cloud Messaging</td><td>Push notifications</td><td><a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">firebase.google.com/support/privacy</a></td></tr>
+        <tr><td>Google Mobile Ads SDK</td><td>In-app advertising</td><td><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a></td></tr>
+      </tbody>
+    </table></div>
+    <p><strong>EU/EEA users:</strong> Google Mobile Ads SDK may collect advertising identifiers (GAID/IDFA) subject to your device's ad tracking settings. We configure non-personalized ads (NPA) by default and obtain consent via Google Consent Mode v2.</p>
+
+    <h2>Data Retention</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Data</th><th>Retention</th></tr></thead>
+      <tbody>
+        <tr><td>AdMob revenue cache (Hive)</td><td>90 days, auto-purged</td></tr>
+        <tr><td>OAuth access token</td><td>Until logout or token expiry</td></tr>
+        <tr><td>OAuth refresh token</td><td>Until logout or account deletion</td></tr>
+        <tr><td>Firebase Analytics</td><td>14 months (Google default)</td></tr>
+        <tr><td>Firebase Crashlytics</td><td>90 days (Google default)</td></tr>
+      </tbody>
+    </table></div>
+    <p>All on-device data is permanently deleted when you sign out or uninstall the App.</p>
+
+    <h2>Data Security</h2>
+    <ul>
+      <li>OAuth tokens are stored using Android Keystore (AES-256-GCM EncryptedSharedPreferences) on Android and iOS Keychain (<code>kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly</code>) on iOS.</li>
+      <li>iCloud Keychain sync is disabled (<code>synchronizable: false</code>).</li>
+      <li>Network communication uses HTTPS/TLS 1.2+ with certificate pinning for Google API endpoints.</li>
+      <li>We use a <strong>read-only</strong> OAuth scope (<code>admob.readonly</code>) — we cannot modify your AdMob account, place ads, or change settings.</li>
+    </ul>
+
+    <h2>Your Rights</h2>
+    <h3>GDPR (EU/EEA)</h3>
+    <p>You have the right to: <strong>Access</strong>, <strong>Rectification</strong>, <strong>Erasure</strong>, <strong>Data Portability</strong>, <strong>Restrict Processing</strong>, <strong>Object</strong>, <strong>Withdraw Consent</strong>, and <strong>Lodge a Complaint</strong> with your local Data Protection Authority.</p>
+    <h3>CCPA (California)</h3>
+    <p>You have the right to know, delete, and opt-out — <strong>we do not sell personal information</strong>.</p>
+    <h3>How to exercise your rights</h3>
+    <p>Email <a href="mailto:privacy@admobanalysis.com">privacy@admobanalysis.com</a>. We respond within 30 days (GDPR) or 45 days (CCPA). To delete all your data: <strong>Settings → Account → Delete Account</strong>.</p>
+
+    <h2>Children's Privacy</h2>
+    <p>AdMob Revenue Tracker is intended for mobile app developers aged <strong>13 and older</strong> (16+ in the EU/EEA). We do not knowingly collect personal data from children under 13. If you believe a child under 13 has provided us data, contact <a href="mailto:privacy@admobanalysis.com">privacy@admobanalysis.com</a> and we will delete it.</p>
+
+    <h2>International Data Transfers</h2>
+    <p>If you are located in the EU/EEA, your data processed by Google LLC (US-based) is transferred under Standard Contractual Clauses (SCCs) approved by the European Commission.</p>
+
+    <h2>Changes to This Policy</h2>
+    <p>We may update this Privacy Policy. The "Updated" date at the top will be revised. For significant changes, we will display an in-app notification. Continued use after changes constitutes acceptance.</p>
+
+    <h2>Contact</h2>
+    <p>Privacy inquiries: <a href="mailto:privacy@admobanalysis.com">privacy@admobanalysis.com</a><br>
+    Developer: Fozilbek Imomov · <a href="mailto:fozilbekimomov@gmail.com">fozilbekimomov@gmail.com</a></p>
+  </section>
+
+  <!-- ============================ RU ============================ -->
+  <section class="lang-section" id="lang-ru" lang="ru">
+    <h2>Введение</h2>
+    <p>AdMob Revenue Tracker («мы», «наш» или «Приложение») — мобильное Flutter-приложение, помогающее разработчикам отслеживать, анализировать и прогнозировать доход Google AdMob. Эта Политика конфиденциальности объясняет, какие данные мы собираем, как используем и каковы ваши права.</p>
+    <p>Используя AdMob Revenue Tracker, вы соглашаетесь с условиями. Если не согласны — прекратите использование Приложения.</p>
+
+    <h2>Данные, которые мы собираем</h2>
+    <h3>2.1 Данные, которые вы предоставляете</h3>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Тип данных</th><th>Цель</th><th>Хранение</th></tr></thead>
+      <tbody>
+        <tr><td>Email Google-аккаунта</td><td>Аутентификация через OAuth 2.0</td><td>Защищённое локальное хранилище (Keychain / Keystore)</td></tr>
+        <tr><td>OAuth access token</td><td>Доступ к AdMob API от вашего имени</td><td>На устройстве, шифрование AES-256-GCM</td></tr>
+        <tr><td>OAuth refresh token</td><td>Поддержание сессии</td><td>На устройстве, шифрование AES-256-GCM</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>2.2 Данные о доходах AdMob</h3>
+    <ul>
+      <li>Метрики AdMob (показы, eCPM, расчётный доход) получаются из Google AdMob API с использованием read-only токена (scope <code>admob.readonly</code>).</li>
+      <li>Кэшируются локально на устройстве (зашифрованная БД Hive) до 90 дней.</li>
+    </ul>
+    <div class="highlight"><strong>Мы НЕ передаём, не храним и не обрабатываем ваши доходы AdMob на наших серверах.</strong> Серверного хранилища данных о доходах не существует.</div>
+
+    <h3>2.3 Данные об устройстве и использовании (Firebase)</h3>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Тип данных</th><th>Цель</th><th>Анонимизация</th></tr></thead>
+      <tbody>
+        <tr><td>Модель устройства, ОС, язык</td><td>Диагностика, совместимость</td><td>Да</td></tr>
+        <tr><td>Версия приложения</td><td>Отладка, аналитика</td><td>Да</td></tr>
+        <tr><td>Отчёты о сбоях</td><td>Исправление ошибок (Firebase Crashlytics)</td><td>Частично — без персональных данных</td></tr>
+        <tr><td>Аналитические события</td><td>Улучшение продукта (Firebase Analytics)</td><td>Да — без кросс-приложений</td></tr>
+      </tbody>
+    </table></div>
+
+    <h2>Данные, которые мы НЕ собираем</h2>
+    <div class="no-collect"><strong>Мы никогда не собираем:</strong> геолокацию, контакты, фотографии и медиа, микрофон/аудио, биометрию, историю браузера, кросс-app трекинг ID, финансовые реквизиты (внутри Приложения нет покупок), а также личные данные сверх email Google-аккаунта.</div>
+
+    <h2>Сторонние сервисы</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Сервис</th><th>Цель</th><th>Политика</th></tr></thead>
+      <tbody>
+        <tr><td>Google OAuth 2.0</td><td>Аутентификация</td><td><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a></td></tr>
+        <tr><td>Google AdMob API</td><td>Получение доходов</td><td><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a></td></tr>
+        <tr><td>Firebase Analytics</td><td>Аналитика (анонимно)</td><td><a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">firebase.google.com/support/privacy</a></td></tr>
+        <tr><td>Firebase Crashlytics</td><td>Отчёты о сбоях</td><td><a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">firebase.google.com/support/privacy</a></td></tr>
+        <tr><td>Firebase Remote Config</td><td>Feature flags, A/B</td><td><a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">firebase.google.com/support/privacy</a></td></tr>
+        <tr><td>Firebase Cloud Messaging</td><td>Push-уведомления</td><td><a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">firebase.google.com/support/privacy</a></td></tr>
+        <tr><td>Google Mobile Ads SDK</td><td>Реклама в приложении</td><td><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a></td></tr>
+      </tbody>
+    </table></div>
+    <p><strong>Пользователи ЕС/ЕЭЗ:</strong> Google Mobile Ads SDK может собирать рекламные идентификаторы (GAID/IDFA) с учётом настроек устройства. По умолчанию используется неперсонализированная реклама (NPA) и согласие через Google Consent Mode v2.</p>
+
+    <h2>Сроки хранения</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Данные</th><th>Срок</th></tr></thead>
+      <tbody>
+        <tr><td>Кэш AdMob (Hive)</td><td>90 дней, авто-удаление</td></tr>
+        <tr><td>OAuth access token</td><td>До выхода или истечения токена</td></tr>
+        <tr><td>OAuth refresh token</td><td>До выхода или удаления аккаунта</td></tr>
+        <tr><td>Firebase Analytics</td><td>14 месяцев (Google default)</td></tr>
+        <tr><td>Firebase Crashlytics</td><td>90 дней (Google default)</td></tr>
+      </tbody>
+    </table></div>
+    <p>Все данные на устройстве удаляются при выходе из системы или удалении Приложения.</p>
+
+    <h2>Безопасность данных</h2>
+    <ul>
+      <li>OAuth токены хранятся в Android Keystore (AES-256-GCM EncryptedSharedPreferences) и iOS Keychain (<code>kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly</code>).</li>
+      <li>Синхронизация iCloud Keychain отключена (<code>synchronizable: false</code>).</li>
+      <li>Сетевая связь — HTTPS/TLS 1.2+ с certificate pinning для Google API endpoints.</li>
+      <li>Используется <strong>read-only</strong> OAuth scope (<code>admob.readonly</code>) — мы не можем изменить ваш AdMob аккаунт.</li>
+    </ul>
+
+    <h2>Ваши права</h2>
+    <h3>GDPR (ЕС/ЕЭЗ)</h3>
+    <p>Право на: <strong>доступ</strong>, <strong>исправление</strong>, <strong>удаление</strong>, <strong>переносимость данных</strong>, <strong>ограничение обработки</strong>, <strong>возражение</strong>, <strong>отзыв согласия</strong>, <strong>подачу жалобы</strong> в местное Управление по защите данных.</p>
+    <h3>CCPA (Калифорния)</h3>
+    <p>Право знать, удалять, отказаться от продажи — <strong>мы не продаём личную информацию</strong>.</p>
+    <h3>Как реализовать права</h3>
+    <p>Email: <a href="mailto:privacy@admobanalysis.com">privacy@admobanalysis.com</a>. Ответим в течение 30 дней (GDPR) или 45 дней (CCPA). Удаление данных: <strong>Настройки → Аккаунт → Удалить аккаунт</strong>.</p>
+
+    <h2>Дети</h2>
+    <p>AdMob Revenue Tracker предназначен для разработчиков от <strong>13 лет</strong> (от 16 лет в ЕС/ЕЭЗ). Мы осознанно не собираем данные детей младше 13 лет. При обнаружении свяжитесь: <a href="mailto:privacy@admobanalysis.com">privacy@admobanalysis.com</a>.</p>
+
+    <h2>Международная передача</h2>
+    <p>Если вы в ЕС/ЕЭЗ, ваши данные обрабатываются Google LLC (США) под Стандартными договорными положениями (SCCs), одобренными Европейской комиссией.</p>
+
+    <h2>Изменения политики</h2>
+    <p>Мы можем обновлять эту Политику. Дата «Обновлено» вверху будет изменена. При существенных изменениях — уведомление в Приложении. Продолжение использования = принятие изменений.</p>
+
+    <h2>Контакты</h2>
+    <p>Запросы по конфиденциальности: <a href="mailto:privacy@admobanalysis.com">privacy@admobanalysis.com</a><br>
+    Разработчик: Фозилбек Имомов · <a href="mailto:fozilbekimomov@gmail.com">fozilbekimomov@gmail.com</a></p>
+  </section>
+
+  <!-- ============================ HI ============================ -->
+  <section class="lang-section" id="lang-hi" lang="hi">
+    <h2>परिचय</h2>
+    <p>AdMob Revenue Tracker ("हम", "हमारा" या "ऐप") एक Flutter-आधारित मोबाइल ऐप है जो डेवलपर्स को Google AdMob राजस्व monitor, विश्लेषण और forecast करने में मदद करता है। यह गोपनीयता नीति बताती है कि हम क्या data एकत्र करते हैं, उसका उपयोग कैसे करते हैं, और आपके अधिकार क्या हैं।</p>
+    <p>AdMob Revenue Tracker का उपयोग करके आप इन शर्तों से सहमत होते हैं। यदि सहमत नहीं हैं, तो ऐप का उपयोग बंद करें।</p>
+
+    <h2>हम जो data एकत्र करते हैं</h2>
+    <h3>2.1 आपके द्वारा प्रदान किया गया data</h3>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Data प्रकार</th><th>उद्देश्य</th><th>भंडारण</th></tr></thead>
+      <tbody>
+        <tr><td>Google account ईमेल</td><td>OAuth 2.0 के माध्यम से प्रमाणीकरण</td><td>डिवाइस पर सुरक्षित (Keychain / Keystore)</td></tr>
+        <tr><td>OAuth access token</td><td>AdMob API access</td><td>डिवाइस पर, AES-256-GCM encrypted</td></tr>
+        <tr><td>OAuth refresh token</td><td>Session बनाए रखना</td><td>डिवाइस पर, AES-256-GCM encrypted</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>2.2 AdMob राजस्व data</h3>
+    <ul>
+      <li>AdMob metrics (impressions, eCPM, अनुमानित आय) Google AdMob API से read-only OAuth token (<code>admob.readonly</code> scope) के जरिए प्राप्त होते हैं।</li>
+      <li>आपके डिवाइस पर locally cache होते हैं (Hive encrypted database) — 90 दिनों तक।</li>
+    </ul>
+    <div class="highlight"><strong>हम आपका AdMob राजस्व data हमारे servers पर store, transmit या process नहीं करते।</strong> Server-side storage नहीं है।</div>
+
+    <h3>2.3 डिवाइस और usage data (Firebase)</h3>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Data प्रकार</th><th>उद्देश्य</th><th>अनामीकृत</th></tr></thead>
+      <tbody>
+        <tr><td>डिवाइस मॉडल, OS, भाषा</td><td>Diagnostics, compatibility</td><td>हाँ</td></tr>
+        <tr><td>App version</td><td>Debug, analytics</td><td>हाँ</td></tr>
+        <tr><td>Crash reports</td><td>Bug fixing (Firebase Crashlytics)</td><td>आंशिक — कोई PII नहीं</td></tr>
+        <tr><td>Analytics events</td><td>Product improvement (Firebase Analytics)</td><td>हाँ — कोई cross-app tracking नहीं</td></tr>
+      </tbody>
+    </table></div>
+
+    <h2>हम जो data एकत्र नहीं करते</h2>
+    <div class="no-collect"><strong>हम कभी एकत्र नहीं करते:</strong> location, contacts, photos या media, microphone/audio, biometric data, browsing history, cross-app tracking IDs, financial details (no in-app purchases), या Google account email के अलावा कोई व्यक्तिगत जानकारी।</div>
+
+    <h2>तृतीय-पक्ष सेवाएं</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th>सेवा</th><th>उद्देश्य</th><th>नीति</th></tr></thead>
+      <tbody>
+        <tr><td>Google OAuth 2.0</td><td>प्रमाणीकरण</td><td><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a></td></tr>
+        <tr><td>Google AdMob API</td><td>राजस्व data</td><td><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a></td></tr>
+        <tr><td>Firebase Analytics</td><td>Usage analytics (अनामीकृत)</td><td><a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">firebase.google.com/support/privacy</a></td></tr>
+        <tr><td>Firebase Crashlytics</td><td>Crash reporting</td><td><a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">firebase.google.com/support/privacy</a></td></tr>
+        <tr><td>Firebase Remote Config</td><td>Feature flags, A/B</td><td><a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">firebase.google.com/support/privacy</a></td></tr>
+        <tr><td>Firebase Cloud Messaging</td><td>Push notifications</td><td><a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">firebase.google.com/support/privacy</a></td></tr>
+        <tr><td>Google Mobile Ads SDK</td><td>In-app advertising</td><td><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a></td></tr>
+      </tbody>
+    </table></div>
+
+    <h2>Data Retention</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Data</th><th>अवधि</th></tr></thead>
+      <tbody>
+        <tr><td>AdMob cache (Hive)</td><td>90 दिन, auto-purged</td></tr>
+        <tr><td>OAuth tokens</td><td>Logout या expiry तक</td></tr>
+        <tr><td>Firebase Analytics</td><td>14 महीने (Google default)</td></tr>
+        <tr><td>Firebase Crashlytics</td><td>90 दिन (Google default)</td></tr>
+      </tbody>
+    </table></div>
+    <p>Sign out या ऐप uninstall करने पर सभी on-device data permanently delete हो जाता है।</p>
+
+    <h2>Data Security</h2>
+    <ul>
+      <li>OAuth tokens Android Keystore (AES-256-GCM) और iOS Keychain में encrypted store होते हैं।</li>
+      <li>iCloud Keychain sync disabled है (<code>synchronizable: false</code>)।</li>
+      <li>Network communication HTTPS/TLS 1.2+ with certificate pinning।</li>
+      <li><strong>Read-only</strong> OAuth scope (<code>admob.readonly</code>) — हम आपके AdMob account को modify नहीं कर सकते।</li>
+    </ul>
+
+    <h2>आपके अधिकार</h2>
+    <h3>GDPR (EU/EEA)</h3>
+    <p>अधिकार: <strong>access</strong>, <strong>rectification</strong>, <strong>erasure</strong>, <strong>data portability</strong>, <strong>restrict processing</strong>, <strong>object</strong>, <strong>withdraw consent</strong>, <strong>complaint दर्ज करना</strong>।</p>
+    <h3>CCPA (California)</h3>
+    <p>जानने, हटाने और opt-out का अधिकार — <strong>हम personal information नहीं बेचते</strong>।</p>
+    <h3>अधिकार कैसे exercise करें</h3>
+    <p>Email: <a href="mailto:privacy@admobanalysis.com">privacy@admobanalysis.com</a>. हम 30 दिनों (GDPR) या 45 दिनों (CCPA) में जवाब देंगे। Data delete करने के लिए: <strong>Settings → Account → Delete Account</strong>।</p>
+
+    <h2>बच्चों की गोपनीयता</h2>
+    <p>AdMob Revenue Tracker <strong>13 वर्ष या उससे अधिक</strong> आयु के developers के लिए है (EU/EEA में 16+)। हम जानबूझकर 13 वर्ष से कम आयु के बच्चों से data नहीं लेते।</p>
+
+    <h2>International Data Transfers</h2>
+    <p>EU/EEA users का data Google LLC (US-based) द्वारा Standard Contractual Clauses (SCCs) के तहत transfer होता है।</p>
+
+    <h2>नीति में बदलाव</h2>
+    <p>हम इस नीति को update कर सकते हैं। ऊपर "Updated" date बदल जाएगी। महत्वपूर्ण बदलावों के लिए ऐप में notification आएगी।</p>
+
+    <h2>संपर्क</h2>
+    <p>Privacy queries: <a href="mailto:privacy@admobanalysis.com">privacy@admobanalysis.com</a><br>
+    Developer: Fozilbek Imomov · <a href="mailto:fozilbekimomov@gmail.com">fozilbekimomov@gmail.com</a></p>
+  </section>
+
+  <!-- ============================ UZ ============================ -->
+  <section class="lang-section" id="lang-uz" lang="uz">
+    <h2>Kirish</h2>
+    <p>AdMob Revenue Tracker ("biz", "bizning" yoki "Ilova") — Flutter ilovasi ishlab chiquvchilariga Google AdMob daromadlarini real vaqtda kuzatish, tahlil qilish va prognozlash imkonini beruvchi mobil dastur. Ushbu Maxfiylik siyosati qanday ma'lumotlar to'planishi, qanday foydalanilishi va sizning huquqlaringiz haqida ma'lumot beradi.</p>
+    <p>AdMob Revenue Tracker'dan foydalanish orqali siz ushbu shartlarga rozilik bildirasiz. Agar rozi bo'lmasangiz, Ilovadan foydalanishni to'xtating.</p>
+
+    <h2>Biz to'playdigan ma'lumotlar</h2>
+    <h3>2.1 Siz taqdim etadigan ma'lumotlar</h3>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Ma'lumot turi</th><th>Maqsad</th><th>Saqlash joyi</th></tr></thead>
+      <tbody>
+        <tr><td>Google akkount email</td><td>OAuth 2.0 orqali autentifikatsiya</td><td>Qurilmada xavfsiz (Keychain / Keystore)</td></tr>
+        <tr><td>OAuth access token</td><td>AdMob API ga sizning nomingizdan murojaat</td><td>Qurilmada, AES-256-GCM shifrlash</td></tr>
+        <tr><td>OAuth refresh token</td><td>Sessiyani saqlash</td><td>Qurilmada, AES-256-GCM shifrlash</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>2.2 AdMob daromad ma'lumotlari</h3>
+    <ul>
+      <li>AdMob ko'rsatkichlari (taassurotlar, eCPM, taxminiy daromad) faqat o'qish uchun OAuth token (<code>admob.readonly</code>) orqali Google AdMob API dan olinadi.</li>
+      <li>Qurilmangizda lokal ravishda 90 kungacha keshlanadi (Hive shifrlangan bazasi).</li>
+    </ul>
+    <div class="highlight"><strong>Biz AdMob daromad ma'lumotlarini serverlarimizda saqlamaymiz, uzatmaymiz yoki qayta ishlamaymiz.</strong> Server tomonida saqlash mavjud emas.</div>
+
+    <h3>2.3 Qurilma va foydalanish ma'lumotlari (Firebase)</h3>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Ma'lumot turi</th><th>Maqsad</th><th>Anonimlashtirilgan</th></tr></thead>
+      <tbody>
+        <tr><td>Qurilma modeli, OS, til</td><td>Diagnostika, muvofiqlik</td><td>Ha</td></tr>
+        <tr><td>Ilova versiyasi</td><td>Debug, analytics</td><td>Ha</td></tr>
+        <tr><td>Nosozlik hisobotlari</td><td>Xatolarni tuzatish (Firebase Crashlytics)</td><td>Qisman — shaxsiy ma'lumotlarsiz</td></tr>
+        <tr><td>Tahlil hodisalari</td><td>Mahsulotni yaxshilash (Firebase Analytics)</td><td>Ha — ilovalararo kuzatishsiz</td></tr>
+      </tbody>
+    </table></div>
+
+    <h2>Biz to'PLAMAYDIGAN ma'lumotlar</h2>
+    <div class="no-collect"><strong>Biz hech qachon to'plamaymiz:</strong> joylashuv, kontaktlar, fotosuratlar va media, mikrofon/audio, biometriya, brauzer tarixi, ilovalararo kuzatish ID'lari, moliyaviy ma'lumotlar (ilovada xaridlar yo'q), Google akkount emailidan tashqari shaxsiy ma'lumotlar.</div>
+
+    <h2>Uchinchi tomon xizmatlari</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Xizmat</th><th>Maqsad</th><th>Siyosat</th></tr></thead>
+      <tbody>
+        <tr><td>Google OAuth 2.0</td><td>Autentifikatsiya</td><td><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a></td></tr>
+        <tr><td>Google AdMob API</td><td>Daromad ma'lumotlari</td><td><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a></td></tr>
+        <tr><td>Firebase Analytics</td><td>Tahlil (anonim)</td><td><a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">firebase.google.com/support/privacy</a></td></tr>
+        <tr><td>Firebase Crashlytics</td><td>Nosozlik hisobotlari</td><td><a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">firebase.google.com/support/privacy</a></td></tr>
+        <tr><td>Firebase Remote Config</td><td>Feature flags, A/B</td><td><a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">firebase.google.com/support/privacy</a></td></tr>
+        <tr><td>Firebase Cloud Messaging</td><td>Push bildirishnomalar</td><td><a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">firebase.google.com/support/privacy</a></td></tr>
+        <tr><td>Google Mobile Ads SDK</td><td>Ilovadagi reklama</td><td><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a></td></tr>
+      </tbody>
+    </table></div>
+
+    <h2>Saqlash muddatlari</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Ma'lumot</th><th>Muddat</th></tr></thead>
+      <tbody>
+        <tr><td>AdMob keshi (Hive)</td><td>90 kun, avtomatik o'chadi</td></tr>
+        <tr><td>OAuth access token</td><td>Tizimdan chiqishgacha</td></tr>
+        <tr><td>OAuth refresh token</td><td>Tizimdan chiqish yoki akkount o'chirilishigacha</td></tr>
+        <tr><td>Firebase Analytics</td><td>14 oy (Google standart)</td></tr>
+        <tr><td>Firebase Crashlytics</td><td>90 kun (Google standart)</td></tr>
+      </tbody>
+    </table></div>
+    <p>Tizimdan chiqsangiz yoki ilovani o'chirsangiz, qurilmangizdagi barcha ma'lumotlar butunlay o'chiriladi.</p>
+
+    <h2>Xavfsizlik</h2>
+    <ul>
+      <li>OAuth tokenlar Android Keystore (AES-256-GCM) va iOS Keychain'da shifrlangan holda saqlanadi.</li>
+      <li>iCloud Keychain sinxronizatsiyasi o'chirilgan (<code>synchronizable: false</code>).</li>
+      <li>Tarmoq aloqasi HTTPS/TLS 1.2+ certificate pinning bilan.</li>
+      <li><strong>Faqat o'qish</strong> OAuth scope (<code>admob.readonly</code>) — biz AdMob akkountingizni o'zgartira olmaymiz.</li>
+    </ul>
+
+    <h2>Sizning huquqlaringiz</h2>
+    <h3>GDPR (YeI/YeIH)</h3>
+    <p>Huquqlar: <strong>kirish</strong>, <strong>tuzatish</strong>, <strong>o'chirish</strong>, <strong>ko'chirish</strong>, <strong>cheklash</strong>, <strong>e'tiroz</strong>, <strong>rozilikni bekor qilish</strong>, <strong>shikoyat berish</strong>.</p>
+    <h3>CCPA (Kaliforniya)</h3>
+    <p>Bilish, o'chirish va sotishdan voz kechish huquqi — <strong>biz shaxsiy ma'lumotlarni sotmaymiz</strong>.</p>
+    <h3>Huquqlardan qanday foydalanish</h3>
+    <p>Email: <a href="mailto:privacy@admobanalysis.com">privacy@admobanalysis.com</a>. 30 kun ichida (GDPR) yoki 45 kun ichida (CCPA) javob beramiz. Ma'lumotlarni o'chirish: <strong>Sozlamalar → Akkount → Akkountni o'chirish</strong>.</p>
+
+    <h2>Bolalar</h2>
+    <p>AdMob Revenue Tracker <strong>13 yoshdan</strong> katta dasturchilar uchun mo'ljallangan (YeI/YeIH'da 16+). Biz 13 yoshdan kichik bolalardan ataylab ma'lumot to'plamaymiz.</p>
+
+    <h2>Xalqaro uzatish</h2>
+    <p>Agar YeI/YeIH'da bo'lsangiz, ma'lumotlaringiz Google LLC (AQSh) tomonidan Yevropa Komissiyasi tasdiqlagan Standart Shartnoma Bandlari (SCCs) asosida uzatiladi.</p>
+
+    <h2>Siyosat o'zgarishlari</h2>
+    <p>Bu siyosatni yangilashimiz mumkin. Yuqoridagi "Yangilangan" sanasi o'zgaradi. Muhim o'zgarishlarda ilova ichida bildirishnoma ko'rinadi.</p>
+
+    <h2>Aloqa</h2>
+    <p>Maxfiylik so'rovlari: <a href="mailto:privacy@admobanalysis.com">privacy@admobanalysis.com</a><br>
+    Dasturchi: Fozilbek Imomov · <a href="mailto:fozilbekimomov@gmail.com">fozilbekimomov@gmail.com</a></p>
+  </section>
+</main>
+
+<footer class="footer">
+  <p data-tr="footer-template">This is a template — please consult a lawyer before public deployment.</p>
+  <p style="margin-top:8px"><strong>AdMob Revenue Tracker</strong> · Bundle ID: <code>com.admobanalysis.app</code> · &copy; 2026 Fozilbek Imomov</p>
+  <div class="footer-links">
+    <a href="https://admobanalysis.com">Home</a>
+    <span style="color:var(--on-surface-faded)">·</span>
+    <a href="https://admobanalysis.com/terms">Terms of Service</a>
+    <span style="color:var(--on-surface-faded)">·</span>
+    <a href="mailto:privacy@admobanalysis.com">privacy@admobanalysis.com</a>
+  </div>
+</footer>
+
+<script>
+  // Hero/UI translations (everything outside .lang-section)
+  const ui = {
+    en: { 'hero-badge': 'Privacy Policy', 'hero-title-html': 'Your AdMob data <span class="accent">stays on your device</span>.',
+          'hero-app': 'App', 'hero-effective': 'Effective', 'hero-updated': 'Updated',
+          'summary': '<strong>We never store your AdMob revenue data on our servers.</strong> All data is fetched directly from Google AdMob using your read-only OAuth token and cached locally on your device. We collect minimal anonymized analytics (Firebase) to improve the app — that\'s it.',
+          'footer-template': 'This is a template — please consult a lawyer before public deployment.' },
+    ru: { 'hero-badge': 'Политика конфиденциальности', 'hero-title-html': 'Ваши данные AdMob <span class="accent">остаются на устройстве</span>.',
+          'hero-app': 'Приложение', 'hero-effective': 'Действует с', 'hero-updated': 'Обновлено',
+          'summary': '<strong>Мы никогда не храним данные о вашем доходе AdMob на наших серверах.</strong> Все данные получаются напрямую из Google AdMob через ваш read-only OAuth токен и кэшируются локально на устройстве. Минимум анонимной аналитики (Firebase) — для улучшения приложения. Всё.',
+          'footer-template': 'Это шаблон — перед публикацией проконсультируйтесь с юристом.' },
+    hi: { 'hero-badge': 'गोपनीयता नीति', 'hero-title-html': 'आपका AdMob data <span class="accent">आपके डिवाइस पर रहता है</span>।',
+          'hero-app': 'ऐप', 'hero-effective': 'प्रभावी', 'hero-updated': 'अपडेट',
+          'summary': '<strong>हम आपका AdMob राजस्व data कभी अपने servers पर store नहीं करते।</strong> सभी data Google AdMob से सीधे आपके read-only OAuth token के जरिए fetch होता है और डिवाइस पर locally cache रहता है। हम ऐप सुधार के लिए कम से कम anonymized analytics (Firebase) collect करते हैं — बस।',
+          'footer-template': 'यह एक template है — सार्वजनिक deployment से पहले वकील से परामर्श करें।' },
+    uz: { 'hero-badge': 'Maxfiylik siyosati', 'hero-title-html': 'AdMob ma\'lumotlaringiz <span class="accent">qurilmangizda qoladi</span>.',
+          'hero-app': 'Ilova', 'hero-effective': 'Kuchga kirgan', 'hero-updated': 'Yangilangan',
+          'summary': '<strong>Biz AdMob daromad ma\'lumotlaringizni serverlarimizda hech qachon saqlamaymiz.</strong> Barcha ma\'lumotlar Google AdMob\'dan to\'g\'ridan-to\'g\'ri sizning faqat o\'qish OAuth tokeningiz orqali olinadi va qurilmangizda lokal keshlanadi. Ilovani yaxshilash uchun minimal anonim tahlil (Firebase) — shu va shu.',
+          'footer-template': 'Bu shablon — ommaviy yuklashdan oldin yurist bilan maslahatlashing.' }
+  };
+
+  function applyLocale(lang) {
+    document.documentElement.setAttribute('lang', lang);
+    document.querySelectorAll('.lang-section').forEach(s => {
+      s.classList.toggle('active', s.id === 'lang-' + lang);
+    });
+    document.querySelectorAll('.lang-tab').forEach(t => {
+      t.classList.toggle('active', t.dataset.lang === lang);
+      t.setAttribute('aria-selected', t.dataset.lang === lang ? 'true' : 'false');
+    });
+    const data = ui[lang] || ui.en;
+    for (const key in data) {
+      document.querySelectorAll('[data-tr="' + key + '"]').forEach(el => {
+        if (key.endsWith('-html') || key === 'summary') {
+          el.innerHTML = data[key];
+        } else {
+          el.textContent = data[key];
+        }
+      });
+    }
+    try { localStorage.setItem('privacy-lang', lang); } catch (e) {}
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }
+
+  document.querySelectorAll('.lang-tab').forEach(tab => {
+    tab.addEventListener('click', () => applyLocale(tab.dataset.lang));
+  });
+
+  // Initial language: URL ?lang= → localStorage → browser locale → en
+  (function () {
+    const supported = ['en', 'ru', 'hi', 'uz'];
+    const urlLang = (new URLSearchParams(location.search)).get('lang');
+    let saved = null;
+    try { saved = localStorage.getItem('privacy-lang'); } catch (e) {}
+    const browserLang = (navigator.language || 'en').slice(0, 2).toLowerCase();
+    const initial = (urlLang && supported.includes(urlLang)) ? urlLang
+                   : (saved && supported.includes(saved)) ? saved
+                   : supported.includes(browserLang) ? browserLang
+                   : 'en';
+    if (initial !== 'en') applyLocale(initial);
+  })();
+</script>
+</body>
+</html>
