@@ -1,0 +1,775 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="AdMob Revenue Tracker — Terms of Service. Free app, OAuth-based, no paid features.">
+<meta name="theme-color" content="#6750A4">
+<meta name="robots" content="index,follow">
+<title>Terms of Service · AdMob Revenue Tracker</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary: #6750A4;
+    --primary-dark: #4F3D8A;
+    --secondary: #00BFA5;
+    --tertiary: #FFB300;
+    --success: #22C55E;
+    --on-surface: #1A0E2E;
+    --on-surface-muted: #5B4F75;
+    --on-surface-faded: #8A7BA8;
+    --surface: #FFFFFF;
+    --surface-low: #F7F3FB;
+    --surface-lower: #FCFAFE;
+    --outline: #E5DEF0;
+    --outline-light: #EFE7F7;
+    --gradient: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', 'Noto Sans Devanagari', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    color: var(--on-surface);
+    background: var(--surface-lower);
+    line-height: 1.65;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  .topbar {
+    position: sticky; top: 0; z-index: 50;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    background: rgba(255,255,255,0.85);
+    border-bottom: 1px solid var(--outline-light);
+  }
+  .topbar-inner {
+    max-width: 880px; margin: 0 auto;
+    padding: 16px 24px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 16px; flex-wrap: wrap;
+  }
+  .brand {
+    display: flex; align-items: center; gap: 12px;
+    text-decoration: none;
+  }
+  .brand-icon {
+    width: 36px; height: 36px;
+    border-radius: 9px;
+    background: var(--gradient);
+    display: flex; align-items: center; justify-content: center;
+    color: white; font-weight: 800; font-size: 18px;
+    box-shadow: 0 4px 12px rgba(103,80,164,0.25);
+  }
+  .brand-name {
+    font-weight: 800; font-size: 16px; letter-spacing: -0.3px;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .lang-tabs {
+    display: flex; gap: 4px;
+    background: var(--surface-low);
+    border: 1px solid var(--outline-light);
+    border-radius: 999px;
+    padding: 4px;
+  }
+  .lang-tab {
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: transparent;
+    border: none;
+    font-family: inherit;
+    font-size: 13px; font-weight: 700;
+    color: var(--on-surface-muted);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .lang-tab:hover { color: var(--on-surface); }
+  .lang-tab.active {
+    background: var(--surface);
+    color: var(--primary);
+    box-shadow: 0 2px 6px rgba(103,80,164,0.10);
+  }
+  .hero {
+    text-align: center;
+    padding: 72px 24px 40px;
+    max-width: 880px;
+    margin: 0 auto;
+  }
+  .badge {
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: rgba(103,80,164,0.10);
+    border: 1px solid rgba(103,80,164,0.30);
+    color: var(--primary-dark);
+    font-size: 12px; font-weight: 700; letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+  .hero-title {
+    font-size: clamp(36px, 6vw, 56px);
+    font-weight: 800;
+    letter-spacing: -1.4px;
+    line-height: 1.05;
+    color: var(--on-surface);
+  }
+  .hero-title .accent {
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hero-meta {
+    margin-top: 18px;
+    color: var(--on-surface-muted);
+    font-size: 15px;
+    display: flex; align-items: center; justify-content: center;
+    gap: 8px; flex-wrap: wrap;
+  }
+  .hero-meta .dot { width: 4px; height: 4px; border-radius: 50%; background: var(--on-surface-faded); }
+  .hero-meta strong { color: var(--on-surface); font-weight: 700; }
+  .summary {
+    max-width: 880px; margin: 0 auto;
+    padding: 0 24px 32px;
+  }
+  .summary-card {
+    background: linear-gradient(135deg, rgba(103,80,164,0.06) 0%, rgba(0,191,165,0.05) 100%);
+    border: 1px solid rgba(103,80,164,0.25);
+    border-radius: 24px;
+    padding: 28px 32px;
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    gap: 20px;
+    align-items: center;
+  }
+  .summary-icon {
+    width: 64px; height: 64px;
+    border-radius: 18px;
+    background: var(--gradient);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 32px;
+    box-shadow: 0 8px 20px rgba(103,80,164,0.30);
+    color: white;
+  }
+  .summary-text { font-size: 16px; line-height: 1.55; }
+  .summary-text strong { color: var(--primary-dark); font-weight: 700; }
+  .content {
+    max-width: 880px; margin: 0 auto;
+    padding: 16px 24px 80px;
+  }
+  .lang-section { display: none; counter-reset: section; }
+  .lang-section.active { display: block; }
+  .content h2 {
+    font-size: 28px; font-weight: 800;
+    letter-spacing: -0.6px; line-height: 1.2;
+    margin: 56px 0 16px;
+    color: var(--on-surface);
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--outline-light);
+    display: flex; align-items: baseline; gap: 12px;
+  }
+  .content h2::before {
+    content: counter(section);
+    counter-increment: section;
+    font-size: 18px; font-weight: 700;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    min-width: 28px;
+  }
+  .content h3 {
+    font-size: 18px; font-weight: 700;
+    letter-spacing: -0.2px;
+    margin: 28px 0 12px;
+    color: var(--on-surface);
+  }
+  .content p {
+    margin: 12px 0;
+    color: var(--on-surface);
+  }
+  .content p strong { font-weight: 700; }
+  .content ul, .content ol { margin: 12px 0 12px 24px; }
+  .content li { margin: 6px 0; color: var(--on-surface); }
+  .content li::marker { color: var(--primary); }
+  .content a {
+    color: var(--primary);
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(103,80,164,0.30);
+    transition: border-color 0.15s ease;
+  }
+  .content a:hover { border-bottom-color: var(--primary); }
+  .highlight {
+    background: linear-gradient(135deg, rgba(255,179,0,0.08) 0%, rgba(255,179,0,0.02) 100%);
+    border: 1px solid rgba(255,179,0,0.30);
+    border-left: 4px solid var(--tertiary);
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin: 20px 0;
+    color: var(--on-surface);
+  }
+  .highlight strong { color: #B45309; }
+  .free-callout {
+    background: linear-gradient(135deg, rgba(34,197,94,0.06) 0%, rgba(34,197,94,0.02) 100%);
+    border: 1px solid rgba(34,197,94,0.25);
+    border-left: 4px solid var(--success);
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin: 20px 0;
+  }
+  .free-callout strong { color: #15803D; }
+  .footer {
+    border-top: 1px solid var(--outline-light);
+    padding: 40px 24px 60px;
+    text-align: center;
+    color: var(--on-surface-muted);
+    font-size: 14px;
+    background: var(--surface-low);
+  }
+  .footer-links {
+    display: flex; align-items: center; justify-content: center;
+    gap: 18px; flex-wrap: wrap;
+    margin-top: 12px;
+  }
+  .footer-links a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .footer-links a:hover { text-decoration: underline; }
+  @media (max-width: 640px) {
+    .topbar-inner { padding: 12px 16px; }
+    .lang-tab { padding: 6px 10px; font-size: 12px; }
+    .hero { padding: 48px 16px 28px; }
+    .summary { padding: 0 16px 24px; }
+    .summary-card { grid-template-columns: 1fr; padding: 22px 20px; }
+    .summary-icon { margin: 0 auto; }
+    .summary-text { text-align: center; }
+    .content { padding: 16px 16px 60px; }
+    .content h2 { font-size: 22px; margin-top: 40px; }
+    .content h3 { font-size: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="https://fozilbekimomov.github.io/privacy-admob.html">
+      <span class="brand-icon">A</span>
+      <span class="brand-name">AdMob Revenue Tracker</span>
+    </a>
+    <div class="lang-tabs" role="tablist" aria-label="Language">
+      <button class="lang-tab active" data-lang="en" type="button">EN</button>
+      <button class="lang-tab" data-lang="ru" type="button">RU</button>
+      <button class="lang-tab" data-lang="hi" type="button">हिन्दी</button>
+      <button class="lang-tab" data-lang="uz" type="button">O'zbek</button>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <span class="badge" data-tr="hero-badge">Terms of Service</span>
+  <h1 class="hero-title" data-tr="hero-title-html">A free app, <span class="accent">simple terms</span>.</h1>
+  <p class="hero-meta">
+    <span data-tr="hero-app">App</span>: <strong>AdMob Revenue Tracker</strong>
+    <span class="dot"></span>
+    <span data-tr="hero-effective">Effective</span>: <strong>2026-05-01</strong>
+    <span class="dot"></span>
+    <span data-tr="hero-updated">Updated</span>: <strong>2026-04-30</strong>
+  </p>
+</section>
+
+<section class="summary">
+  <div class="summary-card">
+    <div class="summary-icon">📜</div>
+    <div class="summary-text" data-tr="summary"><strong>Free to use, no subscriptions, no in-app purchases.</strong> The app reads your AdMob revenue via Google's read-only OAuth scope. We don't store your revenue data on our servers, and we don't claim ownership of it.</div>
+  </div>
+</section>
+
+<main class="content">
+
+  <!-- ============================ EN ============================ -->
+  <section class="lang-section active" id="lang-en" lang="en">
+
+    <h2>Acceptance of Terms</h2>
+    <p>By downloading, installing, or using <strong>AdMob Revenue Tracker</strong> ("the App", "the Service"), you ("User", "you") agree to be bound by these Terms of Service ("Terms"). If you do not agree, please do not use the App.</p>
+    <p>These Terms constitute a legally binding agreement between you and the developer, <strong>Fozilbek Imomov</strong> ("Developer", "we", "us", "our"). The App is identified by Bundle ID <code>com.admobanalysis.app</code>.</p>
+
+    <h2>Description of Service</h2>
+    <p>AdMob Revenue Tracker is a mobile app for AdMob publishers that provides:</p>
+    <ul>
+      <li>Real-time AdMob revenue monitoring via the Google AdMob API.</li>
+      <li>Revenue analytics, charts, trends, and breakdowns.</li>
+      <li>Anomaly detection (z-score statistical alerts) for unusual revenue patterns.</li>
+      <li>Revenue forecasting based on historical data.</li>
+      <li>CSV/PDF export of revenue reports.</li>
+      <li>Home screen widgets for Android (Glance) and iOS (WidgetKit).</li>
+    </ul>
+    <p>The App connects to Google's AdMob API with <strong>read-only</strong> access (<code>admob.readonly</code> scope). The App cannot modify your AdMob account, create ads, change settings, or affect your earnings.</p>
+    <div class="free-callout"><strong>The App is free.</strong> All features are available without payment. There are no subscriptions, in-app purchases, or paywalls. The free tier may display unobtrusive in-app advertisements served by Google Mobile Ads SDK to support development.</div>
+
+    <h2>User Responsibilities</h2>
+    <p>By using the App, you agree to:</p>
+    <ul>
+      <li><strong>Provide accurate information.</strong> Use a valid Google account that you own and that is associated with an AdMob publisher account.</li>
+      <li><strong>Comply with Google's policies.</strong> Your use must comply with the <a href="https://support.google.com/admob/answer/6128543" target="_blank" rel="noopener">Google AdMob Program Policies</a> and the <a href="https://developers.google.com/terms" target="_blank" rel="noopener">Google APIs Terms of Service</a>.</li>
+      <li><strong>Not misuse the Service.</strong> Specifically, you must not:
+        <ul>
+          <li>Reverse-engineer, decompile, or disassemble the App.</li>
+          <li>Use the App to access the AdMob API in violation of Google's terms.</li>
+          <li>Use automated means to scrape, bulk-download, or redistribute AdMob data obtained through the App.</li>
+          <li>Use the App for any unlawful purpose.</li>
+        </ul>
+      </li>
+      <li><strong>Maintain account security.</strong> You are responsible for the security of your Google account credentials. We do not have access to your Google password.</li>
+      <li><strong>Age requirement.</strong> You must be at least 13 years old to use the App (16+ in EU/EEA).</li>
+    </ul>
+
+    <h2>Intellectual Property</h2>
+    <p><strong>App ownership.</strong> All rights, title, and interest in and to the App, including all intellectual property rights, remain with the Developer. These Terms grant you a limited, non-exclusive, non-transferable, revocable license to use the App for personal, non-commercial purposes.</p>
+    <p><strong>Your data.</strong> You retain all rights to your AdMob revenue data. We do not claim ownership of any data fetched from Google's API on your behalf.</p>
+    <p><strong>Feedback.</strong> Any feedback, suggestions, or ideas you submit may be used by the Developer without obligation to you.</p>
+    <p><strong>Trademarks.</strong> "AdMob Revenue Tracker" and its logo are trademarks of the Developer. "Google", "AdMob", and "Firebase" are trademarks of Google LLC. Use of these marks does not imply endorsement.</p>
+
+    <h2>Disclaimer of Warranties</h2>
+    <p><strong>THE APP IS PROVIDED "AS IS" AND "AS AVAILABLE" WITHOUT WARRANTIES OF ANY KIND, EXPRESS OR IMPLIED.</strong></p>
+    <p><strong>AdMob data accuracy.</strong> The revenue data displayed in the App is sourced from Google's AdMob API. <strong>Google AdMob is the authoritative source for your actual revenue figures.</strong> AdMob data is subject to reconciliation, and displayed figures may differ from finalized revenue. Always refer to your official Google AdMob dashboard at <a href="https://apps.admob.com" target="_blank" rel="noopener">apps.admob.com</a> for authoritative revenue data.</p>
+    <p><strong>No guarantee of availability.</strong> We do not guarantee uninterrupted, error-free access. The App's functionality depends on Google's API availability.</p>
+    <p><strong>No financial advice.</strong> Revenue forecasts and analytics are for informational purposes only and do not constitute financial, investment, or business advice.</p>
+
+    <h2>Limitation of Liability</h2>
+    <p><strong>To the maximum extent permitted by applicable law:</strong></p>
+    <ul>
+      <li>The Developer shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including loss of revenue, data, or business opportunities, arising from your use of or inability to use the App.</li>
+      <li>The Developer's total liability to you for any claims arising from these Terms or your use of the App shall not exceed <strong>USD 50</strong>.</li>
+      <li>Some jurisdictions do not allow exclusion of certain warranties or limitations of liability, so the above limitations may not apply to you.</li>
+    </ul>
+
+    <h2>Third-Party Services</h2>
+    <p>The App integrates third-party services. Your use of these services is governed by their respective terms:</p>
+    <ul>
+      <li>Google APIs Terms of Service: <a href="https://developers.google.com/terms" target="_blank" rel="noopener">developers.google.com/terms</a></li>
+      <li>Firebase Terms of Service: <a href="https://firebase.google.com/terms" target="_blank" rel="noopener">firebase.google.com/terms</a></li>
+      <li>Google AdMob Program Policies: <a href="https://support.google.com/admob/answer/6128543" target="_blank" rel="noopener">support.google.com/admob/answer/6128543</a></li>
+    </ul>
+    <p>We are not responsible for the practices or content of these third-party services.</p>
+
+    <h2>Privacy</h2>
+    <p>Your use of the App is also governed by our <a href="https://fozilbekimomov.github.io/privacy-admob.html">Privacy Policy</a>, which is incorporated into these Terms by reference. Account deletion is described in our <a href="https://fozilbekimomov.github.io/admob-account-deletion.html">Account Deletion guide</a>.</p>
+
+    <h2>Termination</h2>
+    <p><strong>By you.</strong> You may stop using the App at any time. Uninstalling the App or using the in-app Sign Out option clears all local data on your device.</p>
+    <p><strong>By us.</strong> We reserve the right to suspend or terminate your access if you violate these Terms, if required by law or Google's policies, or if we discontinue the Service.</p>
+    <p><strong>Effect of termination.</strong> Upon termination, your license to use the App ends immediately. Sections on Intellectual Property, Disclaimer of Warranties, Limitation of Liability, and Dispute Resolution survive termination.</p>
+
+    <h2>Dispute Resolution</h2>
+    <p><strong>Governing Law.</strong> These Terms are governed by the laws of the Republic of Uzbekistan, without regard to conflict of law principles.</p>
+    <p><strong>Informal Resolution.</strong> Before any formal proceedings, please contact <a href="mailto:fozilbekimomov@gmail.com">fozilbekimomov@gmail.com</a> for informal resolution. We will respond within 15 business days.</p>
+    <p><strong>Jurisdiction.</strong> Any disputes shall be submitted to the competent courts of the Republic of Uzbekistan, Tashkent.</p>
+    <p><strong>EU/EEA Users.</strong> If you are located in the EU/EEA, you may also use the EU Online Dispute Resolution platform: <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener">ec.europa.eu/consumers/odr</a></p>
+
+    <h2>Changes to Terms</h2>
+    <p>We may modify these Terms at any time. When we do:</p>
+    <ul>
+      <li>The "Updated" date in the header will be revised.</li>
+      <li>For material changes, we will provide in-app notification at least 7 days in advance.</li>
+      <li>Continued use after the effective date constitutes acceptance of the revised Terms.</li>
+    </ul>
+
+    <h2>Severability</h2>
+    <p>If any provision of these Terms is held invalid or unenforceable, the remaining provisions continue in full force and effect.</p>
+
+    <h2>Entire Agreement</h2>
+    <p>These Terms, together with the Privacy Policy and the Account Deletion guide, constitute the entire agreement between you and the Developer regarding the App and supersede all prior agreements.</p>
+
+    <h2>Contact</h2>
+    <p>Email: <a href="mailto:fozilbekimomov@gmail.com">fozilbekimomov@gmail.com</a><br>
+    Developer: Fozilbek Imomov · Tashkent, Republic of Uzbekistan</p>
+  </section>
+
+  <!-- ============================ RU ============================ -->
+  <section class="lang-section" id="lang-ru" lang="ru">
+
+    <h2>Принятие Условий</h2>
+    <p>Скачивая, устанавливая или используя <strong>AdMob Revenue Tracker</strong> («Приложение», «Сервис»), вы («Пользователь», «вы») соглашаетесь с настоящими Условиями обслуживания («Условия»). Если вы не согласны — пожалуйста, не используйте Приложение.</p>
+    <p>Эти Условия представляют юридически обязывающее соглашение между вами и разработчиком — <strong>Fozilbek Imomov</strong> («Разработчик», «мы»). Приложение идентифицируется Bundle ID <code>com.admobanalysis.app</code>.</p>
+
+    <h2>Описание Сервиса</h2>
+    <p>AdMob Revenue Tracker — мобильное приложение для AdMob-издателей, предоставляющее:</p>
+    <ul>
+      <li>Мониторинг доходов AdMob в реальном времени через Google AdMob API.</li>
+      <li>Аналитику доходов, графики, тренды и разбивку по периодам.</li>
+      <li>Обнаружение аномалий (статистические оповещения z-score) для необычных паттернов.</li>
+      <li>Прогнозирование доходов на основе исторических данных.</li>
+      <li>Экспорт CSV/PDF отчётов.</li>
+      <li>Виджеты на главный экран для Android (Glance) и iOS (WidgetKit).</li>
+    </ul>
+    <p>Приложение подключается к Google AdMob API с правом <strong>только чтения</strong> (scope <code>admob.readonly</code>). Приложение не может модифицировать ваш AdMob аккаунт, создавать рекламу, менять настройки или влиять на ваши доходы.</p>
+    <div class="free-callout"><strong>Приложение бесплатное.</strong> Все функции доступны без оплаты. Нет подписок, встроенных покупок или paywall. Бесплатный режим может показывать ненавязчивую рекламу через Google Mobile Ads SDK для поддержки разработки.</div>
+
+    <h2>Обязанности Пользователя</h2>
+    <p>Используя Приложение, вы обязуетесь:</p>
+    <ul>
+      <li><strong>Предоставлять точную информацию.</strong> Использовать действительный Google-аккаунт, которым владеете и который связан с AdMob publisher account.</li>
+      <li><strong>Соблюдать политики Google.</strong> Ваше использование должно соответствовать <a href="https://support.google.com/admob/answer/6128543" target="_blank" rel="noopener">правилам программы Google AdMob</a> и <a href="https://developers.google.com/terms" target="_blank" rel="noopener">условиям Google APIs</a>.</li>
+      <li><strong>Не злоупотреблять Сервисом.</strong> Запрещено:
+        <ul>
+          <li>Реверс-инжиниринг, декомпиляция или разборка Приложения.</li>
+          <li>Использование Приложения для доступа к AdMob API в нарушение условий Google.</li>
+          <li>Автоматизированный сбор, массовое скачивание или перераспределение данных AdMob.</li>
+          <li>Использование Приложения для незаконных целей.</li>
+        </ul>
+      </li>
+      <li><strong>Поддерживать безопасность аккаунта.</strong> Вы ответственны за безопасность учётных данных Google. У нас нет доступа к вашему паролю.</li>
+      <li><strong>Возрастное требование.</strong> Вам должно быть не менее 13 лет (16+ в ЕС/ЕЭЗ).</li>
+    </ul>
+
+    <h2>Интеллектуальная собственность</h2>
+    <p><strong>Права на Приложение.</strong> Все права, титулы и интересы на Приложение, включая интеллектуальную собственность, принадлежат Разработчику. Условия предоставляют вам ограниченную, неисключительную, непередаваемую, отзывную лицензию для личного некоммерческого использования.</p>
+    <p><strong>Ваши данные.</strong> Вы сохраняете все права на ваши данные о доходах AdMob. Мы не претендуем на собственность данных, получаемых через API Google от вашего имени.</p>
+    <p><strong>Обратная связь.</strong> Любые отзывы, предложения или идеи могут использоваться Разработчиком без обязательств перед вами.</p>
+    <p><strong>Товарные знаки.</strong> «AdMob Revenue Tracker» и логотип — товарные знаки Разработчика. «Google», «AdMob», «Firebase» — товарные знаки Google LLC. Использование не подразумевает поддержки.</p>
+
+    <h2>Отказ от гарантий</h2>
+    <p><strong>ПРИЛОЖЕНИЕ ПРЕДОСТАВЛЯЕТСЯ «КАК ЕСТЬ» И «КАК ДОСТУПНО» БЕЗ КАКИХ-ЛИБО ГАРАНТИЙ, ЯВНЫХ ИЛИ ПОДРАЗУМЕВАЕМЫХ.</strong></p>
+    <p><strong>Точность данных AdMob.</strong> Данные о доходах в Приложении получены из Google AdMob API. <strong>Google AdMob — авторитетный источник ваших реальных доходов.</strong> Данные подлежат сверке, и отображаемые цифры могут отличаться от итоговых. Всегда обращайтесь к официальной панели Google AdMob по адресу <a href="https://apps.admob.com" target="_blank" rel="noopener">apps.admob.com</a> для авторитетных данных.</p>
+    <p><strong>Нет гарантии доступности.</strong> Мы не гарантируем непрерывный, безошибочный доступ. Функциональность зависит от доступности Google API.</p>
+    <p><strong>Не финансовый совет.</strong> Прогнозы и аналитика предоставляются только в информационных целях и не являются финансовыми, инвестиционными или бизнес-советами.</p>
+
+    <h2>Ограничение ответственности</h2>
+    <p><strong>В максимальной степени, разрешённой применимым законом:</strong></p>
+    <ul>
+      <li>Разработчик не несёт ответственности за любые косвенные, случайные, специальные, последующие или штрафные убытки, включая потерю доходов, данных или бизнес-возможностей.</li>
+      <li>Совокупная ответственность Разработчика по любым претензиям не должна превышать <strong>USD 50</strong>.</li>
+      <li>Некоторые юрисдикции не разрешают исключение определённых гарантий или ограничения ответственности, поэтому указанные ограничения могут к вам не применяться.</li>
+    </ul>
+
+    <h2>Сторонние сервисы</h2>
+    <p>Приложение интегрирует сторонние сервисы. Их использование регулируется собственными условиями:</p>
+    <ul>
+      <li>Условия Google APIs: <a href="https://developers.google.com/terms" target="_blank" rel="noopener">developers.google.com/terms</a></li>
+      <li>Условия Firebase: <a href="https://firebase.google.com/terms" target="_blank" rel="noopener">firebase.google.com/terms</a></li>
+      <li>Правила программы Google AdMob: <a href="https://support.google.com/admob/answer/6128543" target="_blank" rel="noopener">support.google.com/admob/answer/6128543</a></li>
+    </ul>
+    <p>Мы не несём ответственности за практики или содержание сторонних сервисов.</p>
+
+    <h2>Конфиденциальность</h2>
+    <p>Использование Приложения также регулируется нашей <a href="https://fozilbekimomov.github.io/privacy-admob.html">Политикой конфиденциальности</a>, которая включена в настоящие Условия по ссылке. Удаление аккаунта описано в <a href="https://fozilbekimomov.github.io/admob-account-deletion.html">руководстве по удалению аккаунта</a>.</p>
+
+    <h2>Прекращение</h2>
+    <p><strong>С вашей стороны.</strong> Вы можете прекратить использование Приложения в любое время. Удаление приложения или функция Sign Out очищают все локальные данные на устройстве.</p>
+    <p><strong>С нашей стороны.</strong> Мы оставляем за собой право приостановить или прекратить ваш доступ при нарушении Условий, по требованию закона или политик Google, или если мы прекращаем Сервис.</p>
+    <p><strong>Последствия прекращения.</strong> При прекращении ваша лицензия немедленно заканчивается. Разделы об интеллектуальной собственности, гарантиях, ответственности и разрешении споров остаются в силе.</p>
+
+    <h2>Разрешение споров</h2>
+    <p><strong>Применимое право.</strong> Условия регулируются законодательством Республики Узбекистан, без учёта коллизионных норм.</p>
+    <p><strong>Неформальное разрешение.</strong> Перед любыми формальными процедурами свяжитесь с <a href="mailto:fozilbekimomov@gmail.com">fozilbekimomov@gmail.com</a>. Мы ответим в течение 15 рабочих дней.</p>
+    <p><strong>Юрисдикция.</strong> Любые споры подлежат рассмотрению компетентными судами Республики Узбекистан, г. Ташкент.</p>
+    <p><strong>Пользователи ЕС/ЕЭЗ.</strong> Можете также использовать платформу ЕС для онлайн-разрешения споров: <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener">ec.europa.eu/consumers/odr</a></p>
+
+    <h2>Изменения Условий</h2>
+    <p>Мы можем изменять Условия в любое время. При этом:</p>
+    <ul>
+      <li>Дата «Обновлено» в шапке будет обновлена.</li>
+      <li>При существенных изменениях мы дадим уведомление в приложении минимум за 7 дней.</li>
+      <li>Продолжение использования после даты вступления в силу означает принятие изменений.</li>
+    </ul>
+
+    <h2>Делимость</h2>
+    <p>Если какое-либо положение Условий признаётся недействительным или неисполнимым, остальные положения продолжают действовать в полной силе.</p>
+
+    <h2>Полнота соглашения</h2>
+    <p>Настоящие Условия вместе с Политикой конфиденциальности и руководством по удалению аккаунта составляют полное соглашение между вами и Разработчиком относительно Приложения и заменяют все предыдущие договорённости.</p>
+
+    <h2>Контакты</h2>
+    <p>Email: <a href="mailto:fozilbekimomov@gmail.com">fozilbekimomov@gmail.com</a><br>
+    Разработчик: Fozilbek Imomov · Ташкент, Республика Узбекистан</p>
+  </section>
+
+  <!-- ============================ HI ============================ -->
+  <section class="lang-section" id="lang-hi" lang="hi">
+
+    <h2>Terms स्वीकार करना</h2>
+    <p><strong>AdMob Revenue Tracker</strong> ("App", "Service") को download, install या उपयोग करके आप ("User", "आप") इन Terms of Service ("Terms") से सहमत होते हैं। अगर आप सहमत नहीं हैं — कृपया App का उपयोग न करें।</p>
+    <p>ये Terms आप और developer <strong>Fozilbek Imomov</strong> ("Developer", "हम") के बीच कानूनी रूप से बाध्यकारी समझौता हैं। App की पहचान Bundle ID <code>com.admobanalysis.app</code> से होती है।</p>
+
+    <h2>Service का विवरण</h2>
+    <p>AdMob Revenue Tracker AdMob publishers के लिए mobile app है जो प्रदान करता है:</p>
+    <ul>
+      <li>Google AdMob API के माध्यम से real-time AdMob revenue monitoring।</li>
+      <li>Revenue analytics, charts, trends और breakdowns।</li>
+      <li>असामान्य revenue patterns के लिए anomaly detection (z-score statistical alerts)।</li>
+      <li>Historical data पर आधारित revenue forecasting।</li>
+      <li>Revenue reports का CSV/PDF export।</li>
+      <li>Android (Glance) और iOS (WidgetKit) के लिए home screen widgets।</li>
+    </ul>
+    <p>App Google AdMob API से <strong>read-only</strong> access (<code>admob.readonly</code> scope) के साथ connect होता है। App आपके AdMob account को modify नहीं कर सकता, ads create नहीं कर सकता, settings change नहीं कर सकता, या आपकी earnings को प्रभावित नहीं कर सकता।</p>
+    <div class="free-callout"><strong>App मुफ़्त है।</strong> सभी features बिना भुगतान के उपलब्ध हैं। कोई subscriptions, in-app purchases, या paywalls नहीं हैं। Free tier development को support करने के लिए Google Mobile Ads SDK द्वारा unobtrusive in-app advertisements दिखा सकता है।</div>
+
+    <h2>User की जिम्मेदारियां</h2>
+    <p>App का उपयोग करके, आप सहमत होते हैं:</p>
+    <ul>
+      <li><strong>सटीक जानकारी प्रदान करना।</strong> एक valid Google account का उपयोग करें जो आपका हो और AdMob publisher account से जुड़ा हो।</li>
+      <li><strong>Google की policies का पालन करना।</strong> आपका उपयोग <a href="https://support.google.com/admob/answer/6128543" target="_blank" rel="noopener">Google AdMob Program Policies</a> और <a href="https://developers.google.com/terms" target="_blank" rel="noopener">Google APIs Terms</a> के अनुरूप होना चाहिए।</li>
+      <li><strong>Service का दुरुपयोग न करना।</strong> विशेष रूप से, आप ये नहीं कर सकते:
+        <ul>
+          <li>App को reverse-engineer, decompile, या disassemble करना।</li>
+          <li>Google की terms का उल्लंघन करते हुए AdMob API access करना।</li>
+          <li>App के माध्यम से प्राप्त AdMob data को scrape, bulk-download या redistribute करने के लिए automated means का उपयोग।</li>
+          <li>किसी भी unlawful purpose के लिए App का उपयोग।</li>
+        </ul>
+      </li>
+      <li><strong>Account security बनाए रखना।</strong> आप अपने Google account credentials की security के लिए जिम्मेदार हैं। हमारे पास आपके Google password तक access नहीं है।</li>
+      <li><strong>आयु आवश्यकता।</strong> App का उपयोग करने के लिए आपकी आयु कम से कम 13 वर्ष होनी चाहिए (EU/EEA में 16+)।</li>
+    </ul>
+
+    <h2>Intellectual Property</h2>
+    <p><strong>App ownership.</strong> App में सभी rights, title, और interest, सहित सभी intellectual property rights, Developer के पास रहते हैं। ये Terms आपको App का उपयोग व्यक्तिगत, non-commercial purposes के लिए limited, non-exclusive, non-transferable, revocable license प्रदान करते हैं।</p>
+    <p><strong>आपका data.</strong> आप अपने AdMob revenue data के सभी rights बनाए रखते हैं। हम आपकी ओर से Google API से fetched data के ownership का दावा नहीं करते।</p>
+    <p><strong>Feedback.</strong> कोई भी feedback, suggestions, या ideas जो आप submit करते हैं, Developer द्वारा आपके प्रति बिना obligation के उपयोग किए जा सकते हैं।</p>
+    <p><strong>Trademarks.</strong> "AdMob Revenue Tracker" और इसका logo Developer के trademarks हैं। "Google", "AdMob", "Firebase" Google LLC के trademarks हैं। इन marks का उपयोग endorsement का संकेत नहीं देता।</p>
+
+    <h2>Warranties का अस्वीकरण</h2>
+    <p><strong>App "AS IS" और "AS AVAILABLE" आधार पर बिना किसी warranty के, express या implied, प्रदान किया जाता है।</strong></p>
+    <p><strong>AdMob data accuracy.</strong> App में दिखाया गया revenue data Google AdMob API से sourced है। <strong>Google AdMob आपकी actual revenue figures के लिए authoritative source है।</strong> AdMob data reconciliation के अधीन है, और दिखाए गए figures finalized revenue से भिन्न हो सकते हैं। Authoritative revenue data के लिए हमेशा अपने official Google AdMob dashboard <a href="https://apps.admob.com" target="_blank" rel="noopener">apps.admob.com</a> पर देखें।</p>
+    <p><strong>Availability की कोई guarantee नहीं।</strong> हम uninterrupted, error-free access की guarantee नहीं देते। App की functionality Google की API availability पर निर्भर करती है।</p>
+    <p><strong>कोई financial advice नहीं।</strong> Revenue forecasts और analytics केवल informational purposes के लिए हैं और financial, investment, या business advice नहीं हैं।</p>
+
+    <h2>Liability की सीमा</h2>
+    <p><strong>Applicable law द्वारा अनुमत अधिकतम सीमा तक:</strong></p>
+    <ul>
+      <li>Developer किसी भी indirect, incidental, special, consequential, या punitive damages के लिए responsible नहीं होगा, जिसमें revenue, data, या business opportunities का नुकसान शामिल है।</li>
+      <li>इन Terms या App के उपयोग से उत्पन्न किसी भी claims के लिए Developer की कुल देयता <strong>USD 50</strong> से अधिक नहीं होगी।</li>
+      <li>कुछ jurisdictions कुछ warranties या liability limitations के exclusion की अनुमति नहीं देते, इसलिए उपरोक्त सीमाएं आप पर लागू नहीं हो सकती हैं।</li>
+    </ul>
+
+    <h2>Third-Party Services</h2>
+    <p>App third-party services को integrate करता है। इन services का आपका उपयोग उनकी respective terms द्वारा governed होता है:</p>
+    <ul>
+      <li>Google APIs Terms: <a href="https://developers.google.com/terms" target="_blank" rel="noopener">developers.google.com/terms</a></li>
+      <li>Firebase Terms: <a href="https://firebase.google.com/terms" target="_blank" rel="noopener">firebase.google.com/terms</a></li>
+      <li>Google AdMob Program Policies: <a href="https://support.google.com/admob/answer/6128543" target="_blank" rel="noopener">support.google.com/admob/answer/6128543</a></li>
+    </ul>
+    <p>हम इन third-party services की practices या content के लिए जिम्मेदार नहीं हैं।</p>
+
+    <h2>Privacy</h2>
+    <p>App का आपका उपयोग हमारी <a href="https://fozilbekimomov.github.io/privacy-admob.html">Privacy Policy</a> द्वारा भी governed होता है, जो reference द्वारा इन Terms में incorporated है। Account deletion हमारे <a href="https://fozilbekimomov.github.io/admob-account-deletion.html">Account Deletion guide</a> में वर्णित है।</p>
+
+    <h2>Termination</h2>
+    <p><strong>आपके द्वारा.</strong> आप किसी भी समय App का उपयोग बंद कर सकते हैं। App को uninstall करना या in-app Sign Out option का उपयोग करना आपके device पर सभी local data को clear कर देता है।</p>
+    <p><strong>हमारे द्वारा.</strong> यदि आप इन Terms का उल्लंघन करते हैं, यदि law या Google की policies द्वारा आवश्यक हो, या यदि हम Service बंद करते हैं तो हम आपकी access को suspend या terminate करने का अधिकार रखते हैं।</p>
+    <p><strong>Termination का प्रभाव.</strong> Termination पर, App का उपयोग करने का आपका license तुरंत समाप्त हो जाता है। Intellectual Property, Disclaimer of Warranties, Limitation of Liability, और Dispute Resolution के sections termination के बाद भी जारी रहते हैं।</p>
+
+    <h2>विवाद समाधान</h2>
+    <p><strong>Governing Law.</strong> ये Terms Republic of Uzbekistan के कानूनों द्वारा governed हैं, conflict of law principles को छोड़कर।</p>
+    <p><strong>Informal Resolution.</strong> किसी भी formal proceedings से पहले, informal resolution के लिए <a href="mailto:fozilbekimomov@gmail.com">fozilbekimomov@gmail.com</a> पर संपर्क करें। हम 15 business days के भीतर जवाब देंगे।</p>
+    <p><strong>Jurisdiction.</strong> कोई भी disputes Republic of Uzbekistan, Tashkent के competent courts में submit किए जाएंगे।</p>
+    <p><strong>EU/EEA Users.</strong> यदि आप EU/EEA में हैं, तो आप EU Online Dispute Resolution platform का भी उपयोग कर सकते हैं: <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener">ec.europa.eu/consumers/odr</a></p>
+
+    <h2>Terms में परिवर्तन</h2>
+    <p>हम किसी भी समय इन Terms को modify कर सकते हैं। जब हम करते हैं:</p>
+    <ul>
+      <li>Header में "Updated" date revise की जाएगी।</li>
+      <li>Material changes के लिए, हम कम से कम 7 दिन पहले in-app notification प्रदान करेंगे।</li>
+      <li>Effective date के बाद continued use revised Terms की acceptance का संकेत है।</li>
+    </ul>
+
+    <h2>Severability</h2>
+    <p>यदि इन Terms का कोई provision invalid या unenforceable पाया जाता है, तो शेष provisions full force और effect में जारी रहते हैं।</p>
+
+    <h2>संपूर्ण समझौता</h2>
+    <p>ये Terms, Privacy Policy और Account Deletion guide के साथ, App के संबंध में आप और Developer के बीच पूरा समझौता बनाते हैं और सभी पूर्व समझौतों को supersede करते हैं।</p>
+
+    <h2>संपर्क</h2>
+    <p>Email: <a href="mailto:fozilbekimomov@gmail.com">fozilbekimomov@gmail.com</a><br>
+    Developer: Fozilbek Imomov · Tashkent, Republic of Uzbekistan</p>
+  </section>
+
+  <!-- ============================ UZ ============================ -->
+  <section class="lang-section" id="lang-uz" lang="uz">
+
+    <h2>Shartlarni qabul qilish</h2>
+    <p><strong>AdMob Revenue Tracker</strong> ("Ilova", "Servis") ni yuklab olish, o'rnatish yoki foydalanish orqali siz ("Foydalanuvchi", "siz") ushbu Foydalanish shartlari ("Shartlar") ga rozilik bildirasiz. Agar rozi bo'lmasangiz — iltimos, Ilovadan foydalanmang.</p>
+    <p>Ushbu Shartlar siz va dasturchi <strong>Fozilbek Imomov</strong> ("Dasturchi", "biz") o'rtasida yuridik majburiy kelishuvni tashkil etadi. Ilova Bundle ID <code>com.admobanalysis.app</code> bilan aniqlanadi.</p>
+
+    <h2>Servis tavsifi</h2>
+    <p>AdMob Revenue Tracker — AdMob nashriyotchilari uchun mobil ilova bo'lib, quyidagilarni taqdim etadi:</p>
+    <ul>
+      <li>Google AdMob API orqali real-time AdMob daromad monitoringi.</li>
+      <li>Daromad tahlili, grafiklar, tendentsiyalar va davrlar bo'yicha bo'linish.</li>
+      <li>G'ayrioddiy daromad pattern'lari uchun anomaliya aniqlash (z-score statistik ogohlantirish).</li>
+      <li>Tarixiy ma'lumotlarga asoslangan daromad prognozi.</li>
+      <li>Daromad hisobotlarining CSV/PDF eksporti.</li>
+      <li>Android (Glance) va iOS (WidgetKit) uchun bosh ekran widget'lari.</li>
+    </ul>
+    <p>Ilova Google AdMob API ga <strong>faqat o'qish</strong> ruxsati (<code>admob.readonly</code> scope) bilan ulanadi. Ilova sizning AdMob hisobingizni o'zgartira olmaydi, reklama yarata olmaydi, sozlamalarni o'zgartira olmaydi yoki daromadingizga ta'sir qilmaydi.</p>
+    <div class="free-callout"><strong>Ilova bepul.</strong> Barcha funksiyalar to'lovsiz mavjud. Obunalar, ilova ichidagi xaridlar yoki paywall'lar yo'q. Bepul rejimda dasturchini qo'llab-quvvatlash uchun Google Mobile Ads SDK orqali bezovta qilmaydigan reklama ko'rsatilishi mumkin.</div>
+
+    <h2>Foydalanuvchi mas'uliyati</h2>
+    <p>Ilovadan foydalanish bilan siz quyidagilarga rozilik bildirasiz:</p>
+    <ul>
+      <li><strong>Aniq ma'lumot taqdim etish.</strong> Sizga tegishli va AdMob publisher hisobi bilan bog'langan haqiqiy Google hisob ishlatish.</li>
+      <li><strong>Google qoidalariga rioya qilish.</strong> Foydalanishingiz <a href="https://support.google.com/admob/answer/6128543" target="_blank" rel="noopener">Google AdMob dasturi qoidalari</a> va <a href="https://developers.google.com/terms" target="_blank" rel="noopener">Google APIs shartlari</a> ga mos bo'lishi kerak.</li>
+      <li><strong>Servisdan suiiste'mol qilmaslik.</strong> Xususan, siz quyidagilarni qila olmaysiz:
+        <ul>
+          <li>Ilovani reverse-engineer, decompile yoki disassemble qilish.</li>
+          <li>Ilovani Google shartlarini buzgan holda AdMob API'ga kirish uchun ishlatish.</li>
+          <li>Ilova orqali olingan AdMob ma'lumotlarini avtomatlashtirilgan vositalar bilan scrape qilish, ommaviy yuklash yoki qayta tarqatish.</li>
+          <li>Ilovani noqonuniy maqsadlarda ishlatish.</li>
+        </ul>
+      </li>
+      <li><strong>Hisob xavfsizligini saqlash.</strong> Siz Google hisob ma'lumotlaringiz xavfsizligi uchun javobgarsiz. Bizda sizning Google parolingizga kirish yo'q.</li>
+      <li><strong>Yosh talabi.</strong> Ilovadan foydalanish uchun kamida 13 yoshda bo'lishingiz kerak (YeI/YeIH'da 16+).</li>
+    </ul>
+
+    <h2>Intellektual mulk</h2>
+    <p><strong>Ilova egaligi.</strong> Ilovaga oid barcha huquqlar, sarlavha va manfaat, jumladan barcha intellektual mulk huquqlari, Dasturchida qoladi. Ushbu Shartlar sizga Ilovadan shaxsiy, notijorat maqsadlarda foydalanish uchun cheklangan, eksklyuziv bo'lmagan, o'tkazilmaydigan, bekor qilinadigan litsenziya beradi.</p>
+    <p><strong>Sizning ma'lumotlaringiz.</strong> Siz AdMob daromad ma'lumotlaringizning barcha huquqlarini saqlab qolasiz. Biz siz nomingizdan Google API'dan olingan ma'lumotlarning egaligi haqida da'vo qilmaymiz.</p>
+    <p><strong>Fikr-mulohaza.</strong> Siz yuborgan har qanday fikr-mulohaza, takliflar yoki g'oyalar Dasturchi tomonidan sizga majburiyatsiz ishlatilishi mumkin.</p>
+    <p><strong>Tovar belgilari.</strong> "AdMob Revenue Tracker" va uning logosi Dasturchining tovar belgilaridir. "Google", "AdMob", "Firebase" — Google LLC tovar belgilari. Ushbu belgilardan foydalanish ma'qullashni anglatmaydi.</p>
+
+    <h2>Kafolatlardan voz kechish</h2>
+    <p><strong>ILOVA "QANDAY BO'LSA SHUNDAY" VA "MAVJUD BO'LSA SHUNDAY" ASOSDA, AYNIY YOKI NAZARDA TUTILGAN HECH QANDAY KAFOLATLARSIZ TAQDIM ETILADI.</strong></p>
+    <p><strong>AdMob ma'lumotlari aniqligi.</strong> Ilovada ko'rsatilgan daromad ma'lumotlari Google AdMob API'dan olingan. <strong>Google AdMob — sizning haqiqiy daromad raqamlaringiz uchun nufuzli manba.</strong> AdMob ma'lumotlari kelishuvga bog'liq va ko'rsatilgan raqamlar yakuniy daromaddan farq qilishi mumkin. Nufuzli daromad ma'lumotlari uchun har doim rasmiy Google AdMob panelingizga <a href="https://apps.admob.com" target="_blank" rel="noopener">apps.admob.com</a> murojaat qiling.</p>
+    <p><strong>Mavjudlik kafolati yo'q.</strong> Biz uzluksiz, xatosiz kirishni kafolatlamaymiz. Ilovaning funksionalligi Google API mavjudligiga bog'liq.</p>
+    <p><strong>Moliyaviy maslahat emas.</strong> Daromad prognozlari va tahlili faqat axborot maqsadlarida bo'lib, moliyaviy, investitsion yoki biznes maslahati emas.</p>
+
+    <h2>Mas'uliyat cheklovlari</h2>
+    <p><strong>Tegishli qonun ruxsat etgan maksimal darajada:</strong></p>
+    <ul>
+      <li>Dasturchi siz daromad, ma'lumot yoki biznes imkoniyatlarini yo'qotishingiz kabi har qanday bilvosita, tasodifiy, maxsus, oqibatli yoki jazo zararlari uchun javobgar bo'lmaydi.</li>
+      <li>Ushbu Shartlardan yoki Ilovadan foydalanishdan kelib chiqadigan har qanday da'volar uchun Dasturchining umumiy mas'uliyati <strong>USD 50</strong> dan oshmasligi kerak.</li>
+      <li>Ba'zi yurisdiktsiyalar ma'lum kafolatlarni istisno qilish yoki javobgarlik chegaralariga ruxsat bermaydi, shuning uchun yuqoridagi cheklovlar sizga taalluqli bo'lmasligi mumkin.</li>
+    </ul>
+
+    <h2>Uchinchi tomon servislari</h2>
+    <p>Ilova uchinchi tomon servislarini integratsiya qiladi. Bu servislardan foydalanish ularning tegishli shartlari bilan boshqariladi:</p>
+    <ul>
+      <li>Google APIs shartlari: <a href="https://developers.google.com/terms" target="_blank" rel="noopener">developers.google.com/terms</a></li>
+      <li>Firebase shartlari: <a href="https://firebase.google.com/terms" target="_blank" rel="noopener">firebase.google.com/terms</a></li>
+      <li>Google AdMob dasturi qoidalari: <a href="https://support.google.com/admob/answer/6128543" target="_blank" rel="noopener">support.google.com/admob/answer/6128543</a></li>
+    </ul>
+    <p>Biz uchinchi tomon servislarining amaliyoti yoki kontenti uchun javobgar emasmiz.</p>
+
+    <h2>Maxfiylik</h2>
+    <p>Ilovadan foydalanishingiz bizning <a href="https://fozilbekimomov.github.io/privacy-admob.html">Maxfiylik siyosati</a>miz bilan ham boshqariladi, u havola orqali ushbu Shartlarga kiritilgan. Akkountni o'chirish bizning <a href="https://fozilbekimomov.github.io/admob-account-deletion.html">Akkountni o'chirish qo'llanma</a>mizda tasvirlangan.</p>
+
+    <h2>Tugatish</h2>
+    <p><strong>Sizning tomonidan.</strong> Siz istalgan vaqtda Ilovadan foydalanishni to'xtatishingiz mumkin. Ilovani o'chirish yoki ilova ichidagi Sign Out tanlovi qurilmangizdagi barcha lokal ma'lumotlarni tozalaydi.</p>
+    <p><strong>Bizning tomonimizdan.</strong> Ushbu Shartlarni buzganingizda, qonun yoki Google qoidalari talab qilganda yoki biz Servisni to'xtatganimizda kirishingizni to'xtatish yoki tugatish huquqini saqlab qolamiz.</p>
+    <p><strong>Tugatish ta'siri.</strong> Tugatishda, Ilovadan foydalanish litsenziyangiz darhol tugaydi. Intellektual mulk, kafolatlardan voz kechish, mas'uliyat cheklovlari va nizolarni hal qilish bo'limlari tugatishdan keyin ham amal qiladi.</p>
+
+    <h2>Nizolarni hal qilish</h2>
+    <p><strong>Boshqaruvchi qonun.</strong> Ushbu Shartlar konfliktli qonun tamoyillarini hisobga olmagan holda O'zbekiston Respublikasi qonunlari bilan boshqariladi.</p>
+    <p><strong>Nooosmiy hal qilish.</strong> Har qanday rasmiy ish yuritishdan oldin, norasmiy hal qilish uchun <a href="mailto:fozilbekimomov@gmail.com">fozilbekimomov@gmail.com</a> ga murojaat qiling. Biz 15 ish kuni ichida javob beramiz.</p>
+    <p><strong>Yurisdiktsiya.</strong> Har qanday nizolar O'zbekiston Respublikasi, Toshkent shahar vakolatli sudlariga taqdim etiladi.</p>
+    <p><strong>YeI/YeIH foydalanuvchilari.</strong> Agar siz YeI/YeIH'da bo'lsangiz, YeI Onlayn nizolarni hal qilish platformasidan ham foydalanishingiz mumkin: <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener">ec.europa.eu/consumers/odr</a></p>
+
+    <h2>Shartlarning o'zgarishi</h2>
+    <p>Biz har qanday vaqtda ushbu Shartlarni o'zgartirishimiz mumkin. Bunda:</p>
+    <ul>
+      <li>Sarlavhadagi "Yangilangan" sanasi qayta ko'rib chiqiladi.</li>
+      <li>Muhim o'zgarishlar uchun biz kamida 7 kun oldin ilova ichida bildirishnoma beramiz.</li>
+      <li>Kuchga kirgan sanadan keyin foydalanishni davom ettirish o'zgartirilgan Shartlarni qabul qilish hisoblanadi.</li>
+    </ul>
+
+    <h2>Ajraladiganlik</h2>
+    <p>Agar ushbu Shartlarning biron-bir qoidasi haqiqiy emas yoki ijro etilmaydi deb topilsa, qolgan qoidalar to'liq kuch va ta'sirda davom etadi.</p>
+
+    <h2>Yaxlit kelishuv</h2>
+    <p>Ushbu Shartlar Maxfiylik siyosati va Akkountni o'chirish qo'llanmasi bilan birga Ilovaga oid siz va Dasturchi o'rtasidagi to'liq kelishuvni tashkil etadi va barcha oldingi kelishuvlarni almashtiradi.</p>
+
+    <h2>Aloqa</h2>
+    <p>Email: <a href="mailto:fozilbekimomov@gmail.com">fozilbekimomov@gmail.com</a><br>
+    Dasturchi: Fozilbek Imomov · Toshkent, O'zbekiston Respublikasi</p>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <p data-tr="footer-template">Questions? Email <a href="mailto:fozilbekimomov@gmail.com">fozilbekimomov@gmail.com</a> · We respond within 15 business days.</p>
+  <p style="margin-top:8px"><strong>AdMob Revenue Tracker</strong> · Bundle ID: <code>com.admobanalysis.app</code> · &copy; 2026 Fozilbek Imomov</p>
+  <div class="footer-links">
+    <a href="https://fozilbekimomov.github.io/privacy-admob.html">Home</a>
+    <span style="color:var(--on-surface-faded)">·</span>
+    <a href="https://fozilbekimomov.github.io/privacy-admob.html">Privacy Policy</a>
+    <span style="color:var(--on-surface-faded)">·</span>
+    <a href="https://fozilbekimomov.github.io/admob-account-deletion.html">Account Deletion</a>
+    <span style="color:var(--on-surface-faded)">·</span>
+    <a href="mailto:fozilbekimomov@gmail.com">fozilbekimomov@gmail.com</a>
+  </div>
+</footer>
+
+<script>
+  const ui = {
+    en: { 'hero-badge': 'Terms of Service',
+          'hero-title-html': 'A free app, <span class="accent">simple terms</span>.',
+          'hero-app': 'App', 'hero-effective': 'Effective', 'hero-updated': 'Updated',
+          'summary': '<strong>Free to use, no subscriptions, no in-app purchases.</strong> The app reads your AdMob revenue via Google\'s read-only OAuth scope. We don\'t store your revenue data on our servers, and we don\'t claim ownership of it.',
+          'footer-template': 'Questions? Email <a href="mailto:fozilbekimomov@gmail.com">fozilbekimomov@gmail.com</a> · We respond within 15 business days.' },
+    ru: { 'hero-badge': 'Условия обслуживания',
+          'hero-title-html': 'Бесплатное приложение, <span class="accent">простые условия</span>.',
+          'hero-app': 'Приложение', 'hero-effective': 'Действует с', 'hero-updated': 'Обновлено',
+          'summary': '<strong>Бесплатно, без подписок и встроенных покупок.</strong> Приложение читает ваши доходы AdMob через read-only OAuth scope от Google. Мы не храним ваши данные о доходах на наших серверах и не претендуем на их собственность.',
+          'footer-template': 'Вопросы? Напишите на <a href="mailto:fozilbekimomov@gmail.com">fozilbekimomov@gmail.com</a> · Отвечаем в течение 15 рабочих дней.' },
+    hi: { 'hero-badge': 'Terms of Service',
+          'hero-title-html': 'मुफ़्त app, <span class="accent">सरल terms</span>।',
+          'hero-app': 'App', 'hero-effective': 'Effective', 'hero-updated': 'Updated',
+          'summary': '<strong>मुफ़्त उपयोग, कोई subscriptions नहीं, कोई in-app purchases नहीं।</strong> App Google के read-only OAuth scope के माध्यम से आपका AdMob revenue पढ़ता है। हम आपका revenue data हमारे servers पर store नहीं करते, और इसके ownership का दावा नहीं करते।',
+          'footer-template': 'प्रश्न? <a href="mailto:fozilbekimomov@gmail.com">fozilbekimomov@gmail.com</a> पर email करें · हम 15 business days के भीतर जवाब देते हैं।' },
+    uz: { 'hero-badge': 'Foydalanish shartlari',
+          'hero-title-html': 'Bepul ilova, <span class="accent">oddiy shartlar</span>.',
+          'hero-app': 'Ilova', 'hero-effective': 'Kuchga kirgan', 'hero-updated': 'Yangilangan',
+          'summary': '<strong>Bepul foydalanish, obunalar yo\'q, ilova ichidagi xaridlar yo\'q.</strong> Ilova Google\'ning faqat o\'qish OAuth scope orqali AdMob daromadingizni o\'qiydi. Biz daromad ma\'lumotlaringizni serverlarimizda saqlamaymiz va ularning egaligini da\'vo qilmaymiz.',
+          'footer-template': 'Savollaringiz bormi? <a href="mailto:fozilbekimomov@gmail.com">fozilbekimomov@gmail.com</a> ga email yuboring · Biz 15 ish kuni ichida javob beramiz.' }
+  };
+
+  function applyLocale(lang) {
+    document.documentElement.setAttribute('lang', lang);
+    document.querySelectorAll('.lang-section').forEach(s => {
+      s.classList.toggle('active', s.id === 'lang-' + lang);
+    });
+    document.querySelectorAll('.lang-tab').forEach(t => {
+      t.classList.toggle('active', t.dataset.lang === lang);
+      t.setAttribute('aria-selected', t.dataset.lang === lang ? 'true' : 'false');
+    });
+    const data = ui[lang] || ui.en;
+    for (const key in data) {
+      document.querySelectorAll('[data-tr="' + key + '"]').forEach(el => {
+        if (key.endsWith('-html') || key === 'summary' || key === 'footer-template') {
+          el.innerHTML = data[key];
+        } else {
+          el.textContent = data[key];
+        }
+      });
+    }
+    try { localStorage.setItem('terms-lang', lang); } catch (e) {}
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }
+
+  document.querySelectorAll('.lang-tab').forEach(tab => {
+    tab.addEventListener('click', () => applyLocale(tab.dataset.lang));
+  });
+
+  (function () {
+    const supported = ['en', 'ru', 'hi', 'uz'];
+    const urlLang = (new URLSearchParams(location.search)).get('lang');
+    let saved = null;
+    try { saved = localStorage.getItem('terms-lang'); } catch (e) {}
+    const browserLang = (navigator.language || 'en').slice(0, 2).toLowerCase();
+    const initial = (urlLang && supported.includes(urlLang)) ? urlLang
+                   : (saved && supported.includes(saved)) ? saved
+                   : supported.includes(browserLang) ? browserLang
+                   : 'en';
+    if (initial !== 'en') applyLocale(initial);
+  })();
+</script>
+</body>
+</html>
