@@ -1,0 +1,839 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="AdMob Revenue Tracker — Account & Data Deletion. Delete your account and all associated data in seconds.">
+<meta name="theme-color" content="#6750A4">
+<meta name="robots" content="index,follow">
+<title>Delete Account · AdMob Revenue Tracker</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary: #6750A4;
+    --primary-dark: #4F3D8A;
+    --secondary: #00BFA5;
+    --tertiary: #FFB300;
+    --success: #22C55E;
+    --danger: #EF4444;
+    --on-surface: #1A0E2E;
+    --on-surface-muted: #5B4F75;
+    --on-surface-faded: #8A7BA8;
+    --surface: #FFFFFF;
+    --surface-low: #F7F3FB;
+    --surface-lower: #FCFAFE;
+    --outline: #E5DEF0;
+    --outline-light: #EFE7F7;
+    --gradient: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', 'Noto Sans Devanagari', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    color: var(--on-surface);
+    background: var(--surface-lower);
+    line-height: 1.65;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  /* Top bar */
+  .topbar {
+    position: sticky; top: 0; z-index: 50;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    background: rgba(255,255,255,0.85);
+    border-bottom: 1px solid var(--outline-light);
+  }
+  .topbar-inner {
+    max-width: 880px; margin: 0 auto;
+    padding: 16px 24px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 16px; flex-wrap: wrap;
+  }
+  .brand {
+    display: flex; align-items: center; gap: 12px;
+    text-decoration: none;
+  }
+  .brand-icon {
+    width: 36px; height: 36px;
+    border-radius: 9px;
+    background: var(--gradient);
+    display: flex; align-items: center; justify-content: center;
+    color: white; font-weight: 800; font-size: 18px;
+    box-shadow: 0 4px 12px rgba(103,80,164,0.25);
+  }
+  .brand-name {
+    font-weight: 800; font-size: 16px; letter-spacing: -0.3px;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  /* Language tabs */
+  .lang-tabs {
+    display: flex; gap: 4px;
+    background: var(--surface-low);
+    border: 1px solid var(--outline-light);
+    border-radius: 999px;
+    padding: 4px;
+  }
+  .lang-tab {
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: transparent;
+    border: none;
+    font-family: inherit;
+    font-size: 13px; font-weight: 700;
+    color: var(--on-surface-muted);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .lang-tab:hover { color: var(--on-surface); }
+  .lang-tab.active {
+    background: var(--surface);
+    color: var(--primary);
+    box-shadow: 0 2px 6px rgba(103,80,164,0.10);
+  }
+  /* Hero */
+  .hero {
+    text-align: center;
+    padding: 72px 24px 40px;
+    max-width: 880px;
+    margin: 0 auto;
+  }
+  .badge {
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: rgba(239,68,68,0.10);
+    border: 1px solid rgba(239,68,68,0.30);
+    color: #B91C1C;
+    font-size: 12px; font-weight: 700; letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+  .hero-title {
+    font-size: clamp(36px, 6vw, 56px);
+    font-weight: 800;
+    letter-spacing: -1.4px;
+    line-height: 1.05;
+    color: var(--on-surface);
+  }
+  .hero-title .accent {
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hero-meta {
+    margin-top: 18px;
+    color: var(--on-surface-muted);
+    font-size: 15px;
+    display: flex; align-items: center; justify-content: center;
+    gap: 8px; flex-wrap: wrap;
+  }
+  .hero-meta .dot { width: 4px; height: 4px; border-radius: 50%; background: var(--on-surface-faded); }
+  .hero-meta strong { color: var(--on-surface); font-weight: 700; }
+  /* Summary callout */
+  .summary {
+    max-width: 880px; margin: 0 auto;
+    padding: 0 24px 32px;
+  }
+  .summary-card {
+    background: linear-gradient(135deg, rgba(0,191,165,0.06) 0%, rgba(103,80,164,0.05) 100%);
+    border: 1px solid rgba(0,191,165,0.25);
+    border-radius: 24px;
+    padding: 28px 32px;
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    gap: 20px;
+    align-items: center;
+  }
+  .summary-icon {
+    width: 64px; height: 64px;
+    border-radius: 18px;
+    background: var(--gradient);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 32px;
+    box-shadow: 0 8px 20px rgba(103,80,164,0.30);
+    color: white;
+  }
+  .summary-text { font-size: 16px; line-height: 1.55; }
+  .summary-text strong { color: var(--primary-dark); font-weight: 700; }
+  /* Steps */
+  .steps {
+    max-width: 880px; margin: 0 auto;
+    padding: 0 24px 32px;
+  }
+  .method-card {
+    background: var(--surface);
+    border: 1px solid var(--outline-light);
+    border-radius: 20px;
+    padding: 28px 32px;
+    margin-bottom: 18px;
+    box-shadow: 0 2px 8px rgba(103,80,164,0.04);
+  }
+  .method-card.primary {
+    border: 2px solid rgba(103,80,164,0.30);
+    background: linear-gradient(180deg, var(--surface) 0%, var(--surface-low) 100%);
+    box-shadow: 0 8px 24px rgba(103,80,164,0.08);
+  }
+  .method-head {
+    display: flex; align-items: center; gap: 14px;
+    margin-bottom: 16px;
+  }
+  .method-num {
+    width: 40px; height: 40px;
+    border-radius: 12px;
+    background: var(--gradient);
+    color: white;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 18px;
+    box-shadow: 0 4px 12px rgba(103,80,164,0.25);
+    flex-shrink: 0;
+  }
+  .method-title {
+    font-size: 22px; font-weight: 800;
+    letter-spacing: -0.4px;
+    color: var(--on-surface);
+  }
+  .method-card ol {
+    margin: 14px 0 0 0;
+    padding-left: 24px;
+  }
+  .method-card ol li {
+    margin: 10px 0;
+    color: var(--on-surface);
+  }
+  .method-card ol li::marker {
+    color: var(--primary);
+    font-weight: 700;
+  }
+  .method-card p {
+    color: var(--on-surface);
+    margin: 10px 0;
+  }
+  .method-card a {
+    color: var(--primary);
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(103,80,164,0.30);
+    transition: border-color 0.15s ease;
+  }
+  .method-card a:hover { border-bottom-color: var(--primary); }
+  .kbd {
+    display: inline-block;
+    background: var(--surface-low);
+    border: 1px solid var(--outline);
+    border-bottom-width: 2px;
+    border-radius: 6px;
+    padding: 1px 8px;
+    font-size: 13px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    color: var(--primary-dark);
+    margin: 0 2px;
+  }
+  /* Content */
+  .content {
+    max-width: 880px; margin: 0 auto;
+    padding: 16px 24px 80px;
+  }
+  .lang-section { display: none; }
+  .lang-section.active { display: block; }
+  .content h2 {
+    font-size: 26px; font-weight: 800;
+    letter-spacing: -0.6px; line-height: 1.2;
+    margin: 48px 0 16px;
+    color: var(--on-surface);
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--outline-light);
+  }
+  .content h2:first-of-type { margin-top: 16px; }
+  .content h3 {
+    font-size: 18px; font-weight: 700;
+    letter-spacing: -0.2px;
+    margin: 24px 0 10px;
+    color: var(--on-surface);
+  }
+  .content p {
+    margin: 12px 0;
+    color: var(--on-surface);
+  }
+  .content p strong { font-weight: 700; }
+  .content ul, .content ol {
+    margin: 12px 0 12px 24px;
+  }
+  .content li {
+    margin: 6px 0;
+    color: var(--on-surface);
+  }
+  .content li::marker { color: var(--primary); }
+  .content a {
+    color: var(--primary);
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(103,80,164,0.30);
+  }
+  .content a:hover { border-bottom-color: var(--primary); }
+  /* Tables */
+  .table-wrap {
+    margin: 16px 0;
+    overflow-x: auto;
+    border-radius: 14px;
+    border: 1px solid var(--outline-light);
+    background: var(--surface);
+    box-shadow: 0 2px 8px rgba(103,80,164,0.04);
+  }
+  table {
+    width: 100%; border-collapse: collapse;
+    font-size: 14px;
+  }
+  th {
+    background: var(--surface-low);
+    color: var(--primary-dark);
+    font-weight: 700; text-align: left;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--outline-light);
+    font-size: 12px; text-transform: uppercase; letter-spacing: 1px;
+  }
+  td {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--outline-light);
+    vertical-align: top;
+  }
+  tr:last-child td { border-bottom: none; }
+  td.deleted { color: #B91C1C; font-weight: 600; }
+  td.kept { color: #15803D; font-weight: 600; }
+  /* Highlight box */
+  .highlight {
+    background: linear-gradient(135deg, rgba(255,179,0,0.08) 0%, rgba(255,179,0,0.02) 100%);
+    border: 1px solid rgba(255,179,0,0.30);
+    border-left: 4px solid var(--tertiary);
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin: 20px 0;
+    color: var(--on-surface);
+  }
+  .highlight strong { color: #B45309; }
+  /* Confirm box */
+  .confirm-box {
+    background: linear-gradient(135deg, rgba(34,197,94,0.06) 0%, rgba(34,197,94,0.02) 100%);
+    border: 1px solid rgba(34,197,94,0.25);
+    border-left: 4px solid var(--success);
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin: 20px 0;
+  }
+  .confirm-box strong { color: #15803D; }
+  /* Footer */
+  .footer {
+    border-top: 1px solid var(--outline-light);
+    padding: 40px 24px 60px;
+    text-align: center;
+    color: var(--on-surface-muted);
+    font-size: 14px;
+    background: var(--surface-low);
+  }
+  .footer-links {
+    display: flex; align-items: center; justify-content: center;
+    gap: 18px; flex-wrap: wrap;
+    margin-top: 12px;
+  }
+  .footer-links a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .footer-links a:hover { text-decoration: underline; }
+  /* Mobile */
+  @media (max-width: 640px) {
+    .topbar-inner { padding: 12px 16px; }
+    .lang-tab { padding: 6px 10px; font-size: 12px; }
+    .hero { padding: 48px 16px 28px; }
+    .summary, .steps { padding-left: 16px; padding-right: 16px; }
+    .summary-card { grid-template-columns: 1fr; padding: 22px 20px; }
+    .summary-icon { margin: 0 auto; }
+    .summary-text { text-align: center; }
+    .method-card { padding: 22px 20px; }
+    .method-title { font-size: 19px; }
+    .content { padding: 16px 16px 60px; }
+    .content h2 { font-size: 22px; margin-top: 36px; }
+    .content h3 { font-size: 16px; }
+    th, td { padding: 10px 12px; font-size: 13px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="https://admobanalysis.com">
+      <span class="brand-icon">A</span>
+      <span class="brand-name">AdMob Revenue Tracker</span>
+    </a>
+    <div class="lang-tabs" role="tablist" aria-label="Language">
+      <button class="lang-tab active" data-lang="en" type="button">EN</button>
+      <button class="lang-tab" data-lang="ru" type="button">RU</button>
+      <button class="lang-tab" data-lang="hi" type="button">हिन्दी</button>
+      <button class="lang-tab" data-lang="uz" type="button">O'zbek</button>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <span class="badge" data-tr="hero-badge">Account Deletion</span>
+  <h1 class="hero-title" data-tr="hero-title-html">Delete your account in <span class="accent">seconds</span>.</h1>
+  <p class="hero-meta">
+    <span data-tr="hero-app">App</span>: <strong>AdMob Revenue Tracker</strong>
+    <span class="dot"></span>
+    <span data-tr="hero-developer">Developer</span>: <strong>Fozilbek Imomov</strong>
+    <span class="dot"></span>
+    <span data-tr="hero-updated">Updated</span>: <strong>2026-04-30</strong>
+  </p>
+</section>
+
+<section class="summary">
+  <div class="summary-card">
+    <div class="summary-icon">🗑️</div>
+    <div class="summary-text" data-tr="summary"><strong>Most of your data lives only on your device.</strong> Deleting the app or signing out instantly removes local cache, OAuth tokens, and authentication state. Anonymized analytics on Google's side can be removed by request — see Method 3 below.</div>
+  </div>
+</section>
+
+<main class="content">
+
+  <!-- ============================ EN ============================ -->
+  <section class="lang-section active" id="lang-en" lang="en">
+
+    <h2>Quick Reference</h2>
+    <p>You have <strong>three independent ways</strong> to delete your account and associated data. Method 1 is the fastest and works fully offline.</p>
+
+    <section class="steps">
+      <div class="method-card primary">
+        <div class="method-head">
+          <span class="method-num">1</span>
+          <span class="method-title">Delete from inside the app (recommended)</span>
+        </div>
+        <ol>
+          <li>Open <strong>AdMob Revenue Tracker</strong> on your device.</li>
+          <li>Tap the avatar in the top-right → <span class="kbd">Settings</span>.</li>
+          <li>Scroll down to <span class="kbd">Account</span>.</li>
+          <li>Tap <span class="kbd">Sign Out &amp; Delete Local Data</span>.</li>
+          <li>Confirm in the dialog — done.</li>
+        </ol>
+        <div class="confirm-box"><strong>Effect:</strong> Hive cache (revenue, eCPM, impressions), OAuth access &amp; refresh tokens, settings, and notification preferences are wiped from your device immediately.</div>
+      </div>
+
+      <div class="method-card">
+        <div class="method-head">
+          <span class="method-num">2</span>
+          <span class="method-title">Revoke access from your Google Account</span>
+        </div>
+        <ol>
+          <li>Visit <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">myaccount.google.com/permissions</a>.</li>
+          <li>Find <strong>AdMob Revenue Tracker</strong> in the list of third-party apps.</li>
+          <li>Click <strong>Remove Access</strong>.</li>
+          <li>Confirm — Google revokes our OAuth refresh token within minutes.</li>
+        </ol>
+        <p>This stops AdMob Revenue Tracker from accessing your AdMob data. You should also use Method 1 to clear the local cache.</p>
+      </div>
+
+      <div class="method-card">
+        <div class="method-head">
+          <span class="method-num">3</span>
+          <span class="method-title">Email deletion request (server-side analytics)</span>
+        </div>
+        <p>If you also want anonymized analytics records (Firebase Analytics, Crashlytics) deleted, send an email request:</p>
+        <p><strong>To:</strong> <a href="mailto:fozilbekimomov@gmail.com?subject=Account%20Deletion%20Request">fozilbekimomov@gmail.com</a><br>
+        <strong>Subject:</strong> Account Deletion Request<br>
+        <strong>Include:</strong> Your Google account email used to sign in.</p>
+        <p>We respond within <strong>14 days</strong> and confirm deletion. By default, Firebase analytics auto-purge after <strong>2 months</strong>.</p>
+      </div>
+    </section>
+
+    <h2>What gets deleted &amp; what stays</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Data</th><th>Stored where</th><th>After deletion</th></tr></thead>
+      <tbody>
+        <tr><td>OAuth access &amp; refresh tokens</td><td>On-device (Keychain / Keystore, AES-256-GCM)</td><td class="deleted">Removed instantly</td></tr>
+        <tr><td>AdMob revenue cache (impressions, eCPM, earnings)</td><td>On-device (Hive encrypted DB)</td><td class="deleted">Removed instantly</td></tr>
+        <tr><td>App settings, notification preferences, anomaly thresholds</td><td>On-device (SharedPreferences)</td><td class="deleted">Removed instantly</td></tr>
+        <tr><td>Firebase Analytics events (anonymized)</td><td>Google servers</td><td class="kept">Auto-purge in 2 months · or by email request</td></tr>
+        <tr><td>Crashlytics crash logs</td><td>Google servers</td><td class="kept">Auto-purge in 90 days · or by email request</td></tr>
+        <tr><td>Your AdMob revenue data <em>itself</em></td><td>Google AdMob (your own account)</td><td class="kept">Untouched — we never had access to delete it</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="highlight"><strong>We never store your AdMob revenue data on our servers.</strong> Methods 1 and 2 cover 100 % of identifiable data. Method 3 is only relevant if you also want anonymized usage statistics removed.</div>
+
+    <h2>Frequently Asked Questions</h2>
+
+    <h3>Will deleting the app from my phone also delete my data?</h3>
+    <p>Yes. Uninstalling AdMob Revenue Tracker removes all local data (cache, tokens, settings) from your device. However, the OAuth permission on Google's side persists — use Method 2 to revoke it.</p>
+
+    <h3>Do I need a paid account to delete?</h3>
+    <p>No. The app is free, and account deletion is also free and unconditional.</p>
+
+    <h3>Can I delete only part of my data without deleting my account?</h3>
+    <p>The app does not maintain a server-side account, so this question maps to: Firebase Analytics retention is set to 2 months (auto-purge). To request earlier deletion of analytics events while keeping local cache, email <a href="mailto:fozilbekimomov@gmail.com">fozilbekimomov@gmail.com</a>.</p>
+
+    <h3>How long until my data is fully gone?</h3>
+    <ul>
+      <li><strong>On-device data:</strong> instant (Method 1 or app uninstall).</li>
+      <li><strong>OAuth permission:</strong> within minutes (Method 2).</li>
+      <li><strong>Firebase analytics:</strong> within 14 days of email request, otherwise auto-purge in 2 months.</li>
+    </ul>
+
+    <h2>Contact</h2>
+    <p>Questions or trouble deleting? Email <a href="mailto:fozilbekimomov@gmail.com">fozilbekimomov@gmail.com</a> — we respond within 14 days.</p>
+    <p>Developer: Fozilbek Imomov · <a href="mailto:fozilbekimomov@gmail.com">fozilbekimomov@gmail.com</a></p>
+  </section>
+
+  <!-- ============================ RU ============================ -->
+  <section class="lang-section" id="lang-ru" lang="ru">
+
+    <h2>Краткая инструкция</h2>
+    <p>У вас <strong>три независимых способа</strong> удалить аккаунт и связанные с ним данные. Способ 1 — самый быстрый и работает полностью офлайн.</p>
+
+    <section class="steps">
+      <div class="method-card primary">
+        <div class="method-head">
+          <span class="method-num">1</span>
+          <span class="method-title">Удалить прямо из приложения (рекомендуется)</span>
+        </div>
+        <ol>
+          <li>Откройте <strong>AdMob Revenue Tracker</strong> на устройстве.</li>
+          <li>Тапните аватар в правом верхнем углу → <span class="kbd">Настройки</span>.</li>
+          <li>Прокрутите вниз до раздела <span class="kbd">Аккаунт</span>.</li>
+          <li>Тапните <span class="kbd">Выйти и удалить локальные данные</span>.</li>
+          <li>Подтвердите в диалоге — готово.</li>
+        </ol>
+        <div class="confirm-box"><strong>Что удаляется:</strong> Hive-кэш (доход, eCPM, показы), OAuth access и refresh токены, настройки и настройки уведомлений — всё стирается с устройства мгновенно.</div>
+      </div>
+
+      <div class="method-card">
+        <div class="method-head">
+          <span class="method-num">2</span>
+          <span class="method-title">Отозвать доступ через Google Аккаунт</span>
+        </div>
+        <ol>
+          <li>Перейдите на <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">myaccount.google.com/permissions</a>.</li>
+          <li>Найдите <strong>AdMob Revenue Tracker</strong> в списке сторонних приложений.</li>
+          <li>Нажмите <strong>Отозвать доступ</strong>.</li>
+          <li>Подтвердите — Google отзовёт наш OAuth refresh-токен в течение нескольких минут.</li>
+        </ol>
+        <p>Это лишает AdMob Revenue Tracker доступа к вашим данным AdMob. Также используйте Способ 1, чтобы очистить локальный кэш.</p>
+      </div>
+
+      <div class="method-card">
+        <div class="method-head">
+          <span class="method-num">3</span>
+          <span class="method-title">Запрос на удаление по email (серверная аналитика)</span>
+        </div>
+        <p>Если вы хотите также удалить анонимизированные записи аналитики (Firebase Analytics, Crashlytics), отправьте email-запрос:</p>
+        <p><strong>Кому:</strong> <a href="mailto:fozilbekimomov@gmail.com?subject=Account%20Deletion%20Request">fozilbekimomov@gmail.com</a><br>
+        <strong>Тема:</strong> Account Deletion Request<br>
+        <strong>В письме укажите:</strong> email вашего Google-аккаунта, использованного для входа.</p>
+        <p>Отвечаем в течение <strong>14 дней</strong> и подтверждаем удаление. По умолчанию данные Firebase Analytics автоматически удаляются через <strong>2 месяца</strong>.</p>
+      </div>
+    </section>
+
+    <h2>Что удаляется и что остаётся</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Данные</th><th>Где хранятся</th><th>После удаления</th></tr></thead>
+      <tbody>
+        <tr><td>OAuth access и refresh токены</td><td>На устройстве (Keychain / Keystore, AES-256-GCM)</td><td class="deleted">Удаляются мгновенно</td></tr>
+        <tr><td>Кэш доходов AdMob (показы, eCPM, заработок)</td><td>На устройстве (Hive, шифрованная БД)</td><td class="deleted">Удаляется мгновенно</td></tr>
+        <tr><td>Настройки приложения, уведомления, пороги аномалий</td><td>На устройстве (SharedPreferences)</td><td class="deleted">Удаляются мгновенно</td></tr>
+        <tr><td>Firebase Analytics события (анонимные)</td><td>Серверы Google</td><td class="kept">Авто-удаление за 2 месяца · или по email-запросу</td></tr>
+        <tr><td>Crashlytics crash-логи</td><td>Серверы Google</td><td class="kept">Авто-удаление за 90 дней · или по email-запросу</td></tr>
+        <tr><td>Ваши данные о доходах AdMob <em>сами по себе</em></td><td>Google AdMob (ваш аккаунт)</td><td class="kept">Не трогаем — у нас никогда не было прав их удалять</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="highlight"><strong>Мы никогда не храним данные о вашем доходе AdMob на наших серверах.</strong> Способы 1 и 2 покрывают 100 % идентифицируемых данных. Способ 3 нужен только если вы хотите также удалить анонимную статистику использования.</div>
+
+    <h2>Частые вопросы</h2>
+
+    <h3>Если я удалю приложение с телефона, удалятся ли данные?</h3>
+    <p>Да. Удаление AdMob Revenue Tracker стирает все локальные данные (кэш, токены, настройки) с устройства. Но OAuth-разрешение на стороне Google остаётся — отзовите его Способом 2.</p>
+
+    <h3>Нужен ли платный аккаунт для удаления?</h3>
+    <p>Нет. Приложение бесплатное, и удаление аккаунта тоже бесплатное и безусловное.</p>
+
+    <h3>Можно ли удалить только часть данных, не удаляя аккаунт?</h3>
+    <p>В приложении нет серверного аккаунта, поэтому вопрос сводится к: ретенция Firebase Analytics установлена на 2 месяца (авто-удаление). Чтобы запросить более раннее удаление событий аналитики при сохранении локального кэша, напишите на <a href="mailto:fozilbekimomov@gmail.com">fozilbekimomov@gmail.com</a>.</p>
+
+    <h3>За какое время данные полностью исчезают?</h3>
+    <ul>
+      <li><strong>Локальные данные:</strong> мгновенно (Способ 1 или удаление приложения).</li>
+      <li><strong>OAuth-разрешение:</strong> в течение нескольких минут (Способ 2).</li>
+      <li><strong>Firebase Analytics:</strong> в течение 14 дней по email-запросу, иначе авто-удаление за 2 месяца.</li>
+    </ul>
+
+    <h2>Контакты</h2>
+    <p>Вопросы или проблемы с удалением? Напишите на <a href="mailto:fozilbekimomov@gmail.com">fozilbekimomov@gmail.com</a> — отвечаем в течение 14 дней.</p>
+    <p>Разработчик: Fozilbek Imomov · <a href="mailto:fozilbekimomov@gmail.com">fozilbekimomov@gmail.com</a></p>
+  </section>
+
+  <!-- ============================ HI ============================ -->
+  <section class="lang-section" id="lang-hi" lang="hi">
+
+    <h2>त्वरित निर्देश</h2>
+    <p>आपके पास account और जुड़े हुए data को delete करने के <strong>तीन independent तरीके</strong> हैं। तरीका 1 सबसे तेज़ है और पूरी तरह offline काम करता है।</p>
+
+    <section class="steps">
+      <div class="method-card primary">
+        <div class="method-head">
+          <span class="method-num">1</span>
+          <span class="method-title">App के अंदर से delete करें (अनुशंसित)</span>
+        </div>
+        <ol>
+          <li>अपने device पर <strong>AdMob Revenue Tracker</strong> खोलें।</li>
+          <li>ऊपर-दाएं avatar पर tap करें → <span class="kbd">Settings</span>।</li>
+          <li>नीचे scroll करके <span class="kbd">Account</span> खोजें।</li>
+          <li><span class="kbd">Sign Out &amp; Delete Local Data</span> पर tap करें।</li>
+          <li>Dialog में confirm करें — हो गया।</li>
+        </ol>
+        <div class="confirm-box"><strong>क्या delete होता है:</strong> Hive cache (revenue, eCPM, impressions), OAuth access &amp; refresh tokens, settings और notification preferences — सब कुछ device से तुरंत मिट जाता है।</div>
+      </div>
+
+      <div class="method-card">
+        <div class="method-head">
+          <span class="method-num">2</span>
+          <span class="method-title">अपने Google Account से access revoke करें</span>
+        </div>
+        <ol>
+          <li><a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">myaccount.google.com/permissions</a> पर जाएं।</li>
+          <li>Third-party apps की सूची में <strong>AdMob Revenue Tracker</strong> ढूंढें।</li>
+          <li><strong>Remove Access</strong> पर click करें।</li>
+          <li>Confirm करें — Google हमारा OAuth refresh-token कुछ ही मिनटों में revoke कर देगा।</li>
+        </ol>
+        <p>इससे AdMob Revenue Tracker आपके AdMob data को access नहीं कर पाएगा। Local cache साफ़ करने के लिए तरीका 1 भी इस्तेमाल करें।</p>
+      </div>
+
+      <div class="method-card">
+        <div class="method-head">
+          <span class="method-num">3</span>
+          <span class="method-title">Email द्वारा deletion request (server-side analytics)</span>
+        </div>
+        <p>अगर आप anonymized analytics records (Firebase Analytics, Crashlytics) भी delete कराना चाहते हैं, तो email request भेजें:</p>
+        <p><strong>To:</strong> <a href="mailto:fozilbekimomov@gmail.com?subject=Account%20Deletion%20Request">fozilbekimomov@gmail.com</a><br>
+        <strong>Subject:</strong> Account Deletion Request<br>
+        <strong>Include करें:</strong> sign-in के लिए इस्तेमाल किया गया Google account email।</p>
+        <p>हम <strong>14 दिनों</strong> में जवाब देते हैं और deletion confirm करते हैं। Default रूप से Firebase analytics data <strong>2 महीनों</strong> में auto-purge हो जाता है।</p>
+      </div>
+    </section>
+
+    <h2>क्या delete होता है, क्या रहता है</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Data</th><th>कहाँ store है</th><th>Deletion के बाद</th></tr></thead>
+      <tbody>
+        <tr><td>OAuth access &amp; refresh tokens</td><td>Device पर (Keychain / Keystore, AES-256-GCM)</td><td class="deleted">तुरंत हटा दिया जाता है</td></tr>
+        <tr><td>AdMob revenue cache (impressions, eCPM, earnings)</td><td>Device पर (Hive encrypted DB)</td><td class="deleted">तुरंत हटा दिया जाता है</td></tr>
+        <tr><td>App settings, notifications, anomaly thresholds</td><td>Device पर (SharedPreferences)</td><td class="deleted">तुरंत हटा दिया जाता है</td></tr>
+        <tr><td>Firebase Analytics events (anonymized)</td><td>Google servers</td><td class="kept">2 महीनों में auto-purge · या email request पर</td></tr>
+        <tr><td>Crashlytics crash logs</td><td>Google servers</td><td class="kept">90 दिनों में auto-purge · या email request पर</td></tr>
+        <tr><td>आपका AdMob revenue data <em>स्वयं</em></td><td>Google AdMob (आपका own account)</td><td class="kept">अछूता — हमारे पास इसे delete करने का access कभी नहीं था</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="highlight"><strong>हम आपका AdMob revenue data कभी अपने servers पर store नहीं करते।</strong> तरीका 1 और 2 सभी identifiable data का 100 % cover करते हैं। तरीका 3 केवल तब प्रासंगिक है जब आप anonymized usage statistics भी हटाना चाहते हैं।</div>
+
+    <h2>अक्सर पूछे जाने वाले प्रश्न</h2>
+
+    <h3>क्या phone से app uninstall करने पर भी data delete हो जाता है?</h3>
+    <p>हाँ। AdMob Revenue Tracker uninstall करने से सारा local data (cache, tokens, settings) device से मिट जाता है। लेकिन Google की तरफ़ से OAuth permission बनी रहती है — उसे तरीका 2 से revoke करें।</p>
+
+    <h3>क्या deletion के लिए paid account चाहिए?</h3>
+    <p>नहीं। App मुफ़्त है और account deletion भी मुफ़्त एवं बिना शर्त है।</p>
+
+    <h3>क्या मैं account delete किए बिना केवल कुछ data delete कर सकता हूँ?</h3>
+    <p>App में server-side account नहीं है, इसलिए यह सवाल इस पर सिमटता है: Firebase Analytics retention 2 महीनों पर set है (auto-purge)। Local cache रखते हुए analytics events को जल्दी delete कराने के लिए <a href="mailto:fozilbekimomov@gmail.com">fozilbekimomov@gmail.com</a> पर email करें।</p>
+
+    <h3>Data पूरी तरह कब तक हट जाता है?</h3>
+    <ul>
+      <li><strong>Device data:</strong> तुरंत (तरीका 1 या app uninstall)।</li>
+      <li><strong>OAuth permission:</strong> कुछ ही मिनटों में (तरीका 2)।</li>
+      <li><strong>Firebase analytics:</strong> email request पर 14 दिनों में, otherwise 2 महीनों में auto-purge।</li>
+    </ul>
+
+    <h2>संपर्क</h2>
+    <p>सवाल या deletion में परेशानी? <a href="mailto:fozilbekimomov@gmail.com">fozilbekimomov@gmail.com</a> पर email करें — हम 14 दिनों में जवाब देते हैं।</p>
+    <p>Developer: Fozilbek Imomov · <a href="mailto:fozilbekimomov@gmail.com">fozilbekimomov@gmail.com</a></p>
+  </section>
+
+  <!-- ============================ UZ ============================ -->
+  <section class="lang-section" id="lang-uz" lang="uz">
+
+    <h2>Qisqa yo'riqnoma</h2>
+    <p>Sizda akkountni va u bilan bog'liq ma'lumotlarni o'chirishning <strong>uchta mustaqil usuli</strong> bor. 1-usul eng tezi va to'liq oflayn ishlaydi.</p>
+
+    <section class="steps">
+      <div class="method-card primary">
+        <div class="method-head">
+          <span class="method-num">1</span>
+          <span class="method-title">Ilovaning ichidan o'chirish (tavsiya etiladi)</span>
+        </div>
+        <ol>
+          <li>Qurilmangizda <strong>AdMob Revenue Tracker</strong> ilovasini oching.</li>
+          <li>O'ng yuqori burchakdagi avatarga bosing → <span class="kbd">Sozlamalar</span>.</li>
+          <li>Pastga aylantirib <span class="kbd">Akkount</span> bo'limini toping.</li>
+          <li><span class="kbd">Chiqish va lokal ma'lumotlarni o'chirish</span> tugmasiga bosing.</li>
+          <li>Dialogda tasdiqlang — tayyor.</li>
+        </ol>
+        <div class="confirm-box"><strong>Nima o'chiriladi:</strong> Hive kesh (daromad, eCPM, ko'rsatishlar), OAuth access va refresh tokenlar, sozlamalar va bildirishnoma sozlamalari — hammasi qurilmadan darhol tozalanadi.</div>
+      </div>
+
+      <div class="method-card">
+        <div class="method-head">
+          <span class="method-num">2</span>
+          <span class="method-title">Google Akkount orqali ruxsatni bekor qilish</span>
+        </div>
+        <ol>
+          <li><a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">myaccount.google.com/permissions</a> sahifasiga kiring.</li>
+          <li>Uchinchi tomon ilovalari ro'yxatidan <strong>AdMob Revenue Tracker</strong> ni toping.</li>
+          <li><strong>Ruxsatni olib tashlash</strong> tugmasini bosing.</li>
+          <li>Tasdiqlang — Google bizning OAuth refresh-tokenni bir necha daqiqa ichida bekor qiladi.</li>
+        </ol>
+        <p>Bu AdMob Revenue Trackerdan AdMob ma'lumotlaringizga kirishini to'xtatadi. Lokal keshni tozalash uchun 1-usuldan ham foydalaning.</p>
+      </div>
+
+      <div class="method-card">
+        <div class="method-head">
+          <span class="method-num">3</span>
+          <span class="method-title">Email orqali o'chirish so'rovi (server tomonidagi tahlil)</span>
+        </div>
+        <p>Agar siz anonim tahlil yozuvlarini (Firebase Analytics, Crashlytics) ham o'chirmoqchi bo'lsangiz, email-so'rov yuboring:</p>
+        <p><strong>Kimga:</strong> <a href="mailto:fozilbekimomov@gmail.com?subject=Account%20Deletion%20Request">fozilbekimomov@gmail.com</a><br>
+        <strong>Mavzu:</strong> Account Deletion Request<br>
+        <strong>Yozing:</strong> kirgan Google-akkount emailingiz.</p>
+        <p>Biz <strong>14 kun</strong> ichida javob beramiz va o'chirishni tasdiqlaymiz. Sukut bo'yicha Firebase Analytics ma'lumotlari <strong>2 oydan</strong> keyin avtomatik o'chiriladi.</p>
+      </div>
+    </section>
+
+    <h2>Nima o'chiriladi va nima qoladi</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Ma'lumot</th><th>Qaerda saqlanadi</th><th>O'chirgandan keyin</th></tr></thead>
+      <tbody>
+        <tr><td>OAuth access va refresh tokenlar</td><td>Qurilmada (Keychain / Keystore, AES-256-GCM)</td><td class="deleted">Darhol o'chiriladi</td></tr>
+        <tr><td>AdMob daromad keshi (ko'rsatishlar, eCPM, daromad)</td><td>Qurilmada (Hive shifrlangan BD)</td><td class="deleted">Darhol o'chiriladi</td></tr>
+        <tr><td>Ilova sozlamalari, bildirishnomalar, anomaliya chegaralari</td><td>Qurilmada (SharedPreferences)</td><td class="deleted">Darhol o'chiriladi</td></tr>
+        <tr><td>Firebase Analytics hodisalari (anonim)</td><td>Google serverlari</td><td class="kept">2 oyda avto-tozalash · yoki email-so'rov bo'yicha</td></tr>
+        <tr><td>Crashlytics crash-loglari</td><td>Google serverlari</td><td class="kept">90 kunda avto-tozalash · yoki email-so'rov bo'yicha</td></tr>
+        <tr><td>AdMob daromad ma'lumotlaringizning <em>o'zi</em></td><td>Google AdMob (sizning shaxsiy akkount)</td><td class="kept">Tegmaydi — bizda hech qachon ularni o'chirish huquqi bo'lmagan</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="highlight"><strong>Biz AdMob daromad ma'lumotlaringizni serverlarimizda hech qachon saqlamaymiz.</strong> 1 va 2-usullar identifikatsiya qilinadigan ma'lumotlarning 100 % ni qamrab oladi. 3-usul faqat anonim foydalanish statistikasini ham o'chirmoqchi bo'lsangiz kerak.</div>
+
+    <h2>Tez-tez beriladigan savollar</h2>
+
+    <h3>Ilovani telefondan o'chirsam, ma'lumotlarim o'chiriladimi?</h3>
+    <p>Ha. AdMob Revenue Tracker ilovasini o'chirish qurilmadan barcha lokal ma'lumotlarni (kesh, tokenlar, sozlamalar) tozalaydi. Lekin Google tomonidagi OAuth ruxsati saqlanib qoladi — uni 2-usul bilan bekor qiling.</p>
+
+    <h3>O'chirish uchun pulli akkount kerakmi?</h3>
+    <p>Yo'q. Ilova bepul, akkount o'chirish ham bepul va shartsiz.</p>
+
+    <h3>Akkountni o'chirmasdan faqat ba'zi ma'lumotlarni o'chirish mumkinmi?</h3>
+    <p>Ilovada server tomonidan akkount yo'q, shuning uchun bu savol shu yerga keladi: Firebase Analytics retentsiyasi 2 oyga sozlangan (avto-tozalash). Lokal keshni saqlab, tahlil hodisalarini tezroq o'chirishni so'rash uchun <a href="mailto:fozilbekimomov@gmail.com">fozilbekimomov@gmail.com</a> ga email yuboring.</p>
+
+    <h3>Ma'lumotlar to'liq qancha vaqtda yo'qoladi?</h3>
+    <ul>
+      <li><strong>Qurilmadagi ma'lumotlar:</strong> darhol (1-usul yoki ilovani o'chirish).</li>
+      <li><strong>OAuth ruxsati:</strong> bir necha daqiqada (2-usul).</li>
+      <li><strong>Firebase tahlil:</strong> email-so'rovda 14 kun ichida, aks holda 2 oyda avto-tozalash.</li>
+    </ul>
+
+    <h2>Aloqa</h2>
+    <p>Savollar yoki o'chirishda muammo bo'lsa? <a href="mailto:fozilbekimomov@gmail.com">fozilbekimomov@gmail.com</a> ga email yozing — biz 14 kun ichida javob beramiz.</p>
+    <p>Dasturchi: Fozilbek Imomov · <a href="mailto:fozilbekimomov@gmail.com">fozilbekimomov@gmail.com</a></p>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <p data-tr="footer-template">Need help? Email <a href="mailto:fozilbekimomov@gmail.com">fozilbekimomov@gmail.com</a> · We respond within 14 days.</p>
+  <p style="margin-top:8px"><strong>AdMob Revenue Tracker</strong> · Bundle ID: <code>com.admobanalysis.app</code> · &copy; 2026 Fozilbek Imomov</p>
+  <div class="footer-links">
+    <a href="https://admobanalysis.com">Home</a>
+    <span style="color:var(--on-surface-faded)">·</span>
+    <a href="https://admobanalysis.com/privacy">Privacy Policy</a>
+    <span style="color:var(--on-surface-faded)">·</span>
+    <a href="https://admobanalysis.com/terms">Terms of Service</a>
+    <span style="color:var(--on-surface-faded)">·</span>
+    <a href="mailto:fozilbekimomov@gmail.com">fozilbekimomov@gmail.com</a>
+  </div>
+</footer>
+
+<script>
+  // Hero/UI translations (everything outside .lang-section)
+  const ui = {
+    en: { 'hero-badge': 'Account Deletion',
+          'hero-title-html': 'Delete your account in <span class="accent">seconds</span>.',
+          'hero-app': 'App', 'hero-developer': 'Developer', 'hero-updated': 'Updated',
+          'summary': '<strong>Most of your data lives only on your device.</strong> Deleting the app or signing out instantly removes local cache, OAuth tokens, and authentication state. Anonymized analytics on Google\'s side can be removed by request — see Method 3 below.',
+          'footer-template': 'Need help? Email <a href="mailto:fozilbekimomov@gmail.com">fozilbekimomov@gmail.com</a> · We respond within 14 days.' },
+    ru: { 'hero-badge': 'Удаление аккаунта',
+          'hero-title-html': 'Удалите аккаунт за <span class="accent">несколько секунд</span>.',
+          'hero-app': 'Приложение', 'hero-developer': 'Разработчик', 'hero-updated': 'Обновлено',
+          'summary': '<strong>Большая часть данных хранится только на вашем устройстве.</strong> Удаление приложения или выход из аккаунта мгновенно стирает локальный кэш, OAuth-токены и данные авторизации. Анонимную аналитику на стороне Google можно удалить по запросу — см. Способ 3 ниже.',
+          'footer-template': 'Нужна помощь? Напишите на <a href="mailto:fozilbekimomov@gmail.com">fozilbekimomov@gmail.com</a> · Отвечаем в течение 14 дней.' },
+    hi: { 'hero-badge': 'Account Deletion',
+          'hero-title-html': 'अपना account <span class="accent">कुछ ही seconds में</span> delete करें।',
+          'hero-app': 'App', 'hero-developer': 'Developer', 'hero-updated': 'Updated',
+          'summary': '<strong>आपका अधिकांश data केवल आपके device पर रहता है।</strong> App को delete करना या sign out करना local cache, OAuth tokens और authentication state को तुरंत मिटा देता है। Google की तरफ़ की anonymized analytics को request पर हटाया जा सकता है — नीचे तरीका 3 देखें।',
+          'footer-template': 'मदद चाहिए? <a href="mailto:fozilbekimomov@gmail.com">fozilbekimomov@gmail.com</a> पर email करें · हम 14 दिनों में जवाब देते हैं।' },
+    uz: { 'hero-badge': 'Akkountni o\'chirish',
+          'hero-title-html': 'Akkountingizni <span class="accent">bir necha soniyada</span> o\'chiring.',
+          'hero-app': 'Ilova', 'hero-developer': 'Dasturchi', 'hero-updated': 'Yangilangan',
+          'summary': '<strong>Ma\'lumotlaringizning ko\'p qismi faqat qurilmangizda saqlanadi.</strong> Ilovani o\'chirish yoki tizimdan chiqish lokal kesh, OAuth tokenlar va autentifikatsiya holatini darhol tozalaydi. Google tomonidagi anonim tahlilni so\'rov bo\'yicha o\'chirish mumkin — quyidagi 3-usulga qarang.',
+          'footer-template': 'Yordam kerakmi? <a href="mailto:fozilbekimomov@gmail.com">fozilbekimomov@gmail.com</a> ga email yuboring · 14 kun ichida javob beramiz.' }
+  };
+
+  function applyLocale(lang) {
+    document.documentElement.setAttribute('lang', lang);
+    document.querySelectorAll('.lang-section').forEach(s => {
+      s.classList.toggle('active', s.id === 'lang-' + lang);
+    });
+    document.querySelectorAll('.lang-tab').forEach(t => {
+      t.classList.toggle('active', t.dataset.lang === lang);
+      t.setAttribute('aria-selected', t.dataset.lang === lang ? 'true' : 'false');
+    });
+    const data = ui[lang] || ui.en;
+    for (const key in data) {
+      document.querySelectorAll('[data-tr="' + key + '"]').forEach(el => {
+        if (key.endsWith('-html') || key === 'summary' || key === 'footer-template') {
+          el.innerHTML = data[key];
+        } else {
+          el.textContent = data[key];
+        }
+      });
+    }
+    try { localStorage.setItem('account-deletion-lang', lang); } catch (e) {}
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }
+
+  document.querySelectorAll('.lang-tab').forEach(tab => {
+    tab.addEventListener('click', () => applyLocale(tab.dataset.lang));
+  });
+
+  // Initial language: URL ?lang= → localStorage → browser locale → en
+  (function () {
+    const supported = ['en', 'ru', 'hi', 'uz'];
+    const urlLang = (new URLSearchParams(location.search)).get('lang');
+    let saved = null;
+    try { saved = localStorage.getItem('account-deletion-lang'); } catch (e) {}
+    const browserLang = (navigator.language || 'en').slice(0, 2).toLowerCase();
+    const initial = (urlLang && supported.includes(urlLang)) ? urlLang
+                   : (saved && supported.includes(saved)) ? saved
+                   : supported.includes(browserLang) ? browserLang
+                   : 'en';
+    if (initial !== 'en') applyLocale(initial);
+  })();
+</script>
+</body>
+</html>
