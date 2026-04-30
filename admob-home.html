@@ -1,0 +1,532 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="AdMob Revenue Tracker — real-time AdMob revenue analytics for mobile publishers. Free, OAuth-based, no servers store your data.">
+<meta name="theme-color" content="#6750A4">
+<meta name="robots" content="index,follow">
+<title>AdMob Revenue Tracker — Real-time AdMob analytics for publishers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary: #6750A4;
+    --primary-dark: #4F3D8A;
+    --secondary: #00BFA5;
+    --tertiary: #FFB300;
+    --success: #22C55E;
+    --on-surface: #1A0E2E;
+    --on-surface-muted: #5B4F75;
+    --on-surface-faded: #8A7BA8;
+    --surface: #FFFFFF;
+    --surface-low: #F7F3FB;
+    --surface-lower: #FCFAFE;
+    --outline: #E5DEF0;
+    --outline-light: #EFE7F7;
+    --gradient: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    --gradient-warm: linear-gradient(135deg, #FFB300 0%, #FF6F00 100%);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    color: var(--on-surface);
+    background: var(--surface-lower);
+    line-height: 1.6;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  /* Background decorations */
+  body::before {
+    content: '';
+    position: fixed;
+    top: -200px; right: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(103,80,164,0.10) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: -1;
+  }
+  body::after {
+    content: '';
+    position: fixed;
+    bottom: -200px; left: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(0,191,165,0.10) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: -1;
+  }
+  /* Top bar */
+  .topbar {
+    position: sticky; top: 0; z-index: 50;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    background: rgba(255,255,255,0.85);
+    border-bottom: 1px solid var(--outline-light);
+  }
+  .topbar-inner {
+    max-width: 1100px; margin: 0 auto;
+    padding: 16px 24px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 16px; flex-wrap: wrap;
+  }
+  .brand {
+    display: flex; align-items: center; gap: 12px;
+    text-decoration: none;
+  }
+  .brand-icon {
+    width: 38px; height: 38px;
+    border-radius: 10px;
+    background: var(--gradient);
+    display: flex; align-items: center; justify-content: center;
+    color: white; font-weight: 800; font-size: 19px;
+    box-shadow: 0 4px 12px rgba(103,80,164,0.30);
+  }
+  .brand-name {
+    font-weight: 800; font-size: 17px; letter-spacing: -0.3px;
+    color: var(--on-surface);
+  }
+  .top-links { display: flex; gap: 24px; }
+  .top-links a {
+    color: var(--on-surface-muted);
+    text-decoration: none;
+    font-size: 14px; font-weight: 600;
+    transition: color 0.15s ease;
+  }
+  .top-links a:hover { color: var(--primary); }
+  /* Hero */
+  .hero {
+    max-width: 1100px; margin: 0 auto;
+    padding: 80px 24px 60px;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 56px;
+    align-items: center;
+  }
+  .hero-badge {
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: rgba(0,191,165,0.10);
+    border: 1px solid rgba(0,191,165,0.30);
+    color: #00897B;
+    font-size: 12px; font-weight: 700; letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+  .hero-title {
+    font-size: clamp(40px, 5.6vw, 64px);
+    font-weight: 900;
+    letter-spacing: -1.6px;
+    line-height: 1.02;
+    color: var(--on-surface);
+    margin: 18px 0 24px;
+  }
+  .hero-title .accent {
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hero-subtitle {
+    font-size: 19px;
+    color: var(--on-surface-muted);
+    line-height: 1.55;
+    max-width: 540px;
+    margin-bottom: 36px;
+  }
+  .hero-ctas {
+    display: flex; gap: 14px; flex-wrap: wrap;
+    margin-bottom: 28px;
+  }
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 14px 24px;
+    border-radius: 14px;
+    font-family: inherit;
+    font-size: 15px; font-weight: 700;
+    text-decoration: none;
+    border: none; cursor: pointer;
+    transition: all 0.15s ease;
+  }
+  .btn-primary {
+    background: var(--gradient);
+    color: white;
+    box-shadow: 0 8px 22px rgba(103,80,164,0.30);
+  }
+  .btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 12px 28px rgba(103,80,164,0.40);
+  }
+  .btn-secondary {
+    background: var(--surface);
+    color: var(--on-surface);
+    border: 1px solid var(--outline);
+  }
+  .btn-secondary:hover { border-color: var(--primary); color: var(--primary); }
+  .hero-trust {
+    display: flex; gap: 18px; flex-wrap: wrap;
+    color: var(--on-surface-faded);
+    font-size: 13px;
+  }
+  .hero-trust span { display: inline-flex; align-items: center; gap: 6px; }
+  .hero-trust .check { color: var(--success); font-weight: 700; }
+  /* Hero visual — phone mockup */
+  .hero-visual {
+    position: relative;
+    height: 480px;
+    display: flex; justify-content: center; align-items: center;
+  }
+  .phone {
+    width: 280px; height: 480px;
+    border-radius: 36px;
+    background: linear-gradient(180deg, #FFFFFF 0%, #F7F3FB 100%);
+    border: 8px solid #1A0E2E;
+    box-shadow: 0 30px 80px rgba(103,80,164,0.30), 0 12px 30px rgba(0,0,0,0.10);
+    overflow: hidden;
+    position: relative;
+  }
+  .phone-header {
+    background: var(--gradient);
+    padding: 20px 18px 28px;
+    color: white;
+  }
+  .phone-greet { font-size: 13px; opacity: 0.85; }
+  .phone-revenue { font-size: 36px; font-weight: 900; letter-spacing: -1px; margin-top: 6px; }
+  .phone-delta { font-size: 12px; font-weight: 700; margin-top: 2px;
+    display: inline-flex; align-items: center; gap: 4px;
+    background: rgba(255,255,255,0.20); padding: 3px 8px; border-radius: 999px;
+  }
+  .phone-card {
+    margin: 14px;
+    background: white;
+    border: 1px solid var(--outline-light);
+    border-radius: 16px;
+    padding: 14px;
+  }
+  .phone-card-row { display: flex; justify-content: space-between; margin: 8px 0; font-size: 12px; }
+  .phone-card-row .lbl { color: var(--on-surface-muted); }
+  .phone-card-row .val { font-weight: 700; color: var(--on-surface); }
+  .phone-spark {
+    margin: 0 14px 14px;
+    height: 70px;
+    background: linear-gradient(180deg, rgba(103,80,164,0.10) 0%, rgba(103,80,164,0) 100%);
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+  }
+  .phone-spark svg { position: absolute; bottom: 0; width: 100%; height: 100%; }
+  /* Section */
+  .section {
+    max-width: 1100px; margin: 0 auto;
+    padding: 60px 24px;
+  }
+  .section-title {
+    font-size: clamp(28px, 3.6vw, 40px);
+    font-weight: 800;
+    letter-spacing: -0.8px;
+    text-align: center;
+    margin-bottom: 12px;
+  }
+  .section-title .accent {
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .section-sub {
+    text-align: center;
+    color: var(--on-surface-muted);
+    font-size: 17px;
+    max-width: 600px;
+    margin: 0 auto 48px;
+  }
+  /* Feature grid */
+  .features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 22px;
+  }
+  .feature {
+    background: var(--surface);
+    border: 1px solid var(--outline-light);
+    border-radius: 20px;
+    padding: 28px;
+    transition: all 0.15s ease;
+  }
+  .feature:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(103,80,164,0.10);
+    border-color: rgba(103,80,164,0.25);
+  }
+  .feature-icon {
+    width: 48px; height: 48px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, rgba(103,80,164,0.10) 0%, rgba(0,191,165,0.10) 100%);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 24px;
+    margin-bottom: 18px;
+  }
+  .feature h3 {
+    font-size: 18px; font-weight: 800;
+    margin-bottom: 8px;
+    color: var(--on-surface);
+  }
+  .feature p {
+    color: var(--on-surface-muted);
+    font-size: 15px;
+    line-height: 1.55;
+  }
+  /* Privacy callout */
+  .privacy-callout {
+    max-width: 880px; margin: 60px auto;
+    padding: 0 24px;
+  }
+  .privacy-card {
+    background: linear-gradient(135deg, rgba(103,80,164,0.06) 0%, rgba(0,191,165,0.05) 100%);
+    border: 1px solid rgba(103,80,164,0.20);
+    border-radius: 28px;
+    padding: 40px 44px;
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 24px;
+    align-items: center;
+  }
+  .privacy-icon {
+    width: 80px; height: 80px;
+    border-radius: 22px;
+    background: var(--gradient);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 38px;
+    box-shadow: 0 12px 28px rgba(103,80,164,0.30);
+    color: white;
+  }
+  .privacy-card h2 { font-size: 22px; font-weight: 800; margin-bottom: 8px; }
+  .privacy-card p { color: var(--on-surface-muted); font-size: 15px; line-height: 1.55; }
+  /* CTA section */
+  .cta-section {
+    max-width: 880px; margin: 60px auto;
+    padding: 0 24px;
+    text-align: center;
+  }
+  .cta-card {
+    background: var(--gradient);
+    border-radius: 32px;
+    padding: 60px 40px;
+    color: white;
+    box-shadow: 0 20px 60px rgba(103,80,164,0.30);
+  }
+  .cta-card h2 {
+    font-size: clamp(28px, 3.6vw, 38px);
+    font-weight: 900;
+    letter-spacing: -0.6px;
+    margin-bottom: 14px;
+  }
+  .cta-card p { opacity: 0.92; margin-bottom: 26px; font-size: 17px; }
+  .cta-card .btn-light {
+    background: white; color: var(--primary);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.10);
+  }
+  /* Footer */
+  .footer {
+    border-top: 1px solid var(--outline-light);
+    padding: 50px 24px 60px;
+    background: var(--surface-low);
+    margin-top: 80px;
+  }
+  .footer-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+  .footer-brand p {
+    color: var(--on-surface-muted);
+    font-size: 14px;
+    margin-top: 12px;
+    max-width: 320px;
+  }
+  .footer-col h4 {
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--on-surface);
+    margin-bottom: 14px;
+  }
+  .footer-col a {
+    display: block;
+    color: var(--on-surface-muted);
+    text-decoration: none;
+    font-size: 14px;
+    padding: 4px 0;
+    transition: color 0.15s ease;
+  }
+  .footer-col a:hover { color: var(--primary); }
+  .footer-bottom {
+    max-width: 1100px; margin: 30px auto 0;
+    padding-top: 24px;
+    border-top: 1px solid var(--outline-light);
+    text-align: center;
+    color: var(--on-surface-faded);
+    font-size: 13px;
+  }
+  /* Mobile */
+  @media (max-width: 880px) {
+    .hero { grid-template-columns: 1fr; padding: 50px 20px 30px; gap: 32px; }
+    .hero-visual { height: 420px; }
+    .top-links { display: none; }
+    .privacy-card { grid-template-columns: 1fr; padding: 28px 24px; text-align: center; }
+    .privacy-icon { margin: 0 auto; }
+    .footer-inner { grid-template-columns: 1fr; gap: 30px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="https://fozilbekimomov.github.io/admob-home.html">
+      <span class="brand-icon">A</span>
+      <span class="brand-name">AdMob Revenue Tracker</span>
+    </a>
+    <nav class="top-links">
+      <a href="#features">Features</a>
+      <a href="#privacy">Privacy</a>
+      <a href="https://fozilbekimomov.github.io/privacy-admob.html">Privacy Policy</a>
+      <a href="https://fozilbekimomov.github.io/admob-terms.html">Terms</a>
+      <a href="mailto:fozilbekimomov@gmail.com">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div>
+    <span class="hero-badge">Free · No subscriptions · OAuth read-only</span>
+    <h1 class="hero-title">Your AdMob revenue, <span class="accent">in real time</span>.</h1>
+    <p class="hero-subtitle">A clean, fast mobile dashboard for AdMob publishers. See your revenue, eCPM, fill rate, and trends — fetched directly from Google AdMob via secure read-only OAuth. Your data stays on your device.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-primary" href="#features">Explore features →</a>
+      <a class="btn btn-secondary" href="https://fozilbekimomov.github.io/privacy-admob.html">Privacy &amp; security</a>
+    </div>
+    <div class="hero-trust">
+      <span><span class="check">✓</span> No server-side storage</span>
+      <span><span class="check">✓</span> AES-256 encrypted cache</span>
+      <span><span class="check">✓</span> Cancel access anytime</span>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="phone">
+      <div class="phone-header">
+        <div class="phone-greet">Today's revenue</div>
+        <div class="phone-revenue">$47.32</div>
+        <span class="phone-delta">▲ +8.5% vs yesterday</span>
+      </div>
+      <div class="phone-card">
+        <div class="phone-card-row"><span class="lbl">Impressions</span><span class="val">12,483</span></div>
+        <div class="phone-card-row"><span class="lbl">eCPM</span><span class="val">$3.79</span></div>
+        <div class="phone-card-row"><span class="lbl">Fill rate</span><span class="val">94%</span></div>
+        <div class="phone-card-row"><span class="lbl">CTR</span><span class="val">2.1%</span></div>
+      </div>
+      <div class="phone-spark">
+        <svg viewBox="0 0 250 70" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="g" x1="0" x2="0" y1="0" y2="1">
+              <stop offset="0%" stop-color="#6750A4" stop-opacity="0.45"/>
+              <stop offset="100%" stop-color="#6750A4" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <path d="M 0,52 L 14,46 L 28,50 L 42,38 L 56,44 L 70,30 L 84,38 L 98,28 L 112,34 L 126,22 L 140,28 L 154,18 L 168,24 L 182,14 L 196,20 L 210,10 L 224,16 L 238,8 L 250,12 L 250,70 L 0,70 Z" fill="url(#g)"/>
+          <path d="M 0,52 L 14,46 L 28,50 L 42,38 L 56,44 L 70,30 L 84,38 L 98,28 L 112,34 L 126,22 L 140,28 L 154,18 L 168,24 L 182,14 L 196,20 L 210,10 L 224,16 L 238,8 L 250,12" fill="none" stroke="#6750A4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="features">
+  <h2 class="section-title">Built for <span class="accent">AdMob publishers</span></h2>
+  <p class="section-sub">Everything you need to monitor your ad revenue at a glance — no spreadsheets, no logins to multiple consoles.</p>
+  <div class="features">
+    <div class="feature">
+      <div class="feature-icon">📊</div>
+      <h3>Real-time dashboard</h3>
+      <p>Today's earnings, impressions, eCPM, and fill rate — fetched directly from Google AdMob API.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">📈</div>
+      <h3>Trends &amp; forecasts</h3>
+      <p>Sparkline charts and revenue forecasts based on your historical data. See where you're heading.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">🚨</div>
+      <h3>Anomaly alerts</h3>
+      <p>Statistical z-score alerts when revenue or eCPM drops unexpectedly. Catch issues early.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">📱</div>
+      <h3>Multi-app overview</h3>
+      <p>All your AdMob apps in one place. Compare performance across iOS and Android.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">📤</div>
+      <h3>CSV &amp; PDF export</h3>
+      <p>Generate clean reports for accounting, partners, or your own records. Local, no cloud.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">🔔</div>
+      <h3>Home screen widget</h3>
+      <p>Glance at today's revenue from your home screen — Android Glance + iOS WidgetKit support.</p>
+    </div>
+  </div>
+</section>
+
+<div class="privacy-callout" id="privacy">
+  <div class="privacy-card">
+    <div class="privacy-icon">🔒</div>
+    <div>
+      <h2>Your AdMob data stays on your device</h2>
+      <p>We use Google's read-only <code>admob.readonly</code> OAuth scope. All revenue data is fetched directly from Google AdMob to your device and cached in an AES-256 encrypted local database. <strong>Nothing is stored on our servers.</strong> You can revoke access anytime from your Google Account.</p>
+    </div>
+  </div>
+</div>
+
+<section class="cta-section">
+  <div class="cta-card">
+    <h2>Free. Forever.</h2>
+    <p>No subscriptions. No paywalls. No surprises. Just clean AdMob analytics.</p>
+    <a class="btn btn-light" href="https://fozilbekimomov.github.io/privacy-admob.html">Read our privacy promise →</a>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a class="brand" href="https://fozilbekimomov.github.io/admob-home.html" style="text-decoration:none">
+        <span class="brand-icon">A</span>
+        <span class="brand-name">AdMob Revenue Tracker</span>
+      </a>
+      <p>A free, OAuth-based mobile dashboard for Google AdMob publishers. Built independently. Not affiliated with Google LLC.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <a href="https://fozilbekimomov.github.io/privacy-admob.html">Privacy Policy</a>
+      <a href="https://fozilbekimomov.github.io/admob-terms.html">Terms of Service</a>
+      <a href="https://fozilbekimomov.github.io/admob-account-deletion.html">Account Deletion</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <a href="mailto:fozilbekimomov@gmail.com">fozilbekimomov@gmail.com</a>
+      <a href="https://github.com/fozilbekimomov" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    AdMob is a trademark of Google LLC. This app is not affiliated with or endorsed by Google.<br>
+    &copy; 2026 Fozilbek Imomov · Bundle ID <code>com.admobanalysis.app</code>
+  </div>
+</footer>
+
+</body>
+</html>
