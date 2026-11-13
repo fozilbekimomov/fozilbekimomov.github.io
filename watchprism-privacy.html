@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<!--
+  Published at https://fozilbekimomov.github.io/watchprism-privacy.html as the
+  App Store privacy policy (App Store Connect Privacy Policy URL, and the in-app
+  link on iOS). Owner decision 2026-11-13: the Google Play page
+  movie_db_privacy.html stays as it is and is not replaced by this text.
+
+  Written for Watchprism 3.2.0 (iOS 1.0 and Android) with ads, Google UMP
+  consent and the iOS App Tracking Transparency prompt enabled, as built from
+  feature/ios-first-release-z8pmx9qeyj at f630d5a plus the privacy manifest
+  (874440d) and ios/consent-mode-z8pmx9qeyj (head efdecc8, not merged yet).
+  The rename to "Watchprism" (CFBundleDisplayName, android:label, app_title)
+  is merged (afb5d3d), so the Settings paths in Sections 13 and 14 are valid.
+  Sections 2, 5.2, 5.6, 8, 9, 10, 13, 16 and the short version describe the
+  Google Analytics consent mode of efdecc8 (lib/core/analytics/
+  analytics_ad_consent.dart, analytics_consent_sync.dart; ios/Runner/
+  Info.plist defaults). Publish this text only if the iOS build submitted
+  for review contains efdecc8. The Android sentences are limited to "versions after
+  3.2.0": Android 3.2.0 (28) on Google Play does not contain efdecc8.
+  No owner-confirmation markers are left in this file. Items still open behind
+  its wording are tracked in docs/ios-release/app-store-connect.md section 10:
+  Analytics retention and Google signals (item 2); data processing terms
+  (item 10); GDPR Art. 27 representative (item 11); Premium on iPhone always
+  denied (item 14); the Android version wording (item 16).
+  The Google Play title is described as current ("is listed as"). Update that
+  sentence here and in support.html on the day the Play listing is renamed.
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Privacy Policy - Watchprism</title>
+  <meta name="description" content="How the Watchprism app (formerly The Movie DB) for iPhone and Android handles your data." />
+
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      background: #f4f6f8;
+      margin: 0;
+      color: #222;
+      line-height: 1.7;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      background: #ffffff;
+      padding: 35px;
+      border-radius: 14px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    }
+
+    h1 {
+      font-size: 30px;
+      margin-bottom: 5px;
+    }
+
+    h2 {
+      margin-top: 30px;
+      color: #111;
+    }
+
+    h3 {
+      margin-top: 20px;
+    }
+
+    p {
+      margin: 10px 0;
+    }
+
+    ul, ol {
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 6px;
+    }
+
+    a {
+      color: #0066ff;
+      text-decoration: none;
+      overflow-wrap: anywhere;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .date {
+      font-size: 14px;
+      color: #777;
+      margin-bottom: 20px;
+    }
+
+    .box {
+      background: #f1f5ff;
+      padding: 15px;
+      border-radius: 10px;
+      margin-top: 15px;
+    }
+
+    .highlight {
+      font-weight: bold;
+      color: #000;
+    }
+
+    /* Additions for this version */
+    .table-wrap {
+      overflow-x: auto;
+      margin: 12px 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 15px;
+    }
+
+    th, td {
+      text-align: left;
+      vertical-align: top;
+      padding: 8px 10px;
+      border-bottom: 1px solid #e6e9ee;
+    }
+
+    th {
+      background: #f7f9fb;
+      font-weight: 600;
+    }
+
+    .toc {
+      columns: 2;
+      column-gap: 30px;
+      font-size: 15px;
+    }
+
+    .toc li {
+      break-inside: avoid;
+    }
+
+    .muted {
+      color: #666;
+      font-size: 14px;
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        margin: 0;
+        border-radius: 0;
+        padding: 22px 16px;
+      }
+      .toc {
+        columns: 1;
+      }
+      h1 {
+        font-size: 26px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Privacy Policy</h1>
+  <p class="date">Effective date: November 13, 2026 &middot; Last updated: November 13, 2026</p>
+
+  <p>
+    This Privacy Policy explains what information the <span class="highlight">Watchprism</span> mobile app
+    ("Watchprism" or "the app") collects, why, who receives it, and the choices you have. "We", "our" and "us"
+    mean its developer (see Section 1). It applies to Watchprism for iPhone (App Store) and for Android (Google Play).
+  </p>
+  <p>
+    Watchprism was previously called <strong>The Movie DB</strong>. On Google Play it is listed as
+    <strong>"Movie Database: Movies &amp; TV"</strong> (package <code>uz.fozilbekimomov.the_movie_db</code>)
+    until that listing is renamed Watchprism.
+    It is the same app, and this policy replaces the earlier version published at this address.
+  </p>
+  <p>
+    Watchprism is an independent app. It uses the TMDB API but is not endorsed or certified by TMDB
+    (The Movie Database).
+  </p>
+
+  <div class="box">
+    <p><strong>The short version</strong></p>
+    <ul>
+      <li>You can use Watchprism without an account. Signing in with a TMDB account is optional.</li>
+      <li>If you sign in, your TMDB username and password go directly to TMDB over an encrypted connection. We never receive or store your password.</li>
+      <li>Payments are handled by Apple or Google. We never see your card details.</li>
+      <li>We use Google Firebase for analytics, crash reports, push notifications and remote settings. We use Google AdMob for ads in the free version.</li>
+      <li>Our Google Analytics is linked to Google Ads, which we use to advertise Watchprism. Google may use analytics data, including purchases, to measure our ads and for ad personalisation. The app limits this with Google's consent mode: on iPhone these ad uses stay off unless you allow tracking when the app asks and, in the EEA, the UK and Switzerland, also consent, and they always stay off with Premium. On Android (versions after 3.2.0) they follow your choices in Google's consent message in those regions and are not limited elsewhere (see Section 5.2). Usage statistics are collected either way.</li>
+      <li>On iPhone, your advertising identifier (IDFA) is used only if you allow tracking when the app asks.</li>
+      <li>Your history, follows, reminders and similar data are stored on your device; we do not upload them to our server. The app uses some of them in requests to TMDB, and some related actions are logged to Google Analytics (see Sections 5 and 6).</li>
+      <li><strong>We do not sell your personal data for money.</strong> Some data is shared with Google for advertising, which US state laws may call "sharing" (see Section 16).</li>
+    </ul>
+  </div>
+
+  <h2>Contents</h2>
+  <ol class="toc">
+    <li><a href="#who">Who we are and how to contact us</a></li>
+    <li><a href="#glance">At a glance</a></li>
+    <li><a href="#provide">Information you provide</a></li>
+    <li><a href="#purchases">Purchases (Premium)</a></li>
+    <li><a href="#automatic">Information collected automatically</a></li>
+    <li><a href="#device">Data that stays on your device</a></li>
+    <li><a href="#not">What we do not collect</a></li>
+    <li><a href="#use">How we use information</a></li>
+    <li><a href="#legal">Legal bases (EEA, UK, Switzerland)</a></li>
+    <li><a href="#sharing">Who receives your data</a></li>
+    <li><a href="#transfers">International transfers</a></li>
+    <li><a href="#retention">How long data is kept</a></li>
+    <li><a href="#choices">Your choices: ads, tracking, notifications</a></li>
+    <li><a href="#delete">How to delete your data</a></li>
+    <li><a href="#rights">Your rights</a></li>
+    <li><a href="#california">Notice for US state residents</a></li>
+    <li><a href="#children">Children</a></li>
+    <li><a href="#security">Security</a></li>
+    <li><a href="#changes">Changes to this policy</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ol>
+
+  <!-- ===================================================== 1 -->
+  <h2 id="who">1. Who we are and how to contact us</h2>
+  <p>
+    Watchprism is developed and published by <strong>Fozilbek Imomov</strong>, an individual developer based in
+    <strong>Uzbekistan</strong>. He is responsible for the personal data described in this policy (the "controller"
+    under the GDPR) and is shown as the developer on the app's App Store and Google Play pages.
+  </p>
+  <p>
+    For any privacy question or request, email
+    <a href="mailto:fozilbekimomov@gmail.com"><strong>fozilbekimomov@gmail.com</strong></a>.
+    We do not have a separate data protection officer.
+  </p>
+
+  <!-- ===================================================== 2 -->
+  <h2 id="glance">2. At a glance</h2>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Data</th><th>Who receives it</th><th>Why</th><th>Optional?</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>TMDB username and password</td>
+          <td>TMDB only (sent directly, not to us)</td>
+          <td>To sign you in to your TMDB account</td>
+          <td>Yes. Only if you choose to sign in</td>
+        </tr>
+        <tr>
+          <td>Favourites, watchlist, ratings, custom lists</td>
+          <td>TMDB (stored in your TMDB account)</td>
+          <td>The account features you use</td>
+          <td>Yes. Only when signed in</td>
+        </tr>
+        <tr>
+          <td>Search text, titles you browse (linked to your TMDB account when you are signed in), language, watch region</td>
+          <td>TMDB</td>
+          <td>To show movies, shows and where to watch them</td>
+          <td>Needed to use the app</td>
+        </tr>
+        <tr>
+          <td>Purchase status (which Premium plan you own)</td>
+          <td>Apple or Google process the payment; the app checks the result on your device</td>
+          <td>To unlock Premium</td>
+          <td>Only if you buy Premium</td>
+        </tr>
+        <tr>
+          <td>App usage events (including in-app purchases), device info, approximate location (from IP), app instance ID</td>
+          <td>Google (Firebase Analytics, linked to Google Ads)</td>
+          <td>To understand and improve the app and to measure our own ads; Google may also use it for ads, within the limits in <a href="#automatic">5.2</a> (on iPhone only if you allow tracking)</td>
+          <td>Automatic (see <a href="#choices">Section 13</a>)</td>
+        </tr>
+        <tr>
+          <td>Crash reports and device info</td>
+          <td>Google (Firebase Crashlytics)</td>
+          <td>To find and fix crashes</td>
+          <td>Automatic</td>
+        </tr>
+        <tr>
+          <td>Push token</td>
+          <td>Google (Firebase Cloud Messaging) and Apple's push service on iPhone</td>
+          <td>To be able to deliver notifications</td>
+          <td>Automatic. Created when the app starts, whether or not you allow notifications</td>
+        </tr>
+        <tr>
+          <td>Notification topics</td>
+          <td>Google (Firebase Cloud Messaging)</td>
+          <td>To send the notifications you allow</td>
+          <td>Yes. Only if you allow notifications</td>
+        </tr>
+        <tr>
+          <td>Advertising identifier (IDFA on iPhone, Android advertising ID), ad interactions, approximate location</td>
+          <td>Google AdMob (and, on Android, Meta Audience Network through AdMob)</td>
+          <td>To show ads in the free version</td>
+          <td>Premium removes ads. On iPhone, the IDFA is used only if you allow tracking</td>
+        </tr>
+        <tr>
+          <td>A random install ID, the IDFV on iPhone (the Android OS build ID on Android), app version, platform</td>
+          <td>Our own server (hosted on Railway; stored in Google Cloud Firestore in the United States)</td>
+          <td>To count installs, updates and reinstalls</td>
+          <td>Automatic</td>
+        </tr>
+        <tr>
+          <td>History, follows, reminders, settings, stats</td>
+          <td>Stored on your device; we do not upload it. Some items are used in requests to TMDB (see <a href="#provide">3.3</a> and <a href="#device">6</a>), and some actions are logged to Google Analytics (see <a href="#automatic">5.2</a>)</td>
+          <td>App features</td>
+          <td>You can clear most of it in the app, or all of it by deleting the app</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ===================================================== 3 -->
+  <h2 id="provide">3. Information you provide</h2>
+
+  <h3>3.1 Signing in with TMDB (optional)</h3>
+  <p>
+    Watchprism does not have its own user accounts. You can skip sign-in ("Skip for now") and still browse,
+    search, see where to watch, follow shows, set reminders and buy Premium.
+  </p>
+  <p>
+    If you choose to sign in, you type your <strong>TMDB username and password</strong> into the app. The app
+    sends them over HTTPS <strong>directly to TMDB</strong> (The Movie Database, operated by Xperi Inc.) to create a
+    TMDB session. The password is <strong>not stored</strong> on your device and is never sent to us.
+  </p>
+  <p>
+    After sign-in, the app keeps the following in its private storage on your device: the TMDB request token,
+    the TMDB session ID and your TMDB account ID. It also loads your TMDB profile (for example your username and
+    avatar) from TMDB to show it in the app. Of that profile, only the account ID is saved.
+  </p>
+  <p>
+    The app does not create TMDB accounts. On Android, the "Register on TMDB" link on the sign-in screen opens
+    TMDB's website in your browser; the iPhone app has no such link. Your use of TMDB is governed by
+    <a href="https://www.themoviedb.org/privacy-policy" target="_blank" rel="noopener">TMDB's privacy policy</a>.
+  </p>
+
+  <h3>3.2 What you save to your TMDB account</h3>
+  <p>When you are signed in, these actions are sent to TMDB and stored <strong>in your TMDB account</strong>, on TMDB's servers:</p>
+  <ul>
+    <li>adding or removing favourites and watchlist items;</li>
+    <li>rating movies and TV shows, or removing a rating;</li>
+    <li>creating, editing or deleting custom lists (name, description, items).</li>
+  </ul>
+  <p>
+    According to TMDB, your watchlist, favourites and rated lists are private by default, and you can choose
+    to make them public on TMDB's website
+    (<a href="https://www.themoviedb.org/faq/account" target="_blank" rel="noopener">TMDB account FAQ</a>).
+  </p>
+  <p>
+    <strong>Custom lists are different.</strong> TMDB's developer documentation names private lists as a feature of
+    its newer (version 4) list interface. Watchprism creates lists through TMDB's version 3 list interface, which has
+    no privacy setting
+    (<a href="https://developer.themoviedb.org/reference/v3-or-v4-lists" target="_blank" rel="noopener">TMDB: v3 or v4 lists</a>).
+    Treat a list you create in the app as <strong>public</strong>: other people may be able to see its name,
+    description and titles on themoviedb.org, and the app's "Share" button shares a link to it. Do not put personal
+    information in a list's name or description. You can delete a list in the app or on themoviedb.org.
+  </p>
+
+  <h3>3.3 Searches and browsing</h3>
+  <p>
+    To show results, the app sends what you type in Search to TMDB, together with the app's TMDB API key,
+    your app language and, for streaming availability, a country code (your "watch region"). The watch region is
+    the country you pick in "My services", or else the country of your device's region setting, or else a country
+    based on your app language. TMDB also receives your IP address, as with any internet request.
+    The app keeps your last 10 searches on your device; Google Analytics only receives the
+    <em>length</em> of a search, not its text.
+  </p>
+  <p>
+    If you are signed in, opening a title also asks TMDB, using your TMDB session, whether that title is in your
+    favourites, watchlist or ratings, so TMDB can associate the titles you open with your TMDB account. For You
+    also loads your TMDB ratings and watchlist to choose recommendations.
+  </p>
+  <p>
+    To provide some features, the app also sends TMDB the IDs of items stored on your device: the shows you follow
+    (to refresh episode data), recently viewed movies and the genres you picked during onboarding (to build For You),
+    and your selected streaming services (for the "Only on my services" filter). See <a href="#device">Section 6</a>.
+  </p>
+
+  <h3>3.4 When you email us</h3>
+  <p>
+    If you contact us from the app or by email, we receive your email address and whatever you write. This includes
+    a report you start with "Report to us" in a TMDB review's menu: your mail app opens a message to us that already
+    names the review, the title it belongs to and a link to the review. We use your message only to answer you and,
+    for a review report, to act on it.
+  </p>
+
+  <!-- ===================================================== 4 -->
+  <h2 id="purchases">4. Purchases (Premium)</h2>
+  <p>
+    Watchprism Premium is sold as a monthly or annual auto-renewing subscription or as a one-time lifetime
+    purchase. Purchases are processed entirely by <strong>Apple (App Store)</strong> on iPhone or
+    <strong>Google Play</strong> on Android. We never receive your name, card number, billing address or
+    Apple ID / Google account details.
+  </p>
+  <p>What the app receives and does:</p>
+  <ul>
+    <li>From the store, the app learns which Premium product you own and the status of a purchase
+      (purchased, pending approval such as Ask to Buy, cancelled, failed, restored, refunded or revoked).</li>
+    <li>On iPhone the app reads your App Store transactions through Apple's StoreKit 2 on your device. It asks the
+      App Store for a full re-sync, which may ask you to sign in to your Apple Account, only when you tap
+      <strong>Restore Purchase</strong>.</li>
+    <li>The app stores on your device whether Premium is active and which plan you own.</li>
+    <li>Receipts and transactions are <strong>not</strong> sent to our server or any other server we run. We do not
+      have a purchase backend.</li>
+    <li>Google Analytics receives Premium funnel events (for example: paywall opened, purchase button tapped, free
+      trial started (with the plan), purchase completed, cancelled, pending or failed with the store's error message,
+      restore completed, "Manage subscription" tapped (with your plan)). It also receives a
+      "premium: yes/no" property. Separately, Google Analytics automatically records in-app purchase events from
+      the App Store and Google Play, which include the product, its price and currency.</li>
+    <li>If you allow notifications, your device joins a "premium users" or "free users" notification topic so that
+      announcements can be aimed at either group.</li>
+  </ul>
+  <p>
+    Billing, renewals, cancellations and refunds are governed by Apple's or Google's terms. See
+    <a href="#choices">Section 13</a> and our <a href="https://fozilbekimomov.github.io/watchprism-support.html">support page</a>
+    for how to manage or cancel a subscription.
+  </p>
+
+  <!-- ===================================================== 5 -->
+  <h2 id="automatic">5. Information collected automatically</h2>
+  <p>
+    The app includes software development kits (SDKs) from Google and others. They collect some data
+    automatically when you use the app. We do not attach your name, email or TMDB account to the data that these
+    analytics, crash and notification tools collect, and we do not set a user ID in them.
+  </p>
+
+  <h3>5.1 Device identifiers</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Identifier</th><th>Platform</th><th>Collected by</th><th>When</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Advertising identifier (IDFA)</td>
+          <td>iPhone</td>
+          <td>Google Mobile Ads (AdMob) and Google Analytics for Firebase</td>
+          <td><strong>Only if you tap "Allow" on Apple's tracking prompt.</strong> If you do not, ads are requested as non-personalised and the IDFA is not available to the app.</td>
+        </tr>
+        <tr>
+          <td>Android advertising ID</td>
+          <td>Android</td>
+          <td>Google Mobile Ads (AdMob), Meta Audience Network (through AdMob), Google Analytics for Firebase</td>
+          <td>Unless you delete it or opt out of ads personalisation in Android settings. Google says Analytics then gets a string of zeros instead.</td>
+        </tr>
+        <tr>
+          <td>Identifier for Vendor (IDFV)</td>
+          <td>iPhone</td>
+          <td>Google Analytics for Firebase; our install counter</td>
+          <td>Automatically</td>
+        </tr>
+        <tr>
+          <td>Firebase installation ID, Crashlytics installation ID, Analytics app instance ID, push (FCM) token</td>
+          <td>Both</td>
+          <td>Google Firebase</td>
+          <td>Automatically. These are random IDs created for this installation of the app.</td>
+        </tr>
+        <tr>
+          <td>Install ID (a random ID the app creates)</td>
+          <td>Both</td>
+          <td>Our install counter</td>
+          <td>Automatically</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>5.2 Analytics (Google Analytics for Firebase)</h3>
+  <p>Google Analytics for Firebase collects, on both platforms:</p>
+  <ul>
+    <li>an app instance ID, app version, device model, operating system and language;</li>
+    <li>approximate location, which Google derives from a masked IP address (the app does not use GPS or location services);</li>
+    <li>automatic events such as first open, sessions, screen views, OS updates, notification opens, and App Store / Google Play in-app purchases;</li>
+    <li>events we define, for example:
+      <ul>
+        <li>which movie, show or season you open, trailers you open, episodes you mark as watched, and changes to favourites, watchlist, follows and reminders. These events contain the TMDB ID of the title, not your name;</li>
+        <li>that you searched, with the length of the search text and the tab, but <strong>not the search text</strong>;</li>
+        <li>Premium paywall and purchase steps (see <a href="#purchases">Section 4</a>);</li>
+        <li>ad events: impressions, clicks and the estimated ad revenue;</li>
+        <li>settings changes, such as the theme you choose, notification preferences, how many streaming services you pick and the country you pick for them;</li>
+        <li>that the app asked you, as a guest, to sign in with TMDB, and for which action (for example adding a favourite);</li>
+      </ul>
+    </li>
+    <li>user properties: Premium yes/no, the theme you use, and whether you are signed in to TMDB or using the app as a guest.</li>
+  </ul>
+  <p>
+    On iPhone, Analytics also collects the IDFV, and the IDFA only if you allowed tracking. On Android, it
+    collects the Android advertising ID as described in 5.1.
+  </p>
+  <p>
+    <strong>Google Ads.</strong> Our Google Analytics property is linked to Google Ads, which we use to advertise
+    Watchprism, and to AdMob. Google can therefore use analytics data from the app, such as app events and in-app
+    purchases, to measure our ad campaigns and for ad personalisation. On iPhone this data includes your IDFA only
+    if you allowed tracking; on Android it includes the advertising ID unless you deleted it or opted out (see 5.1).
+    The app controls these uses with Google's <em>consent mode</em>, which tells Google Analytics whether it may use
+    advertising storage and identifiers, send your data to Google for advertising, and use it for personalised ads
+    (together, the "ad uses" of analytics data):
+  </p>
+  <ul>
+    <li><strong>iPhone:</strong> the ad uses are off from the first start. The app turns them on only if you tap
+      "Allow" on Apple's tracking prompt and, in the EEA, the UK and Switzerland, you also consent in Google's consent
+      message (see 5.6); there each one follows the purposes you accepted. If you later turn tracking off in iOS
+      Settings or withdraw consent in the app, the app turns them off again: when you close the consent message, or
+      the next time the app starts or is opened again. <strong>With Premium they stay off</strong>, because Premium
+      users are not shown the tracking prompt or the consent message.</li>
+    <li><strong>Android</strong> (app versions after 3.2.0): in the EEA, the UK and Switzerland, the ad uses are off
+      while Google's consent message is waiting for your answer, and then follow the purposes you accepted, including
+      later changes in Privacy options. Premium does not change this. Elsewhere, and until the consent message has
+      reported your status on your device (for example just after you install the app), the app does not limit
+      them. Android version 3.2.0 and earlier does not limit them anywhere.</li>
+  </ul>
+  <p>
+    Your answer to the tracking prompt and your consent choices do not stop Google Analytics from receiving app
+    events, including purchases, to measure how the app is used (see <a href="#legal">Section 9</a>).
+    Google may also combine data used for ads with information from Google accounts whose owners have turned on ad
+    personalisation, where Google's settings allow it. You can limit how Google uses your data for ads in
+    <a href="https://myadcenter.google.com/" target="_blank" rel="noopener">My Ad Center</a>. Google describes this in
+    <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">Google's explanation of how it uses data from apps that use its services</a>.
+  </p>
+
+  <h3>5.3 Crash reports (Firebase Crashlytics)</h3>
+  <p>
+    If the app crashes or hits certain errors (for example a failed start-up step or an image that does not
+    load), Crashlytics sends a report with the stack trace, the state of the app at the time, the device model,
+    the operating system version and the Crashlytics and Firebase installation IDs. We do not add your name,
+    account or custom logs to crash reports.
+  </p>
+
+  <h3>5.4 Push notifications (Firebase Cloud Messaging)</h3>
+  <p>
+    When the app starts, Firebase Cloud Messaging creates a push token for this installation (on iPhone it is linked
+    to Apple's push (APNs) token), whether or not you allow notifications. The token stays with Firebase; the app does
+    not send it to our server. The app asks for permission before showing notifications. Notifications are shown only
+    if you allow them, and only then does your device join these notification topics:
+  </p>
+  <ul>
+    <li>"all users";</li>
+    <li>"new trailers" and "trending", which you can turn off in <strong>Settings &rarr; Notifications</strong>;</li>
+    <li>one topic for your app language;</li>
+    <li>"premium users" or "free users".</li>
+  </ul>
+  <p>
+    Topics reveal only that group membership, not who you are. To subscribe the device to topics, Firebase receives
+    the device model, language, time zone, operating system, app identifier and app version.
+    Notifications about the shows you follow and about release reminders are scheduled locally on your
+    device. The list of shows you follow and your reminders are stored on your device. To keep new-episode alerts up
+    to date, the app asks TMDB for the details of each followed show (by its TMDB ID). Following or unfollowing a show
+    and setting a reminder are also logged to Google Analytics with the title's TMDB ID (see 5.2).
+  </p>
+
+  <h3>5.5 Remote settings (Firebase Remote Config and Installations)</h3>
+  <p>
+    On start, the app downloads settings from Firebase Remote Config. These include feature switches, update
+    requirements, the "What's new" text and the "Our apps" list. To choose settings, Firebase receives the
+    country code, language, time zone, OS version and app identifiers. It also uses the Firebase installation ID.
+    The app sends no other data of its own to Remote Config.
+  </p>
+
+  <h3>5.6 Advertising (Google AdMob)</h3>
+  <p>
+    The free version shows ads from <strong>Google AdMob</strong>: an ad when the app opens, banners, full-screen
+    ads between some screens and optional rewarded ads (for example, "watch a short ad to go ad-free for 20
+    minutes"). Android also shows native ads in some lists. <strong>Premium users see no ads.</strong> For them the
+    app does not show the tracking prompt or the consent form and does not start the ads SDK.
+  </p>
+  <p>
+    According to Google, the Google Mobile Ads SDK may collect:
+  </p>
+  <ul>
+    <li>crash logs and performance data;</li>
+    <li>a device ID (the advertising identifier or other app- or developer-scoped identifiers);</li>
+    <li>advertising data (ads you have seen);</li>
+    <li>coarse location, including location derived from your IP address;</li>
+    <li>product interactions such as taps.</li>
+  </ul>
+  <p>
+    Google uses this data under
+    <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">its own policies</a>.
+  </p>
+  <p><strong>Your ad choices</strong> on a device without Premium:</p>
+  <ol>
+    <li><strong>iPhone:</strong> the app shows Apple's App Tracking Transparency prompt once, the first time it is in
+      the foreground after you install it, normally before the first ad loads. If the app starts in the background
+      (for example from a notification), ads may load before the prompt, which then appears when you next open the
+      app. Until you answer, and if you do not allow tracking, the app requests <strong>non-personalised ads</strong>
+      and the IDFA is not available. If you allow tracking, AdMob may use your IDFA to personalise and measure ads.
+      Your answer also decides whether the ad uses of analytics data are on (see 5.2).</li>
+    <li><strong>Where the law requires consent</strong> (for example in the EEA and the UK), Google's consent message
+      (Google User Messaging Platform, UMP) asks for your choices about ads. In some US states, Google's message
+      may instead let you opt out of the use of your data for targeted advertising. You can change your choices
+      later in <strong>Settings &rarr; About &rarr; Privacy options</strong>. This item appears when it applies to you.
+      In the EEA, the UK and Switzerland, these choices also apply to the ad uses of analytics data (see 5.2; on
+      Android from the versions after 3.2.0).</li>
+  </ol>
+  <p>
+    <strong>Android only:</strong> some ads may be served by <strong>Meta Audience Network</strong> through AdMob
+    mediation. According to Meta, its SDK may process device identifiers, device attributes (such as device model,
+    screen size, operating system and SDK versions) and ad performance information (such as impressions, clicks,
+    placement and viewability). The iPhone app does not include Meta's SDK.
+  </p>
+  <p>
+    The iPhone app lists Apple SKAdNetwork IDs for ad networks. These let ad networks measure app installs
+    that come from ads without using the IDFA.
+  </p>
+
+  <h3>5.7 Our install counter</h3>
+  <p>
+    Every time the app starts, it sends one small message over HTTPS to our own server. The server runs on
+    Railway (a hosting provider) and stores its records in Google Cloud Firestore, in a United States
+    multi-region location. The message contains:
+  </p>
+  <ul>
+    <li>a random install ID that the app creates and keeps on your device;</li>
+    <li>on iPhone, the Identifier for Vendor (IDFV); on Android, the Android OS build ID (a build label shared by all
+      devices running the same Android build, not a device identifier);</li>
+    <li>the app version, the platform (iOS or Android) and the time.</li>
+  </ul>
+  <p>
+    The server keeps one record per installation: the install ID, the IDFV (iPhone) or OS build ID (Android), the
+    platform, when the installation was first seen, the first and the latest app version, and when the latest version
+    was first opened. It also keeps one record of the first open of each app version on that installation, with the
+    same identifiers, the version, the time and whether it was a new install, an update or a reinstall. Later starts
+    of the same version are not stored. To tell a reinstall from a new install, the server compares the IDFV (iPhone)
+    or OS build ID (Android) with its earlier records.
+  </p>
+  <p>
+    The server does <strong>not</strong> store your IP address in these records and does not work out your location
+    from it. Like any web server, it sees your IP address when the message arrives, and its request log writes that
+    IP address to the hosting provider's (Railway's) request logs, which are kept under Railway's log retention.
+    We use this data only to count installs, updates and reinstalls of the app. It is not linked to your name, email or TMDB account,
+    and it is not used for ads.
+  </p>
+
+  <h3>5.8 Content the app loads</h3>
+  <ul>
+    <li><strong>TMDB</strong> (api.themoviedb.org, image.tmdb.org): movie, show and people data, images, reviews and
+      where-to-watch information (provided to TMDB by JustWatch).</li>
+    <li><strong>YouTube</strong> (img.youtube.com): trailer thumbnails. Trailers open in the YouTube app or your browser,
+      where Google's terms apply.</li>
+    <li><strong>Google Fonts</strong> (fonts.gstatic.com): the app downloads some of its fonts the first time it needs them
+      and then keeps them on your device.</li>
+    <li><strong>Review avatars</strong>: TMDB review avatars may load from the address TMDB provides, such as Gravatar.</li>
+    <li><strong>Review images</strong>: images that authors embed in TMDB reviews are <strong>not</strong> loaded. The app
+      shows a link instead; it opens in your browser only if you tap it. Links in reviews open only if they are web
+      links.</li>
+    <li><strong>"Our apps"</strong>: icons for our other apps load from addresses set in our remote settings.</li>
+  </ul>
+  <p>
+    Each of these services receives your IP address and standard request information (such as the app's user
+    agent), as any internet connection does.
+  </p>
+  <p>
+    "Where to watch" links, trailers, review links, the TMDB sign-up page (Android only) and store pages open in
+    your browser or in another app. From then on, that service's own privacy policy applies. Where we use affiliate links for a streaming
+    provider (Amazon or Apple TV), the link carries our partner tag so the partner can credit us. The app sends
+    those partners no other data.
+  </p>
+
+  <!-- ===================================================== 6 -->
+  <h2 id="device">6. Data that stays on your device</h2>
+  <p>
+    The following is stored in the app's private storage on your phone. <strong>The app does not upload these lists
+    to us.</strong> Some of it is used to request content from TMDB, as explained below.
+  </p>
+  <ul>
+    <li>Recently viewed titles (the last 20), "continue watching" progress and your last 10 searches.</li>
+    <li>A viewing log for Stats and Year in Movies: titles opened, episodes marked watched and your ratings, with dates.
+      It covers the current year and the two previous years.</li>
+    <li>Day streaks and badges.</li>
+    <li>Shows you follow (with their next-episode data), release reminders and the notifications scheduled for them.</li>
+    <li>Favourite people. These are local, not part of your TMDB favourites.</li>
+    <li>The authors of TMDB reviews you chose to hide ("Hide reviews from &hellip;").</li>
+    <li>Your streaming services ("My services"), saved filter sets, genres picked during onboarding, and your app
+      settings: language, theme, country and notification preferences.</li>
+    <li>Premium status and plan, ad-free and unlock timers, and the install ID used by our install counter.</li>
+    <li>Your TMDB session (see <a href="#provide">3.1</a>).</li>
+    <li>Cached images and fonts. Share cards are created on your device and are only shared when you choose to.</li>
+  </ul>
+  <p>
+    To provide features, the app sends TMDB the IDs of some of these items: followed shows (to refresh episode data),
+    recently viewed movies and onboarding genres (to build For You), and your selected streaming services (for the
+    "Only on my services" filter). Some related <em>events</em> are sent to Google Analytics as described in 5.2
+    (for example, that you opened a title, followed a show or set a reminder, with the title's TMDB ID). Like other
+    app data, this data may be included in your device backups (iCloud or Google) if you have backups turned on.
+  </p>
+
+  <!-- ===================================================== 7 -->
+  <h2 id="not">7. What we do not collect</h2>
+  <ul>
+    <li>Precise (GPS) location. The app does not use location services.</li>
+    <li>Contacts, camera or microphone.</li>
+    <li>Your photos. The app only asks for permission to <em>add</em> images to Photos, and only when you choose
+      to save a share card.</li>
+    <li>Your payment card or bank details.</li>
+    <li>Your TMDB password. It is sent to TMDB and not stored.</li>
+    <li>Your name or email address, unless you email us.</li>
+  </ul>
+
+  <!-- ===================================================== 8 -->
+  <h2 id="use">8. How we use information</h2>
+  <ul>
+    <li>To provide the app: search, browsing, where-to-watch, TMDB account features, follows, reminders and Premium.</li>
+    <li>To send notifications you allowed.</li>
+    <li>To show ads in the free version and measure them. Ads are personalised unless you do not allow tracking on
+      iPhone (or have not answered the prompt yet), do not give consent where it is required, opt out through Google's
+      message where your US state's law provides it, or delete your advertising ID or opt out of ads personalisation
+      in your Android settings (see <a href="#choices">Section 13</a>).</li>
+    <li>To measure and improve our own Google Ads campaigns for Watchprism, within the limits in 5.2 (on iPhone only
+      if you allow tracking, and never with Premium).</li>
+    <li>To understand how the app is used and improve it (analytics).</li>
+    <li>To detect, diagnose and fix crashes and errors.</li>
+    <li>To count installs, updates and reinstalls of the app.</li>
+    <li>To change settings and features remotely without an app update.</li>
+    <li>To answer your messages.</li>
+    <li>To comply with the law and protect the app and its users.</li>
+  </ul>
+
+  <!-- ===================================================== 9 -->
+  <h2 id="legal">9. Legal bases (EEA, UK, Switzerland)</h2>
+  <p>If you are in the European Economic Area, the UK or Switzerland, we rely on:</p>
+  <ul>
+    <li><strong>Performance of a contract</strong>: providing the features you ask for, including TMDB sign-in and account
+      features, and providing Premium.</li>
+    <li><strong>Consent</strong>:
+      <ul>
+        <li>personalised AdMob advertising and the ad-related storage that needs consent, collected through Google's consent message and, on iPhone, Apple's tracking prompt;</li>
+        <li>the ad uses of analytics data through our Google Ads link (see 5.2), collected through the same consent message and, on iPhone, the tracking prompt;</li>
+        <li>showing push notifications and joining notification topics, through your device's permission.</li>
+      </ul>
+      You can withdraw consent at any time (see <a href="#choices">Section 13</a>).
+      Withdrawing does not affect processing that happened before.</li>
+    <li><strong>Legitimate interests</strong>: keeping the app stable (crash reports), understanding and improving it
+      (analytics measurement), counting installs, creating a push token so that notifications can
+      be delivered, funding the free version with ads where consent is not required, and preventing abuse. You can object; see
+      <a href="#rights">Section 15</a>.</li>
+    <li><strong>Legal obligation</strong>: where the law requires us to keep or disclose information.</li>
+  </ul>
+  <p class="muted">
+    Collection of analytics and crash data does not depend on your answer to the tracking prompt or your choices in
+    the ads consent form: Google Analytics keeps measuring how the app is used, on the basis of our legitimate
+    interests. Those choices control the IDFA on iPhone and the ad uses of analytics data (see 5.2). On Android,
+    in version 3.2.0 and earlier, and until Google's consent message has reported your status on your device (for example just after you install the
+    app, or if you have Premium and were never shown the message), the app does not limit those ad uses.
+    The app currently has no in-app switch to turn analytics off; you can object by email.
+  </p>
+
+  <!-- ===================================================== 10 -->
+  <h2 id="sharing">10. Who receives your data</h2>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Recipient</th><th>What for</th><th>Their policy</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Google (Firebase Analytics, Crashlytics, Cloud Messaging, Remote Config, Installations)</td>
+          <td>Analytics, crash reports, notifications, remote settings</td>
+          <td><a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Firebase privacy</a>,
+              <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a></td>
+        </tr>
+        <tr>
+          <td>Google (Google Ads, linked to our Google Analytics)</td>
+          <td>Measuring our ad campaigns for Watchprism; Google may also use the data for ad personalisation. On iPhone only if you allowed tracking (and consented where required), never with Premium; on Android as described in 5.2</td>
+          <td><a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener">How Google uses data for ads</a>,
+              <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a></td>
+        </tr>
+        <tr>
+          <td>Google (AdMob, User Messaging Platform)</td>
+          <td>Ads and ads consent</td>
+          <td><a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener">How Google uses data for ads</a>,
+              <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">Data from apps that use Google services</a></td>
+        </tr>
+        <tr>
+          <td>Meta Platforms (Audience Network), Android only</td>
+          <td>Some ads, through AdMob mediation</td>
+          <td><a href="https://www.facebook.com/privacy/policy/" target="_blank" rel="noopener">Meta Privacy Policy</a></td>
+        </tr>
+        <tr>
+          <td>TMDB (The Movie Database, Xperi Inc.)</td>
+          <td>Movie data, search, sign-in and your TMDB account data</td>
+          <td><a href="https://www.themoviedb.org/privacy-policy" target="_blank" rel="noopener">TMDB Privacy Policy</a></td>
+        </tr>
+        <tr>
+          <td>Apple</td>
+          <td>App Store purchases, push notification delivery (APNs), the tracking prompt</td>
+          <td><a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Apple Privacy Policy</a></td>
+        </tr>
+        <tr>
+          <td>Google Play</td>
+          <td>Google Play purchases and in-app updates on Android</td>
+          <td><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a></td>
+        </tr>
+        <tr>
+          <td>Railway (hosting provider) and Google Cloud (Firestore database, United States)</td>
+          <td>Host our install-counter server and store its records</td>
+          <td>Process data on our behalf</td>
+        </tr>
+        <tr>
+          <td>Google Fonts, YouTube</td>
+          <td>Fonts and trailer thumbnails</td>
+          <td><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a></td>
+        </tr>
+        <tr>
+          <td>Gravatar and other sites that host review avatars or our app icons</td>
+          <td>Images shown in the app (see <a href="#automatic">5.8</a>)</td>
+          <td>Their own policies</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p>
+    For Firebase, Google says it generally acts as a data processor (service provider) for the app developer.
+    For advertising, Google and Meta also use data under their own policies.
+  </p>
+  <p>
+    We share data only with the service providers and partners listed above, and only for the purposes described in
+    this policy. We work only with providers that are bound by their own terms and privacy policies and that give your
+    data the same or equal protection as this policy and the App Store and Google Play rules require.
+  </p>
+  <p>
+    We may also disclose information if required by law, to protect rights and safety, or as part of a transfer of
+    the app to a new owner, in which case this policy would continue to apply to your data.
+  </p>
+  <div class="box">
+    <p><strong>We do not sell your personal data for money.</strong> For sharing with advertising partners, see
+      <a href="#california">Section 16</a>.</p>
+  </div>
+
+  <!-- ===================================================== 11 -->
+  <h2 id="transfers">11. International transfers</h2>
+  <p>
+    Google, TMDB (Xperi Inc.), Apple and our hosting provider may process data in the United States and other
+    countries. Our install-counter records are stored in the United States (see 5.7). These countries may have different data protection laws than yours. Google states that Google LLC
+    complies with the EU-U.S. Data Privacy Framework, the UK Extension to it and the Swiss-U.S. Data Privacy
+    Framework. Google also says that some Firebase services, including Crashlytics and Cloud Messaging, may process
+    data in any Google data center. The other providers describe their transfer safeguards in their own policies.
+  </p>
+
+  <!-- ===================================================== 12 -->
+  <h2 id="retention">12. How long data is kept</h2>
+  <ul>
+    <li><strong>On your device:</strong> until you clear it in the app (where the app offers that, see
+      <a href="#delete">Section 14</a>), sign out (TMDB session only) or delete the app.</li>
+    <li><strong>Crashlytics:</strong> Google keeps crash stack traces and the related identifiers for 90 days and then
+      starts removing them.</li>
+    <li><strong>Firebase installation IDs</strong> (used by Cloud Messaging and Remote Config): Google keeps them until they are
+      deleted. Google may delete an installation's ID after 270 days without activity. Once an ID is deleted, Google
+      says the data tied to it is removed from live and backup systems within 180 days.</li>
+    <li><strong>Google Analytics:</strong> user-level and event-level data is kept for up to 14 months; this does not
+      affect aggregated reports.</li>
+    <li><strong>Ads:</strong> Google and Meta keep data under their own retention policies.</li>
+    <li><strong>TMDB account data:</strong> kept by TMDB until you delete it or your TMDB account.</li>
+    <li><strong>Our install counter:</strong> the records described in 5.7 are not deleted automatically. They are kept
+      while the install counter runs, and we delete them on request (see <a href="#delete">Section 14</a>). IP addresses in
+      the hosting provider's request logs are kept under Railway's log retention.</li>
+    <li><strong>Emails to us:</strong> as long as needed to answer you and keep a record of the conversation.</li>
+  </ul>
+
+  <!-- ===================================================== 13 -->
+  <h2 id="choices">13. Your choices: ads, tracking, notifications</h2>
+  <h3>Ads and tracking</h3>
+  <ul>
+    <li><strong>Premium</strong> removes all ads, and with them the tracking prompt, the consent form and the ads SDK.
+      It does not turn off Google Analytics measurement. On iPhone it also keeps the ad uses of analytics data off
+      (5.2); on Android it does not change them.</li>
+    <li><strong>iPhone:</strong> to change your answer to the tracking prompt, go to Settings &rarr; Privacy &amp; Security
+      &rarr; Tracking and turn tracking off for Watchprism. Ads will then be non-personalised, and the app turns off
+      the ad uses of analytics data (5.2) the next time it starts or is opened again
+      (<a href="https://support.apple.com/en-us/102420" target="_blank" rel="noopener">Apple help</a>).</li>
+    <li><strong>Android:</strong> open your phone's Settings &rarr; Privacy &rarr; Ads and choose
+      <strong>Delete advertising ID</strong> or <strong>Reset advertising ID</strong>
+      (<a href="https://support.google.com/googleplay/android-developer/answer/6048248" target="_blank" rel="noopener">Google help</a>;
+      more ad privacy settings:
+      <a href="https://support.google.com/android/answer/13720755" target="_blank" rel="noopener">Google help</a>).</li>
+    <li><strong>EEA / UK and other regions where it applies:</strong> go to Settings &rarr; About &rarr; <strong>Privacy options</strong>
+      in the app to review or change your ads consent. In the EEA, the UK and Switzerland your choices also apply to
+      the ad uses of analytics data (5.2): on iPhone together with your answer to the tracking prompt, on Android in
+      app versions after 3.2.0.</li>
+    <li><strong>US states:</strong> if the privacy law of your US state lets you opt out of targeted advertising or of the
+      sale or sharing of personal data, you can opt out in the app under Settings &rarr; About &rarr; <strong>Privacy options</strong>
+      where that item is shown, and with the iPhone and Android settings above. These cover ads in the app; the
+      Privacy options choice does not change the ad uses of analytics data. For those, see
+      <a href="#california">Section 16</a>.</li>
+    <li>You can control Google's use of your data for ads in
+      <a href="https://myadcenter.google.com/" target="_blank" rel="noopener">My Ad Center</a>.</li>
+  </ul>
+  <h3>Notifications</h3>
+  <ul>
+    <li>Turn off "New trailers" or "Trending picks" in the app under <strong>Settings &rarr; Notifications</strong>.</li>
+    <li>Turn off all notifications in your phone's settings: iPhone: Settings &rarr; Notifications &rarr; Watchprism;
+      Android: App info &rarr; Notifications. (Older Android versions of the app are called "The Movie DB" on your
+      phone.)</li>
+    <li>Unfollow a show or cancel a reminder to stop its local alerts.</li>
+  </ul>
+  <h3>Analytics and crash reports</h3>
+  <p>
+    There is no in-app switch for analytics measurement or crash reports today. The ad uses of analytics data follow
+    your tracking answer and consent choices as described in 5.2; where the app does not limit them, you can object
+    by emailing us (see <a href="#rights">Section 15</a>). Deleting the app stops all collection by the app.
+  </p>
+
+  <!-- ===================================================== 14 -->
+  <h2 id="delete">14. How to delete your data</h2>
+  <ol>
+    <li><strong>Data on your device:</strong>
+      <ul>
+        <li>Clear search history in Search.</li>
+        <li>Clear recently viewed and the viewing log behind your stats in My Stats ("Clear History").</li>
+        <li>Clear My services, delete saved filters, unfollow shows, cancel reminders and remove favourite people one by one.</li>
+        <li>Show hidden review authors again in Settings &rarr; Hidden review authors ("Show all"), which clears that list.</li>
+        <li>Day-streak and badge history, "continue watching" progress and the genres you picked during onboarding have
+          no separate clear option; deleting the app removes them.</li>
+        <li>Deleting the app removes all of it from the phone (except copies already in your device backups).</li>
+      </ul>
+    </li>
+    <li><strong>Sign out:</strong> Settings &rarr; <strong>Log out</strong>. This asks TMDB to end your session and removes
+      the session from your device. Your other on-device data stays until you clear it or delete the app.</li>
+    <li><strong>Your TMDB data and account:</strong>
+      <ul>
+        <li>Remove favourites, watchlist items, ratings and lists in the app or on themoviedb.org.</li>
+        <li>To delete the TMDB account itself, sign in on
+          <a href="https://www.themoviedb.org/" target="_blank" rel="noopener">themoviedb.org</a>, open your account
+          settings and click "Delete Account"
+          (<a href="https://www.themoviedb.org/faq/account" target="_blank" rel="noopener">TMDB account FAQ</a>).</li>
+        <li>TMDB's privacy policy also lists <a href="mailto:privacyrequest@xperi.com">privacyrequest@xperi.com</a> for privacy requests.</li>
+        <li>We cannot delete TMDB accounts for you.</li>
+      </ul>
+    </li>
+    <li><strong>Analytics, crash and install-counter data:</strong> email us at
+      <a href="mailto:fozilbekimomov@gmail.com">fozilbekimomov@gmail.com</a>.
+      <ul>
+        <li>Because this data is not tied to your name, email or TMDB account, and the app does not show its
+          identifiers, we usually cannot single out your installation. We will tell you what, if anything, we can
+          locate and delete.</li>
+        <li>Deleting the app stops collection, and reinstalling it creates new Firebase installation and analytics
+          identifiers and a new install ID.</li>
+      </ul>
+    </li>
+    <li><strong>Purchases:</strong> Apple and Google keep purchase records under their own policies. Cancelling a subscription
+      does not delete them.</li>
+  </ol>
+
+  <!-- ===================================================== 15 -->
+  <h2 id="rights">15. Your rights</h2>
+  <p>
+    Depending on where you live (for example under the GDPR, the UK GDPR or US state laws), you may have the right
+    to:
+  </p>
+  <ul>
+    <li>access your data and receive a copy (portability);</li>
+    <li>correct or delete it;</li>
+    <li>restrict or object to its processing, including processing based on legitimate interests;</li>
+    <li>withdraw consent at any time.</li>
+  </ul>
+  <p>
+    To use these rights, email <a href="mailto:fozilbekimomov@gmail.com">fozilbekimomov@gmail.com</a>. We may need
+    information from you to find the data, as explained in <a href="#delete">Section 14</a>. We will not
+    discriminate against you for using your rights. You can also complain to your local data protection authority.
+  </p>
+
+  <!-- ===================================================== 16 -->
+  <h2 id="california">16. Notice for US state residents</h2>
+  <p>
+    This section is for residents of California and of other US states with similar privacy laws. In the last 12
+    months the app has collected these categories of personal information:
+  </p>
+  <ul>
+    <li><strong>Identifiers:</strong> device and advertising identifiers, Firebase IDs, IP address.</li>
+    <li><strong>Commercial information:</strong> which Premium product you own and purchase events (including the in-app
+      purchase events that Google Analytics records).</li>
+    <li><strong>Internet or other electronic network activity:</strong> in-app usage and ad interactions, and searches sent to TMDB.</li>
+    <li><strong>Approximate geolocation:</strong> derived from IP address.</li>
+    <li><strong>Account login:</strong> your TMDB username and password, sent directly to TMDB only to sign you in.</li>
+  </ul>
+  <p>The sources, purposes and recipients are described in Sections 3 to 10.</p>
+  <ul>
+    <li><strong>Selling:</strong> we do not sell personal information for money.</li>
+    <li><strong>Sharing and targeted advertising:</strong> California law calls it "sharing" when personal information is
+      disclosed for cross-context behavioral advertising, and other state laws speak of "targeted advertising". When the
+      free version shows <em>personalised</em> ads, Google (and, on Android, Meta through AdMob) receives your
+      advertising identifier and ad-interaction data to target ads. Because our Google Analytics is linked to Google Ads,
+      app events, including purchases, may also be used by Google to measure and target ads: on iPhone only if you
+      allowed tracking and do not have Premium; on Android without a limit set by the app outside the EEA, the UK and
+      Switzerland (see 5.2). This may count as "sharing" or targeted advertising. To opt out:
+      <ul>
+        <li>Ads in the app: Settings &rarr; About &rarr; <strong>Privacy options</strong>, where that item is shown.
+          This covers ads in the app, not the ad uses of analytics data.</li>
+        <li>On iPhone: do not allow tracking, or turn it off in Settings &rarr; Privacy &amp; Security &rarr; Tracking.
+          This keeps your IDFA from AdMob and from Google Analytics, and the app turns off the ad uses of analytics
+          data (see 5.2) the next time it starts or is opened again.</li>
+        <li>On Android: delete your advertising ID in your phone's Settings &rarr; Privacy &rarr; Ads. This removes the
+          ID; it does not stop app events from being used as described below.</li>
+        <li>Premium removes ads, and with them AdMob's use of your data. On iPhone it also keeps the ad uses of
+          analytics data off. On Android it does <strong>not</strong>: app events, including your Premium purchase,
+          may still reach our linked Google Ads account.</li>
+        <li>App events sent through Google Analytics on Android: the app has no in-app switch for their ad uses
+          today, and the choices above do not stop them (see 5.2). You can limit Google's use of your data for ads in
+          <a href="https://myadcenter.google.com/" target="_blank" rel="noopener">My Ad Center</a>, and you can email
+          us to opt out. Because we usually cannot single out your installation (see <a href="#delete">Section 14</a>),
+          we will tell you what we can do. Deleting the app stops all collection.</li>
+      </ul></li>
+    <li><strong>Sensitive personal information:</strong> we use your TMDB login only to sign you in, not to infer anything about you.</li>
+    <li><strong>Children:</strong> we do not knowingly sell or share the personal information of consumers under 16.</li>
+    <li><strong>Your rights:</strong> you may ask to know, correct or delete your personal information by emailing us.</li>
+    <li><strong>Retention:</strong> see <a href="#retention">Section 12</a>.</li>
+  </ul>
+
+  <!-- ===================================================== 17 -->
+  <h2 id="children">17. Children</h2>
+  <p>
+    Watchprism is not directed to children under 13 (or the minimum age required by law in your country). We do not
+    knowingly collect personal data from children. If you believe a child has given us personal data, email us and
+    we will delete it.
+  </p>
+
+  <!-- ===================================================== 18 -->
+  <h2 id="security">18. Security</h2>
+  <p>
+    The app connects to TMDB, Firebase and our server over encrypted HTTPS connections. Your TMDB password is never
+    stored. Data on your device is kept in the app's private storage. No method of transmission or storage is
+    completely secure, but we work to protect your information and limit what we collect.
+  </p>
+
+  <!-- ===================================================== 19 -->
+  <h2 id="changes">19. Changes to this policy</h2>
+  <p>
+    We may update this policy when the app or the law changes. We will post the new version on this page and
+    change the "Last updated" date. If a change is significant, we may also let you know in the app or in the store
+    release notes.
+  </p>
+
+  <!-- ===================================================== 20 -->
+  <h2 id="contact">20. Contact</h2>
+  <p>Fozilbek Imomov, individual developer, Uzbekistan</p>
+  <p>Email: <a href="mailto:fozilbekimomov@gmail.com"><strong>fozilbekimomov@gmail.com</strong></a></p>
+  <p>Support: <a href="https://fozilbekimomov.github.io/watchprism-support.html">Watchprism support page</a></p>
+
+  <p class="muted">
+    This product uses the TMDB API but is not endorsed or certified by TMDB.
+  </p>
+  <p class="muted">&copy; 2026 Fozilbek Imomov</p>
+</div>
+
+</body>
+</html>

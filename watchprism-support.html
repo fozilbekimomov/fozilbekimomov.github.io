@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<!--
+  Watchprism support page, for the App Store "Support URL" (and Google Play).
+  Public URL: https://fozilbekimomov.github.io/watchprism-support.html
+  (the privacy policy links to this address; enter it as the App Store
+  Connect Support URL and publish this page before submission).
+  Written for Watchprism 3.2.0 (iOS 1.0 and Android), as built from
+  feature/ios-first-release-z8pmx9qeyj at f630d5a. The rename to "Watchprism"
+  is merged there (afb5d3d), so the Settings paths below are valid.
+  Settings -> About -> Contact support (shown to every user) comes from
+  ios/consent-mode-z8pmx9qeyj (b57bc3d, head efdecc8, not merged yet;
+  lib/presentation/settings/settings_screen.dart:342-356 there). Android
+  3.2.0 (28) on Google Play has the Premium-only "Support & contact"
+  tile (main, settings_screen.dart:156-165) and v3.1.4 and older have none,
+  hence the note under "Contact us".
+  No owner-confirmation markers are left in this file. Contact details follow
+  the owner's decision of 2026-11-13: Fozilbek Imomov, individual developer,
+  Uzbekistan, email only (no postal address or phone).
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Support - Watchprism</title>
+  <meta name="description" content="Help for the Watchprism app on iPhone and Android: sign-in, Premium, restoring purchases, subscriptions, notifications and contact." />
+
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      background: #f4f6f8;
+      margin: 0;
+      color: #222;
+      line-height: 1.7;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      background: #ffffff;
+      padding: 35px;
+      border-radius: 14px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    }
+
+    h1 {
+      font-size: 30px;
+      margin-bottom: 5px;
+    }
+
+    h2 {
+      margin-top: 30px;
+      color: #111;
+    }
+
+    h3 {
+      margin-top: 20px;
+    }
+
+    p {
+      margin: 10px 0;
+    }
+
+    ul, ol {
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 6px;
+    }
+
+    a {
+      color: #0066ff;
+      text-decoration: none;
+      overflow-wrap: anywhere;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .date {
+      font-size: 14px;
+      color: #777;
+      margin-bottom: 20px;
+    }
+
+    .box {
+      background: #f1f5ff;
+      padding: 15px;
+      border-radius: 10px;
+      margin-top: 15px;
+    }
+
+    .highlight {
+      font-weight: bold;
+      color: #000;
+    }
+
+    /* Additions for this page */
+    .toc {
+      font-size: 15px;
+    }
+
+    .muted {
+      color: #666;
+      font-size: 14px;
+    }
+
+    .platform {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: #334;
+      background: #eef1f5;
+      border-radius: 6px;
+      padding: 0 6px;
+      margin-right: 4px;
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        margin: 0;
+        border-radius: 0;
+        padding: 22px 16px;
+      }
+      h1 {
+        font-size: 26px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Watchprism Support</h1>
+  <p class="date">For Watchprism on iPhone and Android &middot; Updated November 13, 2026</p>
+
+  <p>
+    <span class="highlight">Watchprism</span> helps you find movies and TV shows and where to stream them. You can
+    browse and search movies, shows and people, watch trailers, check where a title is streaming, follow shows to get
+    new-episode alerts, set release reminders and see your viewing stats. Movie and TV data comes from TMDB, and
+    streaming availability comes from JustWatch through TMDB.
+  </p>
+  <p>
+    Watchprism was previously called <strong>The Movie DB</strong>. On Google Play it is listed as
+    <strong>"Movie Database: Movies &amp; TV"</strong> until that listing is renamed Watchprism. It is the same app.
+  </p>
+
+  <div class="box">
+    <p><strong>Contact us</strong></p>
+    <p>
+      Email <a href="mailto:fozilbekimomov@gmail.com"><strong>fozilbekimomov@gmail.com</strong></a>.
+      To help us answer faster, please include:
+    </p>
+    <ul>
+      <li>your phone model and iOS or Android version;</li>
+      <li>the app version, which you can find under Settings &rarr; About &rarr; App version;</li>
+      <li>what happened.</li>
+    </ul>
+    <p>
+      In the app, anyone can tap Settings &rarr; About &rarr; <strong>Contact support</strong>, which opens an email
+      to us in your mail app, and report a TMDB review with <strong>Report to us</strong> in the review's menu (see
+      <a href="#reviews">Reviews from TMDB users</a>). In Android version 3.2.0 only Premium members have this item,
+      as Settings &rarr; <strong>Support &amp; contact</strong>; older versions do not have it.
+    </p>
+    <p>Please never send us your TMDB password or payment details.</p>
+    <p class="muted">Watchprism is developed by Fozilbek Imomov, an individual developer in Uzbekistan.</p>
+  </div>
+
+  <h2>Contents</h2>
+  <ul class="toc">
+    <li><a href="#account">Account and TMDB sign-in</a></li>
+    <li><a href="#premium">Premium and purchases</a></li>
+    <li><a href="#restore">Restore purchases</a></li>
+    <li><a href="#cancel">Manage or cancel a subscription</a></li>
+    <li><a href="#ads">Ads</a></li>
+    <li><a href="#notifications">Notifications</a></li>
+    <li><a href="#reviews">Reviews from TMDB users</a></li>
+    <li><a href="#privacy">Your data and privacy</a></li>
+    <li><a href="#other">Other questions</a></li>
+  </ul>
+
+  <!-- ===================================================== -->
+  <h2 id="account">Account and TMDB sign-in</h2>
+
+  <h3>Do I need an account?</h3>
+  <p>
+    No. Tap <strong>Skip for now</strong> on the sign-in screen and you can browse, search, see where to watch,
+    follow shows, set reminders and buy Premium. Signing in with a free <strong>TMDB</strong> (The Movie Database)
+    account is optional. You need it for:
+  </p>
+  <ul>
+    <li>favourites, watchlist and ratings;</li>
+    <li>custom lists;</li>
+    <li>Taste DNA, which is built from your TMDB ratings.</li>
+  </ul>
+  <p>
+    Watchprism has no accounts of its own. If you try to add a favourite, add to your watchlist, rate a title or use
+    lists without signing in, the app explains that these are saved to your TMDB account and offers
+    <strong>Sign in with TMDB</strong>.
+  </p>
+
+  <h3>How do I sign in with TMDB?</h3>
+  <ol>
+    <li>If you don't have a TMDB account, create one in your browser at
+      <a href="https://www.themoviedb.org/signup" target="_blank" rel="noopener">themoviedb.org/signup</a>.
+      <span class="platform">Android</span> You can also tap "Register on TMDB" on the app's sign-in screen.</li>
+    <li>In the app, open the <strong>Profile</strong> tab (the person icon) &rarr; Settings, and tap <strong>Sign In</strong>.</li>
+    <li>On the "Sign in with your TMDB account" screen, enter your <strong>TMDB username</strong> and
+      <strong>TMDB password</strong>, then tap <strong>Sign In</strong>.</li>
+  </ol>
+  <p class="muted">
+    Your username and password are sent directly to TMDB over an encrypted connection to start a session. Watchprism
+    does not store your password, and we never receive it.
+  </p>
+
+  <h3>I can't sign in</h3>
+  <ul>
+    <li>Use your TMDB <em>username</em> and password, exactly as on themoviedb.org.</li>
+    <li>If you forgot your password, reset it on <a href="https://www.themoviedb.org/" target="_blank" rel="noopener">themoviedb.org</a>.</li>
+    <li>If TMDB ends your session, the app asks you to sign in again.</li>
+    <li>Still stuck? Email us with the error message you see.</li>
+  </ul>
+
+  <h3>How do I sign out?</h3>
+  <p>
+    Open <strong>Settings</strong> and tap <strong>Log out</strong>. This ends your TMDB session. Your favourites,
+    watchlist, ratings and lists stay safe in your TMDB account.
+  </p>
+
+  <h3>How do I delete my account?</h3>
+  <p>
+    Watchprism does not create accounts, so there is no Watchprism account to delete. Your TMDB account belongs to
+    TMDB, and only TMDB can delete it:
+  </p>
+  <ol>
+    <li>Sign in on <a href="https://www.themoviedb.org/" target="_blank" rel="noopener">themoviedb.org</a> in a browser.</li>
+    <li>Open your account settings.</li>
+    <li>Click <strong>Delete Account</strong>
+      (<a href="https://www.themoviedb.org/faq/account" target="_blank" rel="noopener">TMDB account FAQ</a>).</li>
+  </ol>
+  <p>
+    Deleting your TMDB account also deletes the favourites, watchlist, ratings and lists stored in it. We cannot
+    delete TMDB accounts for you. To remove the TMDB session from your phone, use Settings &rarr; <strong>Log out</strong>.
+    For data that the app itself keeps, see <a href="#privacy">Your data and privacy</a>.
+  </p>
+
+  <!-- ===================================================== -->
+  <h2 id="premium">Premium and purchases</h2>
+
+  <h3>What does Premium include?</h3>
+  <ul>
+    <li>No ads</li>
+    <li>Premium themes</li>
+    <li>Taste DNA: your taste profile</li>
+    <li>For You: personalised picks</li>
+    <li>What to Watch: swipe to decide</li>
+    <li>Release Calendar</li>
+    <li>Year in Movies recap</li>
+    <li>Precision Discover: advanced filters without the daily limit</li>
+    <li>Unlimited show follows with new-episode alerts (3 shows are free)</li>
+    <li>Saved filters</li>
+    <li>The "Only on my services" filter</li>
+    <li>Premium member status</li>
+    <li>Home screen widgets (Android only)</li>
+  </ul>
+  <p>
+    Premium does not include watching movies. To find where a title streams, open it and see
+    <strong>Where to Watch</strong>.
+  </p>
+
+  <h3>Which plans are there?</h3>
+  <ul>
+    <li><strong>Monthly</strong> and <strong>Annual</strong>: auto-renewing subscriptions.</li>
+    <li><strong>Lifetime</strong>: a one-time purchase. Nothing renews.</li>
+  </ul>
+  <p>
+    The price in your currency is shown on the Premium screen before you buy. If a plan comes with a free trial and you
+    are eligible, the Premium screen says so and shows the date you will be charged unless you cancel before then.
+    Payments are handled by the App Store (iPhone) or Google Play (Android).
+  </p>
+
+  <h3>My purchase says "Purchase pending approval"</h3>
+  <p>
+    This happens when a purchase needs approval, for example through Apple's Ask to Buy, or when a payment is still
+    processing. You can close the Premium screen. Premium turns on by itself once the purchase is approved.
+  </p>
+
+  <h3>Does Premium carry over between iPhone and Android?</h3>
+  <p>
+    No. A purchase made in the App Store works on devices signed in to the same Apple Account. A purchase made in
+    Google Play works on Android devices signed in to the same Google account. Premium is not linked to your
+    TMDB account.
+  </p>
+
+  <!-- ===================================================== -->
+  <h2 id="restore">Restore purchases</h2>
+  <p>
+    The app checks your Premium status with the store each time you open it, so Premium usually comes back on its own
+    after you reinstall or switch phones. If it doesn't:
+  </p>
+
+  <h3><span class="platform">iPhone</span> Restore on iOS</h3>
+  <ol>
+    <li>Make sure you are signed in to the App Store with the Apple Account that bought Premium.</li>
+    <li>Open the <strong>Profile</strong> tab &rarr; <strong>Go Premium</strong>, or go to Settings &rarr;
+      Subscription &rarr; <strong>Go Premium</strong>.</li>
+    <li>Tap <strong>Restore Purchase</strong>, below the purchase terms. iOS may ask you to sign in to your Apple Account.</li>
+  </ol>
+
+  <h3><span class="platform">Android</span> Restore on Android</h3>
+  <ol>
+    <li>Make sure the Play Store is using the Google account that bought Premium.</li>
+    <li>Open the <strong>Profile</strong> tab &rarr; <strong>Go Premium</strong>, or go to Settings &rarr;
+      Subscription &rarr; <strong>Go Premium</strong>.</li>
+    <li>Tap <strong>Restore Purchase</strong>.</li>
+  </ol>
+  <p class="muted">
+    If you see "No purchases found to restore", check that you are using the account that made the purchase. If you
+    see "Couldn't check your purchases", check your internet connection and try again.
+  </p>
+
+  <!-- ===================================================== -->
+  <h2 id="cancel">Manage or cancel a subscription</h2>
+  <p>
+    Subscriptions are billed and managed by Apple or Google, and only you can cancel them. Deleting the app does
+    <strong>not</strong> cancel a subscription. The Lifetime plan is a one-time purchase and has nothing to cancel.
+  </p>
+
+  <h3><span class="platform">iPhone</span> Cancel on iOS</h3>
+  <ul>
+    <li>In the app: Settings &rarr; <strong>Manage subscription</strong>. This opens your App Store subscriptions.</li>
+    <li>Or, on your iPhone: open the Settings app &rarr; your name &rarr; Subscriptions &rarr; Watchprism &rarr; Cancel Subscription.</li>
+    <li>Direct link: <a href="https://apps.apple.com/account/subscriptions" target="_blank" rel="noopener">apps.apple.com/account/subscriptions</a></li>
+    <li>Apple help: <a href="https://support.apple.com/en-us/118428" target="_blank" rel="noopener">Cancel a subscription from Apple</a></li>
+  </ul>
+
+  <h3><span class="platform">Android</span> Cancel on Android</h3>
+  <ul>
+    <li>In the app: Settings &rarr; <strong>Manage subscription</strong>. This opens Google Play, where you can change or cancel your plan.</li>
+    <li>Or, in Google Play: Payments &amp; subscriptions &rarr; Subscriptions.</li>
+    <li>Direct link: <a href="https://play.google.com/store/account/subscriptions" target="_blank" rel="noopener">play.google.com/store/account/subscriptions</a></li>
+    <li>Google help: <a href="https://support.google.com/googleplay/answer/7018481" target="_blank" rel="noopener">Cancel, pause, or change a subscription on Google Play</a></li>
+  </ul>
+
+  <h3>Refunds</h3>
+  <ul>
+    <li><span class="platform">iPhone</span> Apple handles refunds for App Store purchases. Request one at
+      <a href="https://reportaproblem.apple.com/" target="_blank" rel="noopener">reportaproblem.apple.com</a>
+      (<a href="https://support.apple.com/en-us/118223" target="_blank" rel="noopener">Apple help</a>).</li>
+    <li><span class="platform">Android</span> See
+      <a href="https://support.google.com/googleplay/answer/2479637" target="_blank" rel="noopener">Google Play refund policies</a>,
+      or email us with your order number.</li>
+  </ul>
+
+  <!-- ===================================================== -->
+  <h2 id="ads">Ads</h2>
+
+  <h3>Why do I see ads? How do I remove them?</h3>
+  <p>
+    Ads keep the free version free. <strong>Premium removes all ads.</strong> In the free version, you can also watch
+    a short rewarded ad to use the app ad-free for 20 minutes.
+  </p>
+
+  <h3>Can I stop personalised ads?</h3>
+  <ul>
+    <li><span class="platform">iPhone</span> When the app asks to track your activity, tap "Ask App Not to Track". To
+      change your answer later, go to Settings &rarr; Privacy &amp; Security &rarr; Tracking and turn tracking off for
+      Watchprism. Ads will then not be personalised.</li>
+    <li><span class="platform">Android</span> Open your phone's Settings &rarr; Privacy &rarr; Ads and choose
+      <strong>Delete advertising ID</strong> or <strong>Reset advertising ID</strong>
+      (<a href="https://support.google.com/googleplay/android-developer/answer/6048248" target="_blank" rel="noopener">Google help</a>;
+      more ad privacy settings:
+      <a href="https://support.google.com/android/answer/13720755" target="_blank" rel="noopener">Google help</a>).</li>
+    <li>In the EEA, the UK, some US states and other places where it applies: in the app, go to Settings &rarr; About &rarr;
+      <strong>Privacy options</strong> to change your ad choices. This item appears when it applies to you.</li>
+  </ul>
+
+  <!-- ===================================================== -->
+  <h2 id="notifications">Notifications</h2>
+
+  <h3>How do I turn notifications on or off?</h3>
+  <ul>
+    <li>In the app, go to Settings &rarr; <strong>Notifications</strong>. Here you can turn <strong>New trailers</strong>
+      and <strong>Trending picks</strong> on or off, and send yourself a <strong>test notification</strong>.</li>
+    <li><span class="platform">iPhone</span> Settings app &rarr; Notifications &rarr; Watchprism.</li>
+    <li><span class="platform">Android</span> App info &rarr; Notifications. Older Android versions of the app are
+      called "The Movie DB" on your phone.</li>
+  </ul>
+
+  <h3>Alerts for shows I follow and release reminders</h3>
+  <p>
+    Tap <strong>Follow</strong> on a TV show to get new-episode alerts, or set a reminder on an upcoming movie. These
+    alerts are scheduled on your phone, so notifications must be allowed for Watchprism. You can manage them in
+    Profile &rarr; Following and Profile &rarr; Reminders. Free users can follow up to 3 shows.
+  </p>
+
+  <h3>I'm not getting notifications</h3>
+  <ol>
+    <li>Check that notifications are allowed for Watchprism in your phone's settings.</li>
+    <li>In the app, go to Settings &rarr; Notifications &rarr; <strong>Send test notification</strong>.</li>
+    <li>If the test doesn't arrive, email us with your phone model and OS version.</li>
+  </ol>
+
+  <!-- ===================================================== -->
+  <h2 id="reviews">Reviews from TMDB users</h2>
+  <p>
+    Reviews on a title's <strong>Read All Reviews</strong> page are written by TMDB users and come from TMDB. We do not
+    edit them. Images embedded in review text are never loaded in the app; they show as links you can open in your
+    browser. The reviewer's profile picture, if TMDB has one, is shown next to the review.
+  </p>
+  <h3>How do I report a review or stop seeing an author?</h3>
+  <ul>
+    <li>Tap the <strong>&middot;&middot;&middot;</strong> button on the review. Choose <strong>Report to us</strong> to email
+      us about it (the email already names the review), or <strong>Open on themoviedb.org</strong> to see it on TMDB.</li>
+    <li>Choose <strong>Hide reviews from &hellip;</strong> (it shows the author's name) to stop seeing that person's reviews on your phone.</li>
+    <li>To see hidden authors again: Settings &rarr; <strong>Hidden review authors</strong> &rarr; <strong>Show all</strong>.</li>
+  </ul>
+  <p>Reports reach the developer directly by email.</p>
+
+  <!-- ===================================================== -->
+  <h2 id="privacy">Your data and privacy</h2>
+  <p>
+    Read the full <a href="https://fozilbekimomov.github.io/watchprism-privacy.html">Privacy Policy</a>. In short:
+  </p>
+  <ul>
+    <li><strong>Data on your phone</strong> includes history, stats, follows, reminders, My services, saved filters
+      and settings. We do not upload these lists to our server. To provide features, the app sends TMDB the IDs of
+      some of them (shows you follow, recently viewed movies, onboarding genres and your selected services), and
+      some actions, such as following a show or setting a reminder, are logged to Google Analytics with the title's
+      TMDB ID. You can clear most of it in the app (Search history, Recently viewed, My Stats &rarr; Clear History,
+      My services, saved filters, unfollow, cancel reminders, Settings &rarr; Hidden review authors). Day-streak history,
+      "continue watching" progress and onboarding genres have no separate clear option; deleting the app removes all of
+      it.</li>
+    <li><strong>TMDB data</strong> such as favourites, watchlist, ratings and lists lives in your TMDB account. Remove
+      items in the app or on themoviedb.org, or delete your TMDB account there.</li>
+    <li><strong>Analytics, crash reports and our install counter</strong> are not linked to your name, and the app does
+      not show their identifiers, so we usually cannot single out your installation. Deleting the app stops
+      collection. To ask us about this data, email
+      <a href="mailto:fozilbekimomov@gmail.com">fozilbekimomov@gmail.com</a>.</li>
+  </ul>
+
+  <!-- ===================================================== -->
+  <h2 id="other">Other questions</h2>
+
+  <h3>Can I watch movies in Watchprism?</h3>
+  <p>
+    No. Watchprism shows where a title is available to stream, rent or buy. Tapping a service under "Where to Watch"
+    opens a link in your browser, where you can continue with that service.
+  </p>
+
+  <h3>A movie's details or streaming info are wrong</h3>
+  <p>
+    Movie, TV and people information comes from TMDB, a community-built database. You can suggest corrections on
+    <a href="https://www.themoviedb.org/" target="_blank" rel="noopener">themoviedb.org</a>. Streaming availability
+    comes from JustWatch and can change by country. To see the right services, set your country in
+    <strong>Profile &rarr; My services</strong>.
+  </p>
+
+  <h3>Which languages does the app support?</h3>
+  <p>
+    English, Spanish, Portuguese, French, Arabic, Indonesian, Italian, Chinese (Simplified), Russian, Turkish, German,
+    Hindi, Ukrainian and Uzbek. You can change the language in Settings.
+  </p>
+
+  <h3>Are there home screen widgets?</h3>
+  <p>Widgets are available on Android with Premium. They are not available on iPhone yet.</p>
+
+  <h2>Legal</h2>
+  <ul>
+    <li><a href="https://fozilbekimomov.github.io/watchprism-privacy.html">Privacy Policy</a></li>
+    <li>Terms of use on iPhone: <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" target="_blank" rel="noopener">Apple's Standard License Agreement (EULA)</a></li>
+    <li>Terms of use on Android: <a href="https://play.google.com/about/play-terms/index.html" target="_blank" rel="noopener">Google Play Terms of Service</a></li>
+  </ul>
+
+  <p>
+    Watchprism is developed by <strong>Fozilbek Imomov</strong>, an individual developer in Uzbekistan. Contact:
+    <a href="mailto:fozilbekimomov@gmail.com">fozilbekimomov@gmail.com</a>.
+  </p>
+
+  <p class="muted">
+    This product uses the TMDB API but is not endorsed or certified by TMDB. Watchprism is an independent app and is
+    not affiliated with TMDB, JustWatch or any streaming service.
+  </p>
+  <p class="muted">&copy; 2026 Fozilbek Imomov</p>
+</div>
+
+</body>
+</html>
