@@ -24,6 +24,24 @@
   denied (item 14); the Android version wording (item 16).
   The Google Play title is described as current ("is listed as"). Update that
   sentence here and in support.html on the day the Play listing is renamed.
+
+  Update 2026-11-17: RevenueCat added as a processor for Premium purchases from
+  app version 3.3.0 (ClickUp z8pmx9qeyb; RevenueCat "observer" mode, merged in
+  the app repo's develop by MR !23; lib/core/premium/revenuecat_observer.dart,
+  premium_manager.dart, docs/revenuecat-setup.md). Facts behind the wording:
+  anonymous RevenueCat app user ID only (no logIn, no attributes set by the
+  app, no collectDeviceIdentifiers; the iOS SDK 5.99.0 itself syncs the ATT
+  status as $attConsentStatus, and in StoreKit 2 observer mode posts the most
+  recent unsynced transaction plus the AppTransaction JWS on every foreground;
+  Android imports existing Play purchases once after the update and on
+  restore); the SDK is configured at startup for every user
+  whenever a key is built in, with no ATT/consent gating; it never decides
+  Premium access. Touched: short version, Sections 2, 4 (new 4.1), 5 (intro,
+  5.1), 6, 8, 9, 10, 11, 12, 14, 15, 16, 18. Publish this version together with
+  (or before) the first build that ships with a valid appl_ or goog_ RevenueCat
+  key. Without a key the observer stays inert and every "from app version 3.3.0"
+  statement would be wrong; if that first build is not 3.3.0, change the version
+  number everywhere before publishing.
 -->
 <html lang="en">
 <head>
@@ -162,7 +180,7 @@
 
 <div class="container">
   <h1>Privacy Policy</h1>
-  <p class="date">Effective date: November 13, 2026 &middot; Last updated: November 13, 2026</p>
+  <p class="date">Effective date: November 13, 2026 &middot; Last updated: November 17, 2026</p>
 
   <p>
     This Privacy Policy explains what information the <span class="highlight">Watchprism</span> mobile app
@@ -188,6 +206,9 @@
       <li>You can use Watchprism without an account. Signing in with a TMDB account is optional.</li>
       <li>If you sign in, your TMDB username and password go directly to TMDB over an encrypted connection. We never receive or store your password.</li>
       <li>Payments are handled by Apple or Google. We never see your card details.</li>
+      <li>From app version 3.3.0, we use RevenueCat to keep a record of Premium purchases and subscriptions. It receives
+        your purchase and subscription details with a random ID, not your name, email or TMDB account. It does not decide
+        whether you have Premium, and it is not used for ads (see <a href="#purchases">Section 4</a>).</li>
       <li>We use Google Firebase for analytics, crash reports, push notifications and remote settings. We use Google AdMob for ads in the free version.</li>
       <li>Our Google Analytics is linked to Google Ads, which we use to advertise Watchprism. Google may use analytics data, including purchases, to measure our ads and for ad personalisation. The app limits this with Google's consent mode: on iPhone these ad uses stay off unless you allow tracking when the app asks and, in the EEA, the UK and Switzerland, also consent, and they always stay off with Premium. On Android (versions after 3.2.0) they follow your choices in Google's consent message in those regions and are not limited elsewhere (see Section 5.2). Usage statistics are collected either way.</li>
       <li>On iPhone, your advertising identifier (IDFA) is used only if you allow tracking when the app asks.</li>
@@ -264,6 +285,12 @@
           <td>Apple or Google process the payment; the app checks the result on your device</td>
           <td>To unlock Premium</td>
           <td>Only if you buy Premium</td>
+        </tr>
+        <tr>
+          <td>Purchase and subscription records (product, transaction and renewal details, store purchase data), a random RevenueCat ID, device and app info (including the IDFV on iPhone), tracking-prompt status (iPhone), IP address</td>
+          <td>RevenueCat (from app version 3.3.0)</td>
+          <td>To keep a record of Premium purchases and subscriptions and to analyse sales; not used to decide Premium access or for ads</td>
+          <td>Purchase records only if you buy or already own Premium. A random ID, device and app info and your IP address are sent when the app starts and when you return to it, also without a purchase (see <a href="#purchases">Section 4</a>)</td>
         </tr>
         <tr>
           <td>App usage events (including in-app purchases), device info, approximate location (from IP), app instance ID</td>
@@ -400,9 +427,13 @@
     <li>On iPhone the app reads your App Store transactions through Apple's StoreKit 2 on your device. It asks the
       App Store for a full re-sync, which may ask you to sign in to your Apple Account, only when you tap
       <strong>Restore Purchase</strong>.</li>
-    <li>The app stores on your device whether Premium is active and which plan you own.</li>
-    <li>Receipts and transactions are <strong>not</strong> sent to our server or any other server we run. We do not
-      have a purchase backend.</li>
+    <li>The app stores on your device whether Premium is active and which plan you own. Whether you have Premium is
+      decided only on your device, from what the App Store or Google Play reports.</li>
+    <li>Receipts and transactions are <strong>not</strong> sent to our own server or any other server we run.</li>
+    <li>From app version 3.3.0, purchase records are also sent to <strong>RevenueCat</strong>, a subscription
+      service that keeps them for us. Versions up to 3.2.0 do not use RevenueCat, but once you run version 3.3.0 or
+      later, Premium purchases you made earlier are also sent to RevenueCat. See
+      <a href="#revenuecat">4.1</a> below.</li>
     <li>Google Analytics receives Premium funnel events (for example: paywall opened, purchase button tapped, free
       trial started (with the plan), purchase completed, cancelled, pending or failed with the store's error message,
       restore completed, "Manage subscription" tapped (with your plan)). It also receives a
@@ -411,6 +442,48 @@
     <li>If you allow notifications, your device joins a "premium users" or "free users" notification topic so that
       announcements can be aimed at either group.</li>
   </ul>
+  <h3 id="revenuecat">4.1 RevenueCat (from app version 3.3.0)</h3>
+  <p>
+    <strong>RevenueCat</strong> (RevenueCat, Inc., United States) processes purchase data on our behalf, as our
+    service provider. We use it to keep a record of Premium purchases and subscriptions and to see sales and
+    subscription statistics. The app still completes every purchase with Apple or Google itself, and RevenueCat
+    <strong>does not grant or block Premium</strong>: the app does not ask RevenueCat whether you have Premium.
+  </p>
+  <ul>
+    <li><strong>Who you are to RevenueCat:</strong> a random ID that RevenueCat's software creates and keeps on your
+      device. We do not give RevenueCat your name, email address, TMDB account or any other ID of ours. Apart from
+      your tracking-prompt status on iPhone, which RevenueCat's software adds by itself (see below), no other
+      information about you is added to your RevenueCat record. Deleting and reinstalling the app creates a new
+      ID.</li>
+    <li><strong>When you buy Premium:</strong> on iPhone, the app tells RevenueCat which product you bought, and
+      RevenueCat's software sends the App Store's signed record of that transaction (for example the product, the
+      transaction and its dates). On Android, the app sends RevenueCat the purchases Google Play reports for your
+      account, including the purchase token and order details. Later renewals and other subscription changes may also
+      be reported to RevenueCat.</li>
+    <li><strong>If you already own Premium</strong>, including a purchase made before version 3.3.0 or on another
+      device with the same Apple Account or Google account, the app sends RevenueCat that purchase record without a
+      new purchase. On Android this happens the first time version 3.3.0 or later starts and each time you tap
+      <strong>Restore Purchase</strong>: the app sends the purchases Google Play reports for your account, including
+      ones made with earlier versions. On iPhone, RevenueCat's software sends your most recent App Store transaction
+      that it has not sent before when the app starts or when you return to it, together with the App Store's signed
+      record of your app download.</li>
+    <li><strong>When the app starts and when you return to it</strong>, also if you never buy anything, RevenueCat's
+      software connects to RevenueCat. This sends the random ID, your IP address (as with any internet request), the app
+      version, your device model, operating system version, language settings and store country, and, on iPhone, the
+      Identifier for Vendor (IDFV) and whether you allowed tracking when the app asked (your answer to Apple's tracking
+      prompt, not the advertising identifier). RevenueCat may use it to load its own settings and to check for
+      purchases.</li>
+    <li>RevenueCat is <strong>not used for advertising or tracking</strong>. The app does not send it your advertising
+      identifier (IDFA or Android advertising ID). RevenueCat states that it does not itself use purchase history to
+      track users across apps for advertising, and we do not connect it to any advertising integration. For this reason RevenueCat works whatever you answer to the tracking prompt or the ads consent
+      message.</li>
+    <li>If there is a problem with a subscription payment (for example a card that needs updating), the App Store or
+      Google Play may show you its own message about it while you use the app.</li>
+  </ul>
+  <p>
+    RevenueCat describes its own handling of this data in the
+    <a href="https://www.revenuecat.com/privacy-policy" target="_blank" rel="noopener">RevenueCat Privacy Policy</a>.
+  </p>
   <p>
     Billing, renewals, cancellations and refunds are governed by Apple's or Google's terms. See
     <a href="#choices">Section 13</a> and our <a href="https://fozilbekimomov.github.io/watchprism-support.html">support page</a>
@@ -423,6 +496,8 @@
     The app includes software development kits (SDKs) from Google and others. They collect some data
     automatically when you use the app. We do not attach your name, email or TMDB account to the data that these
     analytics, crash and notification tools collect, and we do not set a user ID in them.
+    From app version 3.3.0 this also applies to RevenueCat's SDK, which connects to RevenueCat when the app starts and when you return to it
+    (see <a href="#revenuecat">4.1</a>).
   </p>
 
   <h3>5.1 Device identifiers</h3>
@@ -445,7 +520,7 @@
         <tr>
           <td>Identifier for Vendor (IDFV)</td>
           <td>iPhone</td>
-          <td>Google Analytics for Firebase; our install counter</td>
+          <td>Google Analytics for Firebase; our install counter; RevenueCat (from app version 3.3.0)</td>
           <td>Automatically</td>
         </tr>
         <tr>
@@ -459,6 +534,12 @@
           <td>Both</td>
           <td>Our install counter</td>
           <td>Automatically</td>
+        </tr>
+        <tr>
+          <td>RevenueCat ID (a random ID that RevenueCat's SDK creates)</td>
+          <td>Both</td>
+          <td>RevenueCat (from app version 3.3.0)</td>
+          <td>Automatically, when the app starts and when you return to it (see <a href="#revenuecat">4.1</a>)</td>
         </tr>
       </tbody>
     </table>
@@ -672,6 +753,8 @@
     <li>Your streaming services ("My services"), saved filter sets, genres picked during onboarding, and your app
       settings: language, theme, country and notification preferences.</li>
     <li>Premium status and plan, ad-free and unlock timers, and the install ID used by our install counter.</li>
+    <li>From app version 3.3.0, the random RevenueCat ID and the data RevenueCat's SDK keeps on the device to work
+      (for example a cached copy of your purchase information).</li>
     <li>Your TMDB session (see <a href="#provide">3.1</a>).</li>
     <li>Cached images and fonts. Share cards are created on your device and are only shared when you choose to.</li>
   </ul>
@@ -699,6 +782,8 @@
   <h2 id="use">8. How we use information</h2>
   <ul>
     <li>To provide the app: search, browsing, where-to-watch, TMDB account features, follows, reminders and Premium.</li>
+    <li>To keep a record of Premium purchases and subscriptions and see sales and subscription statistics (RevenueCat,
+      from app version 3.3.0; see <a href="#revenuecat">4.1</a>).</li>
     <li>To send notifications you allowed.</li>
     <li>To show ads in the free version and measure them. Ads are personalised unless you do not allow tracking on
       iPhone (or have not answered the prompt yet), do not give consent where it is required, opt out through Google's
@@ -719,7 +804,7 @@
   <p>If you are in the European Economic Area, the UK or Switzerland, we rely on:</p>
   <ul>
     <li><strong>Performance of a contract</strong>: providing the features you ask for, including TMDB sign-in and account
-      features, and providing Premium.</li>
+      features, and providing Premium, including keeping a record of your Premium purchases (RevenueCat).</li>
     <li><strong>Consent</strong>:
       <ul>
         <li>personalised AdMob advertising and the ad-related storage that needs consent, collected through Google's consent message and, on iPhone, Apple's tracking prompt;</li>
@@ -729,7 +814,8 @@
       You can withdraw consent at any time (see <a href="#choices">Section 13</a>).
       Withdrawing does not affect processing that happened before.</li>
     <li><strong>Legitimate interests</strong>: keeping the app stable (crash reports), understanding and improving it
-      (analytics measurement), counting installs, creating a push token so that notifications can
+      (analytics measurement), counting installs, sales and subscription statistics and the RevenueCat connection at
+      app start and when you return to the app (RevenueCat, from version 3.3.0), creating a push token so that notifications can
       be delivered, funding the free version with ads where consent is not required, and preventing abuse. You can object; see
       <a href="#rights">Section 15</a>.</li>
     <li><strong>Legal obligation</strong>: where the law requires us to keep or disclose information.</li>
@@ -788,6 +874,11 @@
           <td><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a></td>
         </tr>
         <tr>
+          <td>RevenueCat, Inc. (United States), from app version 3.3.0</td>
+          <td>Keeps a record of Premium purchases and subscriptions and provides sales statistics, on our behalf (see <a href="#revenuecat">4.1</a>). Not used for ads</td>
+          <td><a href="https://www.revenuecat.com/privacy-policy" target="_blank" rel="noopener">RevenueCat Privacy Policy</a></td>
+        </tr>
+        <tr>
           <td>Railway (hosting provider) and Google Cloud (Firestore database, United States)</td>
           <td>Host our install-counter server and store its records</td>
           <td>Process data on our behalf</td>
@@ -807,6 +898,8 @@
   </div>
   <p>
     For Firebase, Google says it generally acts as a data processor (service provider) for the app developer.
+    RevenueCat acts as our data processor (service provider) and, according to its terms, may not sell or share the
+    data.
     For advertising, Google and Meta also use data under their own policies.
   </p>
   <p>
@@ -827,7 +920,10 @@
   <h2 id="transfers">11. International transfers</h2>
   <p>
     Google, TMDB (Xperi Inc.), Apple and our hosting provider may process data in the United States and other
-    countries. Our install-counter records are stored in the United States (see 5.7). These countries may have different data protection laws than yours. Google states that Google LLC
+    countries. Our install-counter records are stored in the United States (see 5.7). From app version 3.3.0,
+    RevenueCat stores purchase records on Amazon Web Services servers in the United States and may also process them
+    where it or its own service providers operate; its data processing terms use the EU Standard Contractual Clauses,
+    with the UK Addendum and the Swiss adaptations, for transfers from the EEA, the UK and Switzerland. These countries may have different data protection laws than yours. Google states that Google LLC
     complies with the EU-U.S. Data Privacy Framework, the UK Extension to it and the Swiss-U.S. Data Privacy
     Framework. Google also says that some Firebase services, including Crashlytics and Cloud Messaging, may process
     data in any Google data center. The other providers describe their transfer safeguards in their own policies.
@@ -846,6 +942,10 @@
     <li><strong>Google Analytics:</strong> user-level and event-level data is kept for up to 14 months; this does not
       affect aggregated reports.</li>
     <li><strong>Ads:</strong> Google and Meta keep data under their own retention policies.</li>
+    <li><strong>RevenueCat</strong> (from app version 3.3.0): purchase records are kept while we use RevenueCat, unless
+      we delete them earlier on request (see <a href="#delete">Section 14</a>). RevenueCat does not publish a fixed
+      retention period; it keeps data under its own retention policy, which may include backups and records it needs
+      for legal reasons.</li>
     <li><strong>TMDB account data:</strong> kept by TMDB until you delete it or your TMDB account.</li>
     <li><strong>Our install counter:</strong> the records described in 5.7 are not deleted automatically. They are kept
       while the install counter runs, and we delete them on request (see <a href="#delete">Section 14</a>). IP addresses in
@@ -935,6 +1035,11 @@
     </li>
     <li><strong>Purchases:</strong> Apple and Google keep purchase records under their own policies. Cancelling a subscription
       does not delete them.</li>
+    <li><strong>RevenueCat records</strong> (from app version 3.3.0): email us and we will ask RevenueCat to delete your
+      record. The app does not show the random RevenueCat ID, so tell us what helps us find it, for example the order ID
+      from the App Store or Google Play receipt; we will tell you what we could locate and delete. Deleting this record
+      does not cancel a subscription; cancel it with Apple or Google (see <a href="#choices">Section 13</a>). If you later
+      restore or renew a purchase, a new record may be created.</li>
   </ol>
 
   <!-- ===================================================== 15 -->
@@ -951,7 +1056,8 @@
   </ul>
   <p>
     To use these rights, email <a href="mailto:fozilbekimomov@gmail.com">fozilbekimomov@gmail.com</a>. We may need
-    information from you to find the data, as explained in <a href="#delete">Section 14</a>. We will not
+    information from you to find the data, as explained in <a href="#delete">Section 14</a>. These rights also cover
+    the data our service providers, such as RevenueCat, process for us; we will pass your request on to them. We will not
     discriminate against you for using your rights. You can also complain to your local data protection authority.
   </p>
 
@@ -964,7 +1070,8 @@
   <ul>
     <li><strong>Identifiers:</strong> device and advertising identifiers, Firebase IDs, IP address.</li>
     <li><strong>Commercial information:</strong> which Premium product you own and purchase events (including the in-app
-      purchase events that Google Analytics records).</li>
+      purchase events that Google Analytics records), and, from app version 3.3.0, the purchase and subscription
+      records kept by RevenueCat as our service provider.</li>
     <li><strong>Internet or other electronic network activity:</strong> in-app usage and ad interactions, and searches sent to TMDB.</li>
     <li><strong>Approximate geolocation:</strong> derived from IP address.</li>
     <li><strong>Account login:</strong> your TMDB username and password, sent directly to TMDB only to sign you in.</li>
@@ -994,7 +1101,8 @@
           today, and the choices above do not stop them (see 5.2). You can limit Google's use of your data for ads in
           <a href="https://myadcenter.google.com/" target="_blank" rel="noopener">My Ad Center</a>, and you can email
           us to opt out. Because we usually cannot single out your installation (see <a href="#delete">Section 14</a>),
-          we will tell you what we can do. Deleting the app stops all collection.</li>
+          we will tell you what we can do. Deleting the app stops all collection by the app (the store may still
+          report renewals of an active subscription to RevenueCat, see <a href="#revenuecat">4.1</a>).</li>
       </ul></li>
     <li><strong>Sensitive personal information:</strong> we use your TMDB login only to sign you in, not to infer anything about you.</li>
     <li><strong>Children:</strong> we do not knowingly sell or share the personal information of consumers under 16.</li>
@@ -1013,7 +1121,7 @@
   <!-- ===================================================== 18 -->
   <h2 id="security">18. Security</h2>
   <p>
-    The app connects to TMDB, Firebase and our server over encrypted HTTPS connections. Your TMDB password is never
+    The app connects to TMDB, Firebase, RevenueCat and our server over encrypted HTTPS connections. Your TMDB password is never
     stored. Data on your device is kept in the app's private storage. No method of transmission or storage is
     completely secure, but we work to protect your information and limit what we collect.
   </p>
